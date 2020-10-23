@@ -7,8 +7,9 @@ export declare class blogController {
     getAllBlogs(res: any): Promise<any>;
     getBlogById(id: string, res: any): Promise<any>;
     getTheLatest(res: any): Promise<any>;
-    latestArticle(id: String, res: any): Promise<import("./blog.model").Blog>;
     introBlogs(id: String): Promise<any>;
     updateBlog(id: string, res: any, blogDto: BlogDto): Promise<any>;
     deleteUser(id: String, res: any): Promise<any>;
+    uploadLogoCompany(res: any, file: any, id: any): Promise<any>;
+    getFiles(getimage: String, res: any): any;
 }

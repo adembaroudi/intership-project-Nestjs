@@ -9,9 +9,15 @@ import {
   Post,
   Put,
   Res,
+  UploadedFile,
+  UploadedFiles,
+  UseInterceptors,
 } from "@nestjs/common";
+import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
 import { blogService } from "./blog.service";
 import { BlogDto } from "./dto/blog.dto";
+import * as multer from "multer";
+import * as path from "path";
 
 @Controller("blog")
 export class blogController {
@@ -40,11 +46,11 @@ export class blogController {
     const blogs = await this.blogService.getLatestBlog();
     return res.send(blogs);
   }
-  @Get("/Blogs/latestArticles/:id")
-  async latestArticle(@Param('id')id:String, @Res() res) {
-    const blogs = await this.blogService.getLatestArticles(id);
-    return blogs;
-  }
+  // @Get("/Blogs/latestArticles/:id")
+  // async latestArticle(@Param("id") id: String, @Res() res) {
+  //   const blogs = await this.blogService.getLatestArticles(id);
+  //   return blogs;
+  // }
   @Get("Blogs/intro/:id")
   async introBlogs(@Param("id") id: String) {
     const intro = await this.blogService.introBlog(id);
@@ -66,5 +72,28 @@ export class blogController {
       message: "blog deleted successuly",
       blog: blogToDelete,
     });
+  }
+  @Post('/Blogs/file')
+  @UseInterceptors(FileInterceptor('file', {
+    storage: multer.diskStorage({
+      destination : (req,file,cb)=> {  
+        cb(null, 'upload/');
+      },
+      filename:(req,file, cb)=> {
+        cb(null, Date.now() + file.originalname.slice(file.originalname.lastIndexOf('.')));
+      },
+    }),
+  }))
+async uploadLogoCompany(@Res() res, @UploadedFile() file, @Param('id') id): Promise<any> {
+  if ((path.extname(`${file.filename}`) === '.png')||  (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
+    this.blogService.logoCompanyPic(`${file.filename}`, id);
+    await res.json(file);
+  }
+    return { message: 'not an Image' };
+  }
+
+  @Get("Blogs/:getimage")
+  getFiles(@Param("getimage") getimage: String, @Res() res) {
+    return res.sendFile(getimage, { root: "upload" });
   }
 }

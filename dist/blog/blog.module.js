@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
+const platform_express_1 = require("@nestjs/platform-express");
 const blog_controller_1 = require("./blog.controller");
 const blog_service_1 = require("./blog.service");
 const blog_schema_1 = require("./schemas/blog.schema");
@@ -17,7 +18,10 @@ let BlogModule = class BlogModule {
 BlogModule = __decorate([
     common_1.Module({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: "blog", schema: blog_schema_1.blogsSchema }])
+            mongoose_1.MongooseModule.forFeature([{ name: "blog", schema: blog_schema_1.blogsSchema }]),
+            platform_express_1.MulterModule.register({
+                dest: "upload/",
+            }),
         ],
         controllers: [blog_controller_1.blogController],
         providers: [blog_service_1.blogService],

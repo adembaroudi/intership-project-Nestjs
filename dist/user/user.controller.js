@@ -14,8 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
 const user_dto_1 = require("../user/dto/user.dto");
 const user_service_1 = require("../user/user.service");
+const multer = require("multer");
+const path = require("path");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -43,6 +46,16 @@ let UserController = class UserController {
             user: userToDelete,
         });
     }
+    async uploadLogoCompany(res, file, id) {
+        if ((path.extname(`${file.filename}`) === '.png') || (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
+            this.userService.logoUserPic(`${file.filename}`, id);
+            await res.json(file);
+        }
+        return { message: 'not an Image' };
+    }
+    getFiles(getimage, res) {
+        return res.sendFile(getimage, { root: "upload" });
+    }
 };
 __decorate([
     common_1.Post("/Users"),
@@ -65,6 +78,30 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
+__decorate([
+    common_1.Post('/Users/file'),
+    common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, 'upload/');
+            },
+            filename: (req, file, cb) => {
+                cb(null, Date.now() + file.originalname.slice(file.originalname.lastIndexOf('.')));
+            },
+        }),
+    })),
+    __param(0, common_1.Res()), __param(1, common_1.UploadedFile()), __param(2, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "uploadLogoCompany", null);
+__decorate([
+    common_1.Get("Users/:getimage"),
+    __param(0, common_1.Param("getimage")), __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "getFiles", null);
 UserController = __decorate([
     common_1.Controller("user"),
     __metadata("design:paramtypes", [user_service_1.userService])

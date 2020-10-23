@@ -34,4 +34,7 @@ export class userService {
     const userToDelete = await this.userModel.findByIdAndDelete(id);
     return userToDelete;
   }
+  async logoUserPic(file, id) {
+    return await this.userModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+}
 }

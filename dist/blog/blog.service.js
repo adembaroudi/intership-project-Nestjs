@@ -51,10 +51,8 @@ let blogService = class blogService {
         const intro = blog.Contenue.slice(0, 250) + "...";
         return intro;
     }
-    async getLatestArticles(id) {
-        const blog = await this.blogModel.findById(id);
-        const latestArticles = blog.Contenue.sort({ _id: -1 }).limit(1);
-        return latestArticles;
+    async logoCompanyPic(file, id) {
+        return await this.blogModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
     }
 };
 blogService = __decorate([

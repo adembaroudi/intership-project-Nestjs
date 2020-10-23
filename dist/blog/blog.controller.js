@@ -14,8 +14,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.blogController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
 const blog_service_1 = require("./blog.service");
 const blog_dto_1 = require("./dto/blog.dto");
+const multer = require("multer");
+const path = require("path");
 let blogController = class blogController {
     constructor(blogService) {
         this.blogService = blogService;
@@ -39,10 +42,6 @@ let blogController = class blogController {
         const blogs = await this.blogService.getLatestBlog();
         return res.send(blogs);
     }
-    async latestArticle(id, res) {
-        const blogs = await this.blogService.getLatestArticles(id);
-        return blogs;
-    }
     async introBlogs(id) {
         const intro = await this.blogService.introBlog(id);
         return intro;
@@ -57,6 +56,16 @@ let blogController = class blogController {
             message: "blog deleted successuly",
             blog: blogToDelete,
         });
+    }
+    async uploadLogoCompany(res, file, id) {
+        if ((path.extname(`${file.filename}`) === '.png') || (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
+            this.blogService.logoCompanyPic(`${file.filename}`, id);
+            await res.json(file);
+        }
+        return { message: 'not an Image' };
+    }
+    getFiles(getimage, res) {
+        return res.sendFile(getimage, { root: "upload" });
     }
 };
 __decorate([
@@ -88,13 +97,6 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "getTheLatest", null);
 __decorate([
-    common_1.Get("/Blogs/latestArticles/:id"),
-    __param(0, common_1.Param('id')), __param(1, common_1.Res()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", Promise)
-], blogController.prototype, "latestArticle", null);
-__decorate([
     common_1.Get("Blogs/intro/:id"),
     __param(0, common_1.Param("id")),
     __metadata("design:type", Function),
@@ -117,6 +119,30 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "deleteUser", null);
+__decorate([
+    common_1.Post('/Blogs/file'),
+    common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, 'upload/');
+            },
+            filename: (req, file, cb) => {
+                cb(null, Date.now() + file.originalname.slice(file.originalname.lastIndexOf('.')));
+            },
+        }),
+    })),
+    __param(0, common_1.Res()), __param(1, common_1.UploadedFile()), __param(2, common_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], blogController.prototype, "uploadLogoCompany", null);
+__decorate([
+    common_1.Get("Blogs/:getimage"),
+    __param(0, common_1.Param("getimage")), __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
+], blogController.prototype, "getFiles", null);
 blogController = __decorate([
     common_1.Controller("blog"),
     __metadata("design:paramtypes", [blog_service_1.blogService])

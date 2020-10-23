@@ -10,9 +10,11 @@ import { replyCommentModule } from "./replyComment/replyComment.module";
 import { contactModule } from "./contact/contact.module";
 import { partenairesModule } from "./partenaires/partenaires.module";
 import { trainingModule } from "./training/training.module";
+import { MulterModule } from "@nestjs/platform-express";
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb://localhost/fivepoints"),
+   
     AuthModule,
     UserModule,
     BlogModule,

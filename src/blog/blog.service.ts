@@ -3,7 +3,6 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Blog } from "./blog.model";
 import { Model } from "mongoose";
 import { BlogDto } from "./dto/blog.dto";
-
 @Injectable()
 export class blogService {
   private blog: Blog[] = [];
@@ -38,9 +37,15 @@ export class blogService {
     const intro = blog.Contenue.slice(0,250)+"...";
     return intro ;  
   }
-  async getLatestArticles(id :String): Promise<Blog> {
-    const blog = await this.blogModel.findById(id)
-    const latestArticles = blog.Contenue.sort({ _id: -1 }).limit(1);
-    return latestArticles;
-  }
+  // async getLatestArticles(id :String): Promise<Blog> {
+  //   const blog = await this.blogModel.findById(id)
+  //   console.log(blog.Contenue);
+    
+  //   // const latestArticle = blog.Contenue.sort({_id:-1}).limit(1)
+  //   return blog
+  // }
+  async logoCompanyPic(file, id) {
+    return await this.blogModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+}
+
 }
