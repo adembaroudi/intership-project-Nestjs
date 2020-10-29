@@ -9,6 +9,6 @@ exports.commentsSchema = new mongoose_1.Schema({
     contenue: String,
     email: String,
     blog: { type: mongoose_1.Types.ObjectId, ref: 'Blog' },
-    replyComment: [{ type: mongoose_1.Types.ObjectId, ref: 'replyComment' }]
+    replies: [{ type: mongoose_1.Types.ObjectId, ref: 'replies' }]
 });
 //# sourceMappingURL=comment.schema.js.map

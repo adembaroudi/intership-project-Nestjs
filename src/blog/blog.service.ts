@@ -16,16 +16,19 @@ export class blogService {
     return allBlogs;
   }
   async getLatestBlog(): Promise<Blog> {
-    const latest = await this.blogModel.find().sort({ _id: -1 }).limit(1);
+    const latest = await this.blogModel.find().sort({ _id: -1 }).limit(1); 
     return latest;
   }
+  
 
   async getBlogById(id: String): Promise<Blog> {
     const blogId = await this.blogModel.findById(id);
     return blogId;
   }
   async updateBlog(id: String, blogDto: BlogDto): Promise<Blog> {
-    const updateblog = await this.blogModel.findByIdAndUpdate(id, blogDto);
+    const updateblog = await this.blogModel.findByIdAndUpdate(id, blogDto,{new:true});
+    console.log(updateblog);
+    
     return updateblog;
   }
   async deleteBlog(id: String): Promise<Blog> {
@@ -37,15 +40,12 @@ export class blogService {
     const intro = blog.Contenue.slice(0,250)+"...";
     return intro ;  
   }
-  // async getLatestArticles(id :String): Promise<Blog> {
-  //   const blog = await this.blogModel.findById(id)
-  //   console.log(blog.Contenue);
-    
-  //   // const latestArticle = blog.Contenue.sort({_id:-1}).limit(1)
-  //   return blog
-  // }
+  async getLatestArticles(): Promise<Blog> {
+    const blog = await this.blogModel.find().sort({_id:-1}).limit(1)
+    const latestArticle = blog
+    return latestArticle
+  }
   async logoCompanyPic(file, id) {
-    return await this.blogModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+    return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
 }
-
 }

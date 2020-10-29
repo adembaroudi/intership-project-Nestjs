@@ -30,7 +30,7 @@ export class blogController {
       message: "blog added successuly",
       blog: blog,
     });
-  }
+  } 
   @Get("/Blogs")
   async getAllBlogs(@Res() res) {
     const blogs = await this.blogService.getAllBlogs();
@@ -41,16 +41,16 @@ export class blogController {
     const blogId = await this.blogService.getBlogById(id);
     return res.send(blogId);
   }
-  @Get("/Blogs/latest")
-  async getTheLatest(@Res() res) {
+  @Get("/latestBlogs")
+  async getTheLatest() {
     const blogs = await this.blogService.getLatestBlog();
-    return res.send(blogs);
+    return blogs;
   }
-  // @Get("/Blogs/latestArticles/:id")
-  // async latestArticle(@Param("id") id: String, @Res() res) {
-  //   const blogs = await this.blogService.getLatestArticles(id);
-  //   return blogs;
-  // }
+  @Get("/recentArticle")
+  async latestArticle( ) {
+    const blogs = await this.blogService.getLatestArticles();
+   return blogs
+  }
   @Get("Blogs/intro/:id")
   async introBlogs(@Param("id") id: String) {
     const intro = await this.blogService.introBlog(id);
@@ -58,7 +58,7 @@ export class blogController {
   }
   @Put("/Blogs/:id")
   async updateBlog(
-    @Param("id") id: string,
+    @Param("id") id: string, 
     @Res() res,
     @Body() blogDto: BlogDto
   ) {
@@ -66,15 +66,14 @@ export class blogController {
     return res.send(updateblog);
   }
   @Delete("/Blogs/:id")
-  async deleteUser(@Param("id") id: String, @Res() res) {
+  async deleteBlog(@Param("id") id: String, @Res() res) {
     const blogToDelete = await this.blogService.deleteBlog(id);
     return res.status(HttpStatus.OK).json({
       message: "blog deleted successuly",
       blog: blogToDelete,
     });
   }
-  @Post('/Blogs/file')
-  @UseInterceptors(FileInterceptor('file', {
+  @UseInterceptors(FileInterceptor('image', {
     storage: multer.diskStorage({
       destination : (req,file,cb)=> {  
         cb(null, 'upload/');
@@ -84,6 +83,7 @@ export class blogController {
       },
     }),
   }))
+  @Put('/Blogs/file/:id')
 async uploadLogoCompany(@Res() res, @UploadedFile() file, @Param('id') id): Promise<any> {
   if ((path.extname(`${file.filename}`) === '.png')||  (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
     this.blogService.logoCompanyPic(`${file.filename}`, id);

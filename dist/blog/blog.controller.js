@@ -38,9 +38,13 @@ let blogController = class blogController {
         const blogId = await this.blogService.getBlogById(id);
         return res.send(blogId);
     }
-    async getTheLatest(res) {
+    async getTheLatest() {
         const blogs = await this.blogService.getLatestBlog();
-        return res.send(blogs);
+        return blogs;
+    }
+    async latestArticle() {
+        const blogs = await this.blogService.getLatestArticles();
+        return blogs;
     }
     async introBlogs(id) {
         const intro = await this.blogService.introBlog(id);
@@ -50,7 +54,7 @@ let blogController = class blogController {
         const updateblog = await this.blogService.updateBlog(id, blogDto);
         return res.send(updateblog);
     }
-    async deleteUser(id, res) {
+    async deleteBlog(id, res) {
         const blogToDelete = await this.blogService.deleteBlog(id);
         return res.status(common_1.HttpStatus.OK).json({
             message: "blog deleted successuly",
@@ -90,12 +94,17 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "getBlogById", null);
 __decorate([
-    common_1.Get("/Blogs/latest"),
-    __param(0, common_1.Res()),
+    common_1.Get("/latestBlogs"),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "getTheLatest", null);
+__decorate([
+    common_1.Get("/recentArticle"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], blogController.prototype, "latestArticle", null);
 __decorate([
     common_1.Get("Blogs/intro/:id"),
     __param(0, common_1.Param("id")),
@@ -118,10 +127,9 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], blogController.prototype, "deleteUser", null);
+], blogController.prototype, "deleteBlog", null);
 __decorate([
-    common_1.Post('/Blogs/file'),
-    common_1.UseInterceptors(platform_express_1.FileInterceptor('file', {
+    common_1.UseInterceptors(platform_express_1.FileInterceptor('image', {
         storage: multer.diskStorage({
             destination: (req, file, cb) => {
                 cb(null, 'upload/');
@@ -131,6 +139,7 @@ __decorate([
             },
         }),
     })),
+    common_1.Put('/Blogs/file/:id'),
     __param(0, common_1.Res()), __param(1, common_1.UploadedFile()), __param(2, common_1.Param('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object]),

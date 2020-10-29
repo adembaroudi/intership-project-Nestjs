@@ -12,5 +12,6 @@ export declare class blogService {
     updateBlog(id: String, blogDto: BlogDto): Promise<Blog>;
     deleteBlog(id: String): Promise<Blog>;
     introBlog(id: String): Promise<any>;
+    getLatestArticles(): Promise<Blog>;
     logoCompanyPic(file: any, id: any): Promise<any>;
 }

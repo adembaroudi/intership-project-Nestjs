@@ -29,13 +29,18 @@ import { replyCommentService } from "./replyComment.service";
   @Get("/getrepliesByComment/:id")
   async getReplyByComment(
     @Param("id") id: String,
-    @Body() replyDto: replyCommentDto
+  
   ) {
     const replies = await this.replyService.getReplyByComment(
       id,
-      replyDto
+  
     );
     return replies
+  }
+  @Get("/nbrReplies/:id")
+  async nbrComments(@Param("id") id: String)  {
+    const nbrReplies = await this.replyService.nbrReplies(id);
+    return nbrReplies;
   }
   
   }

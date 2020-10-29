@@ -32,16 +32,16 @@ export class CommentService {
     const allComments = await this.commentModel.find()
     return allComments;
   }
-  async getCommentByBlog(id : String , CommentDto : CommentDto): Promise <Comment>{
-    const commentsByBlog = await this.blogModel.findById(id, CommentDto)  
+  async getCommentByBlog(id : String ): Promise <any>{
+    const commentsByBlog = await this.blogModel.findById(id).populate("comment").exec() 
     return commentsByBlog;
   }
   async nbrComments(id :String) : Promise <Comment>{
        const nbrComments = await this.commentModel.countDocuments({blog : id })
        return nbrComments
   }
-  async updateComment(id : String , CommentDto : CommentDto) : Promise<Comment>{
-      const comment = await  this.commentModel.findByIdAndUpdate(id , {contenue :CommentDto.contenue},{new : true});
+  async updateComment(idcomment : String ,  CommentDto : CommentDto) : Promise<Comment>{
+      const comment = await  this.commentModel.findByIdAndUpdate(idcomment , {contenue :CommentDto.contenue},{new : true});
       return comment
   }
   async deleteComment(id : String){

@@ -7,5 +7,5 @@ export const commentsSchema = new Schema({
   contenue:String,
   email:String,
   blog : { type: Types.ObjectId, ref: 'Blog'},
-  replyComment: [{type: Types.ObjectId, ref: 'replyComment'}]
+  replies: [{type: Types.ObjectId, ref: 'replies'}]
 });

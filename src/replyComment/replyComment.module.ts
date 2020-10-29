@@ -10,7 +10,7 @@ import { replaycommentsSchema } from "./schemas/replyComment.schema";
 @Module({
     imports:[
 
-MongooseModule.forFeature([{name:"replaycomments",schema:replaycommentsSchema}]),
+MongooseModule.forFeature([{name:"replies",schema:replaycommentsSchema}]),
 MongooseModule.forFeature([{name:"comment",schema:commentsSchema}])],
     controllers:[replyCommentController],
     providers:[replyCommentService],

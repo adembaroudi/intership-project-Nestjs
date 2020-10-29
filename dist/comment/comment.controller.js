@@ -29,9 +29,9 @@ let CommentController = class CommentController {
         const comments = await this.commentService.getAllComments();
         return res.send(comments);
     }
-    async getCommentsByBlog(id, res, CommentDto) {
-        const CommentsByBlog = await this.commentService.getCommentByBlog(id, CommentDto);
-        return res.send(CommentsByBlog);
+    async getCommentsByBlog(id) {
+        const CommentsByBlog = await this.commentService.getCommentByBlog(id);
+        return CommentsByBlog;
     }
     async nbrComments(id) {
         const nbrComments = await this.commentService.nbrComments(id);
@@ -67,10 +67,8 @@ __decorate([
 __decorate([
     common_1.Get("/Comments/:id"),
     __param(0, common_1.Param("id")),
-    __param(1, common_1.Res()),
-    __param(2, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object, comment_dto_1.CommentDto]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], CommentController.prototype, "getCommentsByBlog", null);
 __decorate([
@@ -81,7 +79,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CommentController.prototype, "nbrComments", null);
 __decorate([
-    common_1.Put("/Comments/:id"),
+    common_1.Put("/putComments/:id"),
     __param(0, common_1.Param("id")),
     __param(1, common_1.Res()),
     __param(2, common_1.Body()),

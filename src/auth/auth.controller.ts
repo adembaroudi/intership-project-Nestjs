@@ -5,7 +5,7 @@ import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 @Controller("auth")
 export class AuthController {
     constructor(private authService: AuthService) {}
-    @Post("/register/training/:id")
+    @Post("/trainingregister/:id")
     async trainingReg(
       @Param('id')id : String,
       @Res() res,

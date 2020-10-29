@@ -39,7 +39,8 @@ let blogService = class blogService {
         return blogId;
     }
     async updateBlog(id, blogDto) {
-        const updateblog = await this.blogModel.findByIdAndUpdate(id, blogDto);
+        const updateblog = await this.blogModel.findByIdAndUpdate(id, blogDto, { new: true });
+        console.log(updateblog);
         return updateblog;
     }
     async deleteBlog(id) {
@@ -51,8 +52,13 @@ let blogService = class blogService {
         const intro = blog.Contenue.slice(0, 250) + "...";
         return intro;
     }
+    async getLatestArticles() {
+        const blog = await this.blogModel.find().sort({ _id: -1 }).limit(1);
+        const latestArticle = blog;
+        return latestArticle;
+    }
     async logoCompanyPic(file, id) {
-        return await this.blogModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+        return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
     }
 };
 blogService = __decorate([

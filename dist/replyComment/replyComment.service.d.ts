@@ -8,5 +8,6 @@ export declare class replyCommentService {
     private replyComment;
     constructor(commentModel: Model<Comment>, replyModel: Model<replyComment>);
     repComment(id: String, replyDto: replyCommentDto): Promise<replyComment>;
-    getReplyByComment(id: String, replyDto: replyCommentDto): Promise<replyComment>;
+    getReplyByComment(id: String): Promise<any>;
+    nbrReplies(id: String): Promise<replyComment>;
 }

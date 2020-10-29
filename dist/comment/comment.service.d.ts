@@ -9,9 +9,9 @@ export declare class CommentService {
     constructor(commentModel: Model<Comment>, blogModel: Model<Blog>);
     newComment(id: String, CommentDto: CommentDto): Promise<Comment>;
     getAllComments(): Promise<Comment>;
-    getCommentByBlog(id: String, CommentDto: CommentDto): Promise<Comment>;
+    getCommentByBlog(id: String): Promise<any>;
     nbrComments(id: String): Promise<Comment>;
-    updateComment(id: String, CommentDto: CommentDto): Promise<Comment>;
+    updateComment(idcomment: String, CommentDto: CommentDto): Promise<Comment>;
     deleteComment(id: String): Promise<{
         message: string;
     }>;

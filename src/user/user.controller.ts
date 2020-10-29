@@ -69,3 +69,4 @@ async uploadLogoCompany(@Res() res, @UploadedFile() file, @Param('id') id): Prom
     return res.sendFile(getimage, { root: "upload" });
   }
 }
+

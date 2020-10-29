@@ -27,7 +27,7 @@ let replyCommentService = class replyCommentService {
     async repComment(id, replyDto) {
         const repcomment = await this.replyModel.create(replyDto);
         const comment = await this.commentModel.findByIdAndUpdate(id, {
-            $push: { repcomment: repcomment._id },
+            $push: { replies: repcomment._id },
         }, {
             new: true,
         });
@@ -36,15 +36,19 @@ let replyCommentService = class replyCommentService {
         });
         return comment;
     }
-    async getReplyByComment(id, replyDto) {
-        const replyByComment = await this.commentModel.findById(id, replyDto);
-        return replyByComment;
+    async getReplyByComment(id) {
+        const getReplyByComment = await this.commentModel.findById(id).populate("replies").exec();
+        return getReplyByComment;
+    }
+    async nbrReplies(id) {
+        const nbrReplies = await this.replyModel.countDocuments({ comment: id });
+        return nbrReplies;
     }
 };
 replyCommentService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel("comment")),
-    __param(1, mongoose_1.InjectModel("replaycomments")),
+    __param(1, mongoose_1.InjectModel("replies")),
     __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
 ], replyCommentService);
 exports.replyCommentService = replyCommentService;

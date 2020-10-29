@@ -2222,12 +2222,12 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "e326e8d04414f3993894d2795f491b2a42e77ffe1a7d5bacb12e438689b3f65f",
+        "version": "8f1ff9a9efbbdb2dc85f66878dc0e7824d481a5435e7f65cdb382c94155b607a",
         "signature": "824c666ff5bc7888990d0bdf46399c341f3c7a8ce03831a9b3fe325702e048ec",
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/serviceregistration.schema.ts": {
-        "version": "8d6ae03e6c903e5151990a87b1676ce480ae3924fa3cf14e28ccd8405fa9852e",
+        "version": "7dabd66da47302b92d3d105a8ce64d1d64acc58ea6d05ff204354e5c68127887",
         "signature": "5eed82ec6c4ff73b97dc8622199aa13578abdf4143681af3c6162b01324db797",
         "affectsGlobalScope": false
       },
@@ -2262,7 +2262,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
-        "version": "2003adab4382657698ddbeed40780ec42d30ef1f729dcaa9b7f3c4532932ec34",
+        "version": "5f1221656e5f29debca4c23d39a7faad110e2ad688dac8e94b862a6bdc1fb010",
         "signature": "1861e3fcdbf945b83ffe0f69f06016fd816fd9ac6443d1fac295982a9d1a3f5d",
         "affectsGlobalScope": false
       },
@@ -2282,17 +2282,17 @@
         "affectsGlobalScope": false
       },
       "../src/blog/blog.service.ts": {
-        "version": "08f57b2c8bd620afe3564820ab68620ece1f6771e7c6d8d794946ca09f7fa7e1",
-        "signature": "6dfd5fb475470548cb66c80f743fed17266c48cdfe8d0780bd53526bf7bb57ea",
+        "version": "5488459364499658ed5aacf7df1a7ac2b429010d9ebf56b11f5dd6aa242f9ead",
+        "signature": "8ee0f40abf493dd10d0bdf0251f4038f2719cce16276cecbfc071a9914f4bdce",
         "affectsGlobalScope": false
       },
       "../src/blog/blog.controller.ts": {
-        "version": "a08e9f0c0357898f3e36d27e375b1420c086c699931705036e7b305159d7a822",
-        "signature": "a892414c5bc0028a9ed1f4a060a8090726e286afefb96a9ee9942cbe8ea83cb2",
+        "version": "3aadabde9eb1c7b4e080d4b932e3407dd90eaa9f4c27f59c9d83af2fb6712475",
+        "signature": "7f83e12c64d5d0cbb01dd2a5ec131ce5c46772aee1625b2f3912ecde6c419af9",
         "affectsGlobalScope": false
       },
       "../src/blog/schemas/blog.schema.ts": {
-        "version": "185889906940c05465902f3c05f8b29017bbbdfe2d7a76bed412633a86491563",
+        "version": "44e2243df0c0f038952c54a6853dcf6fbdc3f224ef95f42fd7bebb50400b4129",
         "signature": "7d0e27530f0bfdc0636868a8158c4d6978a740bf5c2571385f57fb29112c81a4",
         "affectsGlobalScope": false
       },
@@ -2302,7 +2302,7 @@
         "affectsGlobalScope": false
       },
       "../src/comment/comment.model.ts": {
-        "version": "e6364aeb4247e05cb63dc691e3fd92016dabd7505eed47749e345a65d04272ba",
+        "version": "7fec8606586dbb8f9074655684f1fe3b04334b80644780e05b3bdfd2bffa4da6",
         "signature": "354fd77d27d5801f53ff90546d6c74210432645eba7fe2d478e7ae89624cd35b",
         "affectsGlobalScope": false
       },
@@ -2312,17 +2312,17 @@
         "affectsGlobalScope": false
       },
       "../src/comment/comment.service.ts": {
-        "version": "17a3c02d29d054a8fe2883383480fcd71deec288a4a5488598a1831c2b3243c9",
-        "signature": "f4866cf7d0bfeb3248c9b3a8d4f2ace3ea8e190003bbd9b3f2cd634b3d86314e",
+        "version": "1046a231827af20e7c5ec3be5f9953bf9f9d3b4abc6daf4afa27a9b9af781ae7",
+        "signature": "4c31c78ece64d2ad4f867899c7d33973cccc8e7f56fdfc9a7359b3ae0fa918db",
         "affectsGlobalScope": false
       },
       "../src/comment/comment.controller.ts": {
-        "version": "064022f92914c6cf239975395f78a8a1b9f7deea39491375377b08bdc3c23334",
-        "signature": "72c08aeab3b2b14acde78cb5fe9cc61bf21d98603c4ffb5959efb8c5a538f993",
+        "version": "3bf5e01aeb0fdfdc37c798bc25e45d32d95c66e26f485e0362e2018a8294c2ec",
+        "signature": "956cb3884d8ceb9e3cc86a8d49b06ecac60465124494d82c6bd8f47514c6499b",
         "affectsGlobalScope": false
       },
       "../src/comment/schemas/comment.schema.ts": {
-        "version": "8ad39320abb5ab04a5cc1220a3558b7979cf60f9aad40f4a56a283026b2ad758",
+        "version": "007b60a63cf2f8216475bfe3a6847560417dec53ae7e854761cecde254bdcc9e",
         "signature": "bc0c1605108143f1613b09b403017a962a2d3c83f7fa4b17518f24623a509ab3",
         "affectsGlobalScope": false
       },
@@ -2342,13 +2342,13 @@
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.service.ts": {
-        "version": "7039f6f9eba9e2d0709e6c0ef899f7be05c9f611c6c56a2de73844e393cb6517",
-        "signature": "cb66a61633bd16ed81cc070930464fea46f36d33bd9711ed780427f814cf29fe",
+        "version": "9a347ac15b73088bcb836ff5e266f1aed1e2c617f534bbac01a47dc5ef9aa2b4",
+        "signature": "761f7a644ea706d16421c63d810639477728de027bc0c44c730eb0f84c376e4f",
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.controller.ts": {
-        "version": "ba4588aef9c777d20538a0b3fbb6f167d40cf1bd9ff00cf40712b32d4542a496",
-        "signature": "c73066962303acff7b0a3851f5a82761a2f10bca7fe5609b51a22948d7e88946",
+        "version": "d9a441d458a32c905b5da846f0f925eca8bd186888735303668bcdf1685f59a9",
+        "signature": "2793c99f454434e03eaabfb79c786ac5ec3c8f09a0e3029e819ce5ab91a40721",
         "affectsGlobalScope": false
       },
       "../src/replycomment/schemas/replycomment.schema.ts": {
@@ -2357,7 +2357,7 @@
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.module.ts": {
-        "version": "0f41a064d61e4e84100864a805e6cff1c83c4e79bf33750b463b8c03f94a8ae0",
+        "version": "61837b747730e70aaa93dce09f05510bb835a5fab3166d81d5350f08a9420be7",
         "signature": "7ba5c05b972772289d7ee6f3a84317b89cdf7455273378b2a9be8fad6ac686ec",
         "affectsGlobalScope": false
       },
@@ -2372,7 +2372,7 @@
         "affectsGlobalScope": false
       },
       "../src/contact/contact.service.ts": {
-        "version": "f2cb2a6a0ba8f14c3ec14d149d495cb96a124a1f9efe6e474bcf761e7c4f99aa",
+        "version": "56c4b8af2534ddde15f3d314966723e2b667c8f6e733892bcf1bbd75b877e56e",
         "signature": "59c2a867f19a77bb775d17f8d25a953bf12dacf7b4aace80859e8a54a0880110",
         "affectsGlobalScope": false
       },
@@ -6920,6 +6920,7 @@
         "../src/training/training.model.ts"
       ],
       "../src/blog/blog.controller.ts": [
+        "../src/blog/blog.model.ts",
         "../src/blog/blog.service.ts",
         "../src/blog/dto/blog.dto.ts"
       ],

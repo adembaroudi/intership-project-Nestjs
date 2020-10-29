@@ -18,7 +18,7 @@ let replyCommentModule = class replyCommentModule {
 replyCommentModule = __decorate([
     common_1.Module({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: "replaycomments", schema: replyComment_schema_1.replaycommentsSchema }]),
+            mongoose_1.MongooseModule.forFeature([{ name: "replies", schema: replyComment_schema_1.replaycommentsSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "comment", schema: comment_schema_1.commentsSchema }])
         ],
         controllers: [replyComment_controller_1.replyCommentController],

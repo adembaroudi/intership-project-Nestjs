@@ -9,6 +9,6 @@ exports.blogsSchema = new mongoose_1.Schema({
     auteur: String,
     image: String,
     Contenue: String,
-    comment: [{ type: mongoose_1.Types.ObjectId, ref: 'Comment' }],
+    comment: [{ type: mongoose_1.Types.ObjectId, ref: 'comment' }],
 });
 //# sourceMappingURL=blog.schema.js.map

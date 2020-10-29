@@ -34,22 +34,16 @@ export class CommentController {
   }
   @Get("/Comments/:id")
   async getCommentsByBlog(
-    @Param("id") id: String,
-    @Res() res,
-    @Body() CommentDto: CommentDto
-  ) {
-    const CommentsByBlog = await this.commentService.getCommentByBlog(
-      id,
-      CommentDto
-    );
-    return res.send(CommentsByBlog);
+    @Param("id") id: String ) {
+    const CommentsByBlog = await this.commentService.getCommentByBlog(id);
+    return CommentsByBlog
   }
   @Get("/nbrComments/:id")
   async nbrComments(@Param("id") id: String)  {
     const nbrComments = await this.commentService.nbrComments(id);
     return nbrComments
   }
-  @Put("/Comments/:id")
+  @Put("/putComments/:id")
   async updateComment(
     @Param("id") id: String,
     @Res() res,
@@ -66,7 +60,6 @@ export class CommentController {
    await this.commentService.deleteComment(id);
     return res.status(HttpStatus.OK).json({
       message: "comment deleted successuly",
-
     });
   }
 }

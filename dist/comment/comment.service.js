@@ -39,16 +39,16 @@ let CommentService = class CommentService {
         const allComments = await this.commentModel.find();
         return allComments;
     }
-    async getCommentByBlog(id, CommentDto) {
-        const commentsByBlog = await this.blogModel.findById(id, CommentDto);
+    async getCommentByBlog(id) {
+        const commentsByBlog = await this.blogModel.findById(id).populate("comment").exec();
         return commentsByBlog;
     }
     async nbrComments(id) {
         const nbrComments = await this.commentModel.countDocuments({ blog: id });
         return nbrComments;
     }
-    async updateComment(id, CommentDto) {
-        const comment = await this.commentModel.findByIdAndUpdate(id, { contenue: CommentDto.contenue }, { new: true });
+    async updateComment(idcomment, CommentDto) {
+        const comment = await this.commentModel.findByIdAndUpdate(idcomment, { contenue: CommentDto.contenue }, { new: true });
         return comment;
     }
     async deleteComment(id) {

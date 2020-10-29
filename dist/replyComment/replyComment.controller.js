@@ -24,9 +24,13 @@ let replyCommentController = class replyCommentController {
         const addcomment = await this.replyService.repComment(id, replyDto);
         return addcomment;
     }
-    async getReplyByComment(id, replyDto) {
-        const replies = await this.replyService.getReplyByComment(id, replyDto);
+    async getReplyByComment(id) {
+        const replies = await this.replyService.getReplyByComment(id);
         return replies;
+    }
+    async nbrComments(id) {
+        const nbrReplies = await this.replyService.nbrReplies(id);
+        return nbrReplies;
     }
 };
 __decorate([
@@ -40,12 +44,17 @@ __decorate([
 __decorate([
     common_1.Get("/getrepliesByComment/:id"),
     __param(0, common_1.Param("id")),
-    __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String,
-        replyComment_dto_1.replyCommentDto]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], replyCommentController.prototype, "getReplyByComment", null);
+__decorate([
+    common_1.Get("/nbrReplies/:id"),
+    __param(0, common_1.Param("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], replyCommentController.prototype, "nbrComments", null);
 replyCommentController = __decorate([
     common_1.Controller("replycomment"),
     __metadata("design:paramtypes", [replyComment_service_1.replyCommentService])

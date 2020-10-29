@@ -51,7 +51,7 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
-    common_1.Post("/register/training/:id"),
+    common_1.Post("/trainingregister/:id"),
     __param(0, common_1.Param('id')),
     __param(1, common_1.Res()),
     __param(2, common_1.Body()),

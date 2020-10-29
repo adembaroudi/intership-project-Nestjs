@@ -7,8 +7,10 @@ export const blogsSchema = new Schema({
   auteur: String,
   image: String,
   Contenue: String,
-  comment: [{type: Types.ObjectId, ref: 'Comment'}],
+  comment: [{type: Types.ObjectId, ref: 'comment'}],
  
 
 
 });
+
+

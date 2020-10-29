@@ -11,8 +11,7 @@ export class replyCommentService {
 
   constructor(
     @InjectModel("comment") private readonly commentModel: Model<Comment>,
-    @InjectModel("replaycomments")
-    private readonly replyModel: Model<replyComment>
+    @InjectModel("replies") private readonly replyModel: Model<replyComment>
   ) {}
   async repComment(
     id: String,
@@ -22,19 +21,24 @@ export class replyCommentService {
     const comment = await this.commentModel.findByIdAndUpdate(
       id,
       {
-        $push: { repcomment: repcomment._id },
+        $push: { replies: repcomment._id },
       },
       {
         new: true,
       }
     );
-    await this.replyModel.findByIdAndUpdate(repcomment._id, {
-      comment: comment._id,
+    await this.replyModel.findByIdAndUpdate(repcomment._id, { 
+      comment: comment._id, 
     });
     return comment;
   }
-  async getReplyByComment(id : String , replyDto : replyCommentDto): Promise <replyComment>{
-    const replyByComment = await this.commentModel.findById(id, replyDto)  
-    return replyByComment;
+  async getReplyByComment(id : String): Promise <any>{
+    const getReplyByComment = await this.commentModel.findById(id).populate("replies").exec()
+    return getReplyByComment;
   }
+  async nbrReplies(id : String):Promise<replyComment>{
+    const nbrReplies = await this.replyModel.countDocuments({comment : id})
+    return nbrReplies
+    }
 }
+  
