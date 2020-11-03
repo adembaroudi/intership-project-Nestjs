@@ -4,6 +4,7 @@ export declare class UserController {
     private userService;
     constructor(userService: userService);
     addUser(res: any, userDto: UserDto): Promise<any>;
+    getAllUsers(): Promise<import("./user.model").User>;
     getUserById(id: string, res: any): Promise<any>;
     deleteUser(id: String, res: any): Promise<any>;
     uploadLogoCompany(res: any, file: any, id: any): Promise<any>;

@@ -4,8 +4,8 @@ export class BlogDto {
   id: string;
   @IsNotEmpty()
   Title: string;
-  @IsNotEmpty()
-  Date: string;
+  // @IsNotEmpty()
+  Date: Date;
   @IsNotEmpty()
   Auteur: string;
   @IsNotEmpty()

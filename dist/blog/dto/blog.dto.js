@@ -24,10 +24,6 @@ __decorate([
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], BlogDto.prototype, "Date", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
 ], BlogDto.prototype, "Auteur", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),

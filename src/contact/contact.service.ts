@@ -30,7 +30,12 @@ export class contactService {
       to: "adembaroudi3177@gmail.com",
       from: "crmproject.2020@gmail.com",
       subject: contactDto.subject,
-      text: `${contactDto.contenuMessage}`+" " +"this email is from " +" "+ `${contactDto.email}`
+      text:
+        "this email is from :" +
+        " " +
+        `${contactDto.email}` + '/n'+
+    
+        `${contactDto.contenuMessage}`,
     };
     const sended = await new Promise<boolean>(async function (resolve, reject) {
       return await transporter.sendMail(mailOptions, async (error, info) => {
@@ -48,16 +53,16 @@ export class contactService {
     const getMsgs = await this.contactModel.find();
     return getMsgs;
   }
-  async getMsgsById(id : String ) : Promise<Contact>{
+  async getMsgsById(id: String): Promise<Contact> {
     const msgId = await this.contactModel.findById(id);
-    return msgId ; 
+    return msgId;
   }
-  async updateMsg(id : String , contactDto : ContactDto):Promise<Contact>{
-    const upMsg = await this.contactModel.findByIdAndUpdate(id , contactDto)
-    return upMsg ; 
+  async updateMsg(id: String, contactDto: ContactDto): Promise<Contact> {
+    const upMsg = await this.contactModel.findByIdAndUpdate(id, contactDto);
+    return upMsg;
   }
-  async deleteMsg(id : String ):Promise<Contact>{
+  async deleteMsg(id: String): Promise<Contact> {
     const msgToDelete = await this.contactModel.findByIdAndDelete(id);
-    return msgToDelete ; 
+    return msgToDelete;
   }
 }

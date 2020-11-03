@@ -13,5 +13,6 @@ export declare class blogService {
     deleteBlog(id: String): Promise<Blog>;
     introBlog(id: String): Promise<any>;
     getLatestArticles(): Promise<Blog>;
-    logoCompanyPic(file: any, id: any): Promise<any>;
+    logoCompanyPic(file: any, id: any): Promise<Blog>;
+    getLogo(id: any): Promise<Blog>;
 }

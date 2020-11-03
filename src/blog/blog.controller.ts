@@ -30,7 +30,7 @@ export class blogController {
       message: "blog added successuly",
       blog: blog,
     });
-  } 
+  }
   @Get("/Blogs")
   async getAllBlogs(@Res() res) {
     const blogs = await this.blogService.getAllBlogs();
@@ -47,18 +47,20 @@ export class blogController {
     return blogs;
   }
   @Get("/recentArticle")
-  async latestArticle( ) {
+  async latestArticle() {
     const blogs = await this.blogService.getLatestArticles();
-   return blogs
+    return blogs;
   }
   @Get("Blogs/intro/:id")
-  async introBlogs(@Param("id") id: String) {
+  async introBlogs(@Param("id") id: String, @Res() res) {
     const intro = await this.blogService.introBlog(id);
-    return intro;
+    return res.status(HttpStatus.OK).json({
+      intro: intro,
+    });
   }
   @Put("/Blogs/:id")
   async updateBlog(
-    @Param("id") id: string, 
+    @Param("id") id: string,
     @Res() res,
     @Body() blogDto: BlogDto
   ) {
@@ -73,27 +75,46 @@ export class blogController {
       blog: blogToDelete,
     });
   }
-  @UseInterceptors(FileInterceptor('image', {
-    storage: multer.diskStorage({
-      destination : (req,file,cb)=> {  
-        cb(null, 'upload/');
-      },
-      filename:(req,file, cb)=> {
-        cb(null, Date.now() + file.originalname.slice(file.originalname.lastIndexOf('.')));
-      },
-    }),
-  }))
-  @Put('/Blogs/file/:id')
-async uploadLogoCompany(@Res() res, @UploadedFile() file, @Param('id') id): Promise<any> {
-  if ((path.extname(`${file.filename}`) === '.png')||  (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
-    this.blogService.logoCompanyPic(`${file.filename}`, id);
-    await res.json(file);
-  }
-    return { message: 'not an Image' };
+  @UseInterceptors(
+    FileInterceptor("image", {
+      storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+          cb(null, "upload/");
+        },
+        filename: (req, file, cb) => {
+          cb(
+            null,
+            Date.now() +
+              file.originalname.slice(file.originalname.lastIndexOf("."))
+          );
+        },
+      }),
+    })
+  )
+  @Put("/Blogs/file/:id")
+  async uploadLogoCompany(
+    @Res() res,
+    @UploadedFile() file,
+    @Param("id") id
+  ): Promise<any> {
+    if (
+      path.extname(`${file.filename}`) === ".png" ||
+      path.extname(`${file.filename}`) === ".jpg" ||
+      path.extname(`${file.filename}`) === ".jpeg"
+    ) {
+      this.blogService.logoCompanyPic(`${file.filename}`, id);
+      await res.json(file.path);
+    }
+    return { message: "not an Image" };
   }
 
-  @Get("Blogs/:getimage")
-  getFiles(@Param("getimage") getimage: String, @Res() res) {
-    return res.sendFile(getimage, { root: "upload" });
+  @Get("getBlogsLogo/:id")
+  async getFiles(@Param("id") id: String, @Res() res) {
+    const getlogo = await this.blogService.getLogo(id);
+    return res.sendFile(getlogo, { root: "upload" });
+
+    return res.status(HttpStatus.OK).json({
+      logo: getlogo,
+    });
   }
 }

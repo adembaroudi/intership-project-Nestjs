@@ -46,9 +46,11 @@ let blogController = class blogController {
         const blogs = await this.blogService.getLatestArticles();
         return blogs;
     }
-    async introBlogs(id) {
+    async introBlogs(id, res) {
         const intro = await this.blogService.introBlog(id);
-        return intro;
+        return res.status(common_1.HttpStatus.OK).json({
+            intro: intro,
+        });
     }
     async updateBlog(id, res, blogDto) {
         const updateblog = await this.blogService.updateBlog(id, blogDto);
@@ -62,14 +64,20 @@ let blogController = class blogController {
         });
     }
     async uploadLogoCompany(res, file, id) {
-        if ((path.extname(`${file.filename}`) === '.png') || (path.extname(`${file.filename}`) === '.jpg') || (path.extname(`${file.filename}`) === '.jpeg')) {
+        if (path.extname(`${file.filename}`) === ".png" ||
+            path.extname(`${file.filename}`) === ".jpg" ||
+            path.extname(`${file.filename}`) === ".jpeg") {
             this.blogService.logoCompanyPic(`${file.filename}`, id);
-            await res.json(file);
+            await res.json(file.path);
         }
-        return { message: 'not an Image' };
+        return { message: "not an Image" };
     }
-    getFiles(getimage, res) {
-        return res.sendFile(getimage, { root: "upload" });
+    async getFiles(id, res) {
+        const getlogo = await this.blogService.getLogo(id);
+        return res.sendFile(getlogo, { root: "upload" });
+        return res.status(common_1.HttpStatus.OK).json({
+            logo: getlogo,
+        });
     }
 };
 __decorate([
@@ -107,9 +115,9 @@ __decorate([
 ], blogController.prototype, "latestArticle", null);
 __decorate([
     common_1.Get("Blogs/intro/:id"),
-    __param(0, common_1.Param("id")),
+    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "introBlogs", null);
 __decorate([
@@ -129,28 +137,31 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "deleteBlog", null);
 __decorate([
-    common_1.UseInterceptors(platform_express_1.FileInterceptor('image', {
+    common_1.UseInterceptors(platform_express_1.FileInterceptor("image", {
         storage: multer.diskStorage({
             destination: (req, file, cb) => {
-                cb(null, 'upload/');
+                cb(null, "upload/");
             },
             filename: (req, file, cb) => {
-                cb(null, Date.now() + file.originalname.slice(file.originalname.lastIndexOf('.')));
+                cb(null, Date.now() +
+                    file.originalname.slice(file.originalname.lastIndexOf(".")));
             },
         }),
     })),
-    common_1.Put('/Blogs/file/:id'),
-    __param(0, common_1.Res()), __param(1, common_1.UploadedFile()), __param(2, common_1.Param('id')),
+    common_1.Put("/Blogs/file/:id"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.UploadedFile()),
+    __param(2, common_1.Param("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object]),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "uploadLogoCompany", null);
 __decorate([
-    common_1.Get("Blogs/:getimage"),
-    __param(0, common_1.Param("getimage")), __param(1, common_1.Res()),
+    common_1.Get("getBlogsLogo/:id"),
+    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], blogController.prototype, "getFiles", null);
 blogController = __decorate([
     common_1.Controller("blog"),

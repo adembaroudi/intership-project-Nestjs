@@ -5,7 +5,7 @@ const mongoose_1 = require("mongoose");
 exports.blogsSchema = new mongoose_1.Schema({
     id: String,
     Title: String,
-    date: String,
+    date: { type: Date, default: Date.now() },
     auteur: String,
     image: String,
     Contenue: String,

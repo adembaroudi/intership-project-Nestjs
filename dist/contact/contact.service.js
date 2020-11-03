@@ -41,7 +41,10 @@ let contactService = class contactService {
             to: "adembaroudi3177@gmail.com",
             from: "crmproject.2020@gmail.com",
             subject: contactDto.subject,
-            text: `${contactDto.contenuMessage}` + " " + "this email is from " + " " + `${contactDto.email}`
+            text: "this email is from :" +
+                " " +
+                `${contactDto.email}` + '/n' +
+                `${contactDto.contenuMessage}`,
         };
         const sended = await new Promise(async function (resolve, reject) {
             return await transporter.sendMail(mailOptions, async (error, info) => {

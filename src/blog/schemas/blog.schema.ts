@@ -3,7 +3,7 @@ import {Types , Schema} from 'mongoose'
 export const blogsSchema = new Schema({
   id: String,
   Title: String,
-  date: String,
+  date: {type: Date , default : Date.now()},
   auteur: String,
   image: String,
   Contenue: String,

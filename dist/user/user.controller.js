@@ -35,6 +35,10 @@ let UserController = class UserController {
             user: user,
         });
     }
+    async getAllUsers() {
+        const Users = await this.userService.getAllUsers();
+        return Users;
+    }
     async getUserById(id, res) {
         const userId = await this.userService.getUserById(id);
         return res.send(userId);
@@ -64,6 +68,12 @@ __decorate([
     __metadata("design:paramtypes", [Object, user_dto_1.UserDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "addUser", null);
+__decorate([
+    common_1.Get("/Users"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getAllUsers", null);
 __decorate([
     common_1.Get("/Users/:id"),
     __param(0, common_1.Param("id")), __param(1, common_1.Res()),

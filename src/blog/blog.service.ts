@@ -16,7 +16,7 @@ export class blogService {
     return allBlogs;
   }
   async getLatestBlog(): Promise<Blog> {
-    const latest = await this.blogModel.find().sort({ _id: -1 }).limit(1); 
+    const latest = await this.blogModel.find().sort({ _id: -1 }).limit(4); 
     return latest;
   }
   
@@ -37,7 +37,7 @@ export class blogService {
   }
   async introBlog(id: String): Promise<any> {
     const blog = await this.blogModel.findById(id);
-    const intro = blog.Contenue.slice(0,250)+"...";
+    const intro = blog.Contenue.slice(0,50)+"...";
     return intro ;  
   }
   async getLatestArticles(): Promise<Blog> {
@@ -45,7 +45,13 @@ export class blogService {
     const latestArticle = blog
     return latestArticle
   }
-  async logoCompanyPic(file, id) {
-    return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+  async logoCompanyPic(file, id):Promise<Blog> {
+    // const link = "http://localhost:3000/upload/" + file
+    return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { image: file } }).exec();
+}
+async getLogo(id):Promise<Blog>{
+const Blog = await this.blogModel.findById(id)
+const getLogo = Blog.image 
+return getLogo;
 }
 }
