@@ -37,7 +37,7 @@ export class blogService {
   }
   async introBlog(id: String): Promise<any> {
     const blog = await this.blogModel.findById(id);
-    const intro = blog.Contenue.slice(0,50)+"...";
+    const intro = blog.Contenue.slice(0,30)+"...";
     return intro ;  
   }
   async getLatestArticles(): Promise<Blog> {
@@ -47,7 +47,7 @@ export class blogService {
   }
   async logoCompanyPic(file, id):Promise<Blog> {
     // const link = "http://localhost:3000/upload/" + file
-    return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { image: file } }).exec();
+    return await this.blogModel.findByIdAndUpdate({ _id: id }, { $set: { image: file } }).exec(); 
 }
 async getLogo(id):Promise<Blog>{
 const Blog = await this.blogModel.findById(id)

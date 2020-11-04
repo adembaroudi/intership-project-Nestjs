@@ -49,7 +49,7 @@ let blogService = class blogService {
     }
     async introBlog(id) {
         const blog = await this.blogModel.findById(id);
-        const intro = blog.Contenue.slice(0, 50) + "...";
+        const intro = blog.Contenue.slice(0, 30) + "...";
         return intro;
     }
     async getLatestArticles() {
