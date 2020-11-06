@@ -46,7 +46,12 @@ let userService = class userService {
         return userToDelete;
     }
     async logoUserPic(file, id) {
-        return await this.userModel.findOneAndUpdate({ _id: id }, { $set: { logo: file } }).exec();
+        return await this.userModel.findOneAndUpdate({ _id: id }, { $set: { img: file } }).exec();
+    }
+    async getLogo(id) {
+        const User = await this.userModel.findById(id);
+        const getLogo = User.img;
+        return getLogo;
     }
 };
 userService = __decorate([

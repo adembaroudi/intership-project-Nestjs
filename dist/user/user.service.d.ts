@@ -10,4 +10,5 @@ export declare class userService {
     getUserById(id: String): Promise<User>;
     deleteUser(id: String): Promise<User>;
     logoUserPic(file: any, id: any): Promise<any>;
+    getLogo(id: any): Promise<User>;
 }

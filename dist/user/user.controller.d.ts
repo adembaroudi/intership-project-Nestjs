@@ -8,5 +8,5 @@ export declare class UserController {
     getUserById(id: string, res: any): Promise<any>;
     deleteUser(id: String, res: any): Promise<any>;
     uploadLogoCompany(res: any, file: any, id: any): Promise<any>;
-    getFiles(getimage: String, res: any): any;
+    getFiles(id: String, res: any): Promise<any>;
 }

@@ -66,6 +66,7 @@ let blogController = class blogController {
     async uploadLogoCompany(res, file, id) {
         if (path.extname(`${file.filename}`) === ".png" ||
             path.extname(`${file.filename}`) === ".jpg" ||
+            path.extname(`${file.filename}`) === ".JPG" ||
             path.extname(`${file.filename}`) === ".jpeg") {
             this.blogService.logoCompanyPic(`${file.filename}`, id);
             await res.json(file.path);
@@ -75,9 +76,6 @@ let blogController = class blogController {
     async getFiles(id, res) {
         const getlogo = await this.blogService.getLogo(id);
         return res.sendFile(getlogo, { root: "upload" });
-        return res.status(common_1.HttpStatus.OK).json({
-            logo: getlogo,
-        });
     }
 };
 __decorate([

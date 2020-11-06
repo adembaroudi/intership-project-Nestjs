@@ -33,7 +33,7 @@ export class contactService {
       text:
         "this email is from :" +
         " " +
-        `${contactDto.email}` + '/n'+
+        `${contactDto.email}` +
     
         `${contactDto.contenuMessage}`,
     };

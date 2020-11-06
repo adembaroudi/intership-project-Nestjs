@@ -43,7 +43,7 @@ let contactService = class contactService {
             subject: contactDto.subject,
             text: "this email is from :" +
                 " " +
-                `${contactDto.email}` + '/n' +
+                `${contactDto.email}` +
                 `${contactDto.contenuMessage}`,
         };
         const sended = await new Promise(async function (resolve, reject) {

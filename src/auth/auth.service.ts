@@ -25,17 +25,17 @@ export class AuthService {
         } 
         const trainingreg = await new this.trainingModel(trainingRegDto);
        
-        const formation = await this.trainModel.findByIdAndUpdate(
+        const train = await this.trainModel.findByIdAndUpdate(
             id,
             {
-              $push: { trainingreg: trainingreg._id },
+              $push: { trainingRegistrations: trainingreg._id },
             },
             {
               new: true,
             }
           );
-          await this.trainModel.findByIdAndUpdate(training._id,{formation:formation._id})
-          return formation;
+          await this.trainingModel.findByIdAndUpdate(trainingreg._id,{training:train._id})
+          return train;
     }
     async serviceReg(serviceRegDto: serviceRegistrationDto ): Promise<service>{
         const service = await this.serviceRegmodel.findOne({email:serviceRegDto.email});

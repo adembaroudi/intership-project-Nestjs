@@ -89,7 +89,7 @@ export class blogController {
           );
         },
       }),
-    })
+    }) 
   )
   @Put("/Blogs/file/:id")
   async uploadLogoCompany(
@@ -100,6 +100,7 @@ export class blogController {
     if (
       path.extname(`${file.filename}`) === ".png" ||
       path.extname(`${file.filename}`) === ".jpg" ||
+      path.extname(`${file.filename}`) === ".JPG"||
       path.extname(`${file.filename}`) === ".jpeg"
     ) {
       this.blogService.logoCompanyPic(`${file.filename}`, id);
@@ -112,9 +113,6 @@ export class blogController {
   async getFiles(@Param("id") id: String, @Res() res) {
     const getlogo = await this.blogService.getLogo(id);
     return res.sendFile(getlogo, { root: "upload" });
-
-    return res.status(HttpStatus.OK).json({
-      logo: getlogo,
-    });
   }
 }
+ 

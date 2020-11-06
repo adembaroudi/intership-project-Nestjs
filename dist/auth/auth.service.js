@@ -32,13 +32,13 @@ let AuthService = class AuthService {
             return null;
         }
         const trainingreg = await new this.trainingModel(trainingRegDto);
-        const formation = await this.trainModel.findByIdAndUpdate(id, {
-            $push: { trainingreg: trainingreg._id },
+        const train = await this.trainModel.findByIdAndUpdate(id, {
+            $push: { trainingRegistrations: trainingreg._id },
         }, {
             new: true,
         });
-        await this.trainModel.findByIdAndUpdate(training._id, { formation: formation._id });
-        return formation;
+        await this.trainingModel.findByIdAndUpdate(trainingreg._id, { training: train._id });
+        return train;
     }
     async serviceReg(serviceRegDto) {
         const service = await this.serviceRegmodel.findOne({ email: serviceRegDto.email });
