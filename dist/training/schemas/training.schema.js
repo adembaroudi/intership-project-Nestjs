@@ -11,10 +11,16 @@ exports.trainingsSchema = new mongoose_1.Schema({
     nbParticipants: String,
     nbHeuresD: String,
     nbHeuresND: String,
-    nblike: String,
+    choice: { type: String, default: "" },
+    nblike: { type: Number, default: 0 },
     level: { type: String, enum: ["Begginer", "Intermediate", "Advanced"] },
-    TrainingCategory: { type: String, enum: ["Web_Development", "Data_Science", "AI"] },
-    trainingRegistrations: [{ type: mongoose_1.Types.ObjectId, ref: 'trainingRegistrations' }],
-    user: { type: mongoose_1.Types.ObjectId, ref: 'User' },
+    TrainingCategory: {
+        type: String,
+        enum: ["Web_Development", "Data_Science", "AI"],
+    },
+    trainingRegistrations: [
+        { type: mongoose_1.Types.ObjectId, ref: "trainingRegistrations" },
+    ],
+    user: { type: mongoose_1.Types.ObjectId, ref: "user" },
 });
 //# sourceMappingURL=training.schema.js.map

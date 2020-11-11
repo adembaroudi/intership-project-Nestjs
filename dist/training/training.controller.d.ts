@@ -8,4 +8,7 @@ export declare class trainingController {
     getbyId(id: String): Promise<import("./training.model").Training>;
     updateTraining(id: String, res: any, trainDto: TrainingDto): Promise<any>;
     deletetraining(id: String, res: any): Promise<any>;
+    vote(id: String, object: any): Promise<import("./training.model").Training>;
+    uploadLogoCompany(res: any, file: any, id: any): Promise<any>;
+    getFiles(id: String, res: any): Promise<any>;
 }

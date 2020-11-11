@@ -13,7 +13,7 @@ import {
   UploadedFiles,
   UseInterceptors,
 } from "@nestjs/common";
-import { FileInterceptor, FilesInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { blogService } from "./blog.service";
 import { BlogDto } from "./dto/blog.dto";
 import * as multer from "multer";

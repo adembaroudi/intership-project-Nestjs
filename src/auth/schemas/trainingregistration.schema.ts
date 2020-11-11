@@ -10,3 +10,4 @@ export const trainingRegSchema = new Schema({
   resterInforme: Boolean,
   training: { type: Types.ObjectId, ref: "training" },
 });
+  

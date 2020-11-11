@@ -48,6 +48,18 @@ __decorate([
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
+], TrainingDto.prototype, "choice", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", Number)
+], TrainingDto.prototype, "like", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", Number)
+], TrainingDto.prototype, "dislike", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
 ], TrainingDto.prototype, "nblike", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),

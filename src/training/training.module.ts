@@ -6,7 +6,7 @@ import { trainingController } from "./training.controller";
 import { trainingService } from "./training.service";
 
 @Module({
-    imports:[MongooseModule.forFeature([{name:"training", schema:trainingsSchema}]),
+    imports:[MongooseModule.forFeature([{name:"trainings", schema:trainingsSchema}]),
     MongooseModule.forFeature([{name:"user", schema:usersSchema}])
 ],
     controllers:[trainingController],

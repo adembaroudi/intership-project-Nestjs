@@ -1572,7 +1572,7 @@
         "affectsGlobalScope": false
       },
       "../src/training/schemas/training.schema.ts": {
-        "version": "ba30dc60bd3c6a9cd57c111de7f82341e11a66845e35c92ac84605c723a78657",
+        "version": "9967b3f015f171d01779797a45c256da7fe883ba6cb52338991bf70c5437c1cf",
         "signature": "2058afb225ef0ee8053520d0d464b738aa9e4788bff4104839a26264f725d764",
         "affectsGlobalScope": false
       },
@@ -2232,7 +2232,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/trainingregistration.schema.ts": {
-        "version": "b5e8f3a5578de979239a354c4ac8a470e596d0ff01b600dfd4a20459dc0177ff",
+        "version": "c9ffd0b71f9946cb46325acedea0fc79ffcdee377e567f799c551751224d1510",
         "signature": "d6ee36eb0ede5a6721130d14aff51363632e37683461ec8a50750b4087d66145",
         "affectsGlobalScope": false
       },
@@ -2287,7 +2287,7 @@
         "affectsGlobalScope": false
       },
       "../src/blog/blog.controller.ts": {
-        "version": "73b5e4eeee2d70cfb9dccb090b02e55d3203f926b8409b27d56a24ed4611a204",
+        "version": "2f19bc076ecaf50274b58268b2835abcdc05c3e2656c034d2a91a4fc2ba1e702",
         "signature": "d21dc80d988e1749567c2219afe0e9e1bfc3a4f0df56f7fa7fac49d606ea9c68",
         "affectsGlobalScope": false
       },
@@ -2422,27 +2422,22 @@
         "affectsGlobalScope": false
       },
       "../src/training/dto/training.dto.ts": {
-        "version": "4f1340e2a5cb347d5636c539870edbaa526f93e41e26b10ff6291e6a7491f097",
-        "signature": "6db616240bcdd10c2073bde79d4532014ff32626a997d719c1a7dd5855c03c48",
-        "affectsGlobalScope": false
-      },
-      "../src/training/interface/training.interface.ts": {
-        "version": "af86bfaf1bd2650f7e78d12f562e59d993edcd1649462030c3569d6f1a3a619c",
-        "signature": "96d75dcc96ecc34a08e4c2f69ab27f6345e28e4fbfa61b41d9853ba1a3027933",
+        "version": "5c0ddc43adb3a55e37520116aeba820585d3ae03955e9b98bc5d14323908741d",
+        "signature": "79eed493c77d5a5a9421ba059118fb8a6b2e04899d50fd312fe197beab55af22",
         "affectsGlobalScope": false
       },
       "../src/training/training.service.ts": {
-        "version": "195994630c9b8dcf704c64c26c33853f472250cefaac1f3af4296e317e692bf1",
-        "signature": "646545ac9afad68089b239b5f15ecea06ebe198ca0a3f8e5f8cf057bbc63619f",
+        "version": "47e7ccc6f960d52260bc6ee624ff6189a76475447fa9d30f75012bb09c903676",
+        "signature": "37ef28859463599ebe3ceb1487fdfea048973edc105a9865d73fbab9f06b43cb",
         "affectsGlobalScope": false
       },
       "../src/training/training.controller.ts": {
-        "version": "55fdf2565db77af2742f5df38bd52e3459925140c2f58ff9d823a6a38b222dce",
-        "signature": "329e0125a3833915751562a74ea5aeeaf03c3b1a639b971b5b8cb8ffd9898918",
+        "version": "2d1be9bc3507d02827e108f97a045d31e71efb484ccf78f846f0755155f53374",
+        "signature": "9b8856a2c0e74b9333d64379f2290d45a95dbb6971d06284306f237124323f66",
         "affectsGlobalScope": false
       },
       "../src/training/training.module.ts": {
-        "version": "c28ecbdd60861dc1f52531ac3ec7ca494b5a572ea7ee9a19477cb19d000e6f4f",
+        "version": "7bae87143b1cc6facfa2b0270501fe737ad82ba4489cc22abff0707adf9622fc",
         "signature": "3327509dd880bba4fbace903fcc485affe143bd4c4c8980c2af55dcf60eb9828",
         "affectsGlobalScope": false
       },
@@ -2659,6 +2654,11 @@
       "../src/replycomment/interface/replycomment.interface.ts": {
         "version": "719209f87aa2445391d68b68dbf56265392431e2d538e501c25a99f6905252b5",
         "signature": "ae69e1a5180a06d3f1e315d06efb0d2d5fcf05e5cfb86f0a9d8997f57d84613c",
+        "affectsGlobalScope": false
+      },
+      "../src/training/interface/training.interface.ts": {
+        "version": "af86bfaf1bd2650f7e78d12f562e59d993edcd1649462030c3569d6f1a3a619c",
+        "signature": "96d75dcc96ecc34a08e4c2f69ab27f6345e28e4fbfa61b41d9853ba1a3027933",
         "affectsGlobalScope": false
       },
       "../src/user/interface/user.interface.ts": {
@@ -5009,6 +5009,8 @@
       ],
       "../src/training/training.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../src/training/dto/training.dto.ts",
         "../src/training/training.service.ts"
       ],
@@ -5023,9 +5025,7 @@
       "../src/training/training.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@types/node/https.d.ts",
         "../src/training/dto/training.dto.ts",
-        "../src/training/interface/training.interface.ts",
         "../src/training/training.model.ts",
         "../src/user/user.model.ts"
       ],

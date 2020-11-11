@@ -1,5 +1,5 @@
 import { Training } from "./training.model";
-import { Model } from 'mongoose';
+import { Model } from "mongoose";
 import { TrainingDto } from "./dto/training.dto";
 import { User } from "src/user/user.model";
 export declare class trainingService {
@@ -14,4 +14,7 @@ export declare class trainingService {
     deleteTraining(id: String): Promise<{
         message: string;
     }>;
+    vote(id: String, objet: any): Promise<Training>;
+    logoTrainingPic(file: any, id: any): Promise<Training>;
+    getLogo(id: any): Promise<Training>;
 }

@@ -17,7 +17,7 @@ let trainingModule = class trainingModule {
 };
 trainingModule = __decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: "training", schema: training_schema_1.trainingsSchema }]),
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: "trainings", schema: training_schema_1.trainingsSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "user", schema: user_schema_1.usersSchema }])
         ],
         controllers: [training_controller_1.trainingController],
