@@ -19,7 +19,6 @@ const replyComment_module_1 = require("./replyComment/replyComment.module");
 const contact_module_1 = require("./contact/contact.module");
 const partenaires_module_1 = require("./partenaires/partenaires.module");
 const training_module_1 = require("./training/training.module");
-const vote_module_1 = require("./vote/vote.module");
 const voteur_module_1 = require("./voteur/voteur.module");
 let AppModule = class AppModule {
 };
@@ -35,7 +34,6 @@ AppModule = __decorate([
             contact_module_1.contactModule,
             partenaires_module_1.partenairesModule,
             training_module_1.trainingModule,
-            vote_module_1.voteModule,
             voteur_module_1.voteurModule
         ],
         controllers: [app_controller_1.AppController],

@@ -11,20 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c;
+var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.voteurService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const training_model_1 = require("../training/training.model");
-const vote_model_1 = require("../vote/vote.model");
 const mongoose_2 = require("mongoose");
 const jwt = require("jsonwebtoken");
-const training_controller_1 = require("../training/training.controller");
 let voteurService = class voteurService {
-    constructor(voteurModel, voteModel, trainModel) {
+    constructor(voteurModel, trainModel) {
         this.voteurModel = voteurModel;
-        this.voteModel = voteModel;
         this.trainModel = trainModel;
         this.voteur = [];
         this.Training = [];
@@ -84,9 +81,8 @@ let voteurService = class voteurService {
 voteurService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel("voteur")),
-    __param(1, mongoose_1.InjectModel("votes")),
-    __param(2, mongoose_1.InjectModel("trainings")),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object, typeof (_c = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _c : Object])
+    __param(1, mongoose_1.InjectModel("trainings")),
+    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
 ], voteurService);
 exports.voteurService = voteurService;
 //# sourceMappingURL=voteur.service.js.map

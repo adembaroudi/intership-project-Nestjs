@@ -1,16 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Training } from "src/training/training.model";
-import { Vote } from "src/vote/vote.model";
 import { Model } from "mongoose";
 import { Voteur } from "./voteur.model";
 import { VoteurDto } from "./dto/voteur.dto";
 import * as jwt from "jsonwebtoken";
-import { JwtPayload } from "./interface/jwt-payload.interface";
-import * as bcrypt from "bcryptjs";
 import { TokenDto } from "./dto/token.dto";
-import { trainingController } from "src/training/training.controller";
-import { Console, log } from "console";
+
 @Injectable()
 export class voteurService {
   private voteur: Voteur[] = [];
@@ -18,7 +14,6 @@ export class voteurService {
 
   constructor(
     @InjectModel("voteur") private readonly voteurModel: Model<Voteur>,
-    @InjectModel("votes") private readonly voteModel: Model<Vote>,
     @InjectModel("trainings") private readonly trainModel: Model<Training>
   ) {}
   async registerForVote(voteurDto: VoteurDto): Promise<Voteur> {

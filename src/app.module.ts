@@ -10,8 +10,6 @@ import { replyCommentModule } from "./replyComment/replyComment.module";
 import { contactModule } from "./contact/contact.module";
 import { partenairesModule } from "./partenaires/partenaires.module";
 import { trainingModule } from "./training/training.module";
-import { MulterModule } from "@nestjs/platform-express";
-import { voteModule } from "./vote/vote.module";
 import { voteurModule } from "./voteur/voteur.module";
 @Module({
   imports: [
@@ -25,7 +23,6 @@ import { voteurModule } from "./voteur/voteur.module";
     contactModule,
     partenairesModule,
     trainingModule,
-    voteModule,
     voteurModule
   ],
   controllers: [AppController],

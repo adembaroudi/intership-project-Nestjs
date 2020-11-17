@@ -2441,36 +2441,6 @@
         "signature": "3327509dd880bba4fbace903fcc485affe143bd4c4c8980c2af55dcf60eb9828",
         "affectsGlobalScope": false
       },
-      "../src/vote/schema/vote.schema.ts": {
-        "version": "ca1709c6e1d7a95a9d661b1209a9f786d9eb07a6165dbbde6969863afd66c8b1",
-        "signature": "d7063e1ff3b28789b135b46fa9ec9715f85862eb1a879d9959b85c69ef11eaea",
-        "affectsGlobalScope": false
-      },
-      "../src/vote/dto/vote.dto.ts": {
-        "version": "e02a634d9d07efb29a924d8f0a0cdfa95723870683437827a62e45e1ba5bdaf7",
-        "signature": "70a3dfe84564b4ec1dfaeb55be70880a29adfb1b4285b8d6dc5a154c850a7661",
-        "affectsGlobalScope": false
-      },
-      "../src/vote/vote.model.ts": {
-        "version": "51e5fa3ae432920aae438a4f2744f4db0e67c1a3af9e8bf6141e6dd9a9e9697e",
-        "signature": "62c72449f77f5806e1f5ab09213d22481146c02fffc65f2e49c2abbd8d353cc5",
-        "affectsGlobalScope": false
-      },
-      "../src/vote/vote.service.ts": {
-        "version": "f08fa8b8346e6fdd2b26780e3b14351f088c8d85fc97148dd3a2855175db8874",
-        "signature": "28ce022e4085b7440c7a26e018af58a6e2b202364a0cda5722204fe2683b5a30",
-        "affectsGlobalScope": false
-      },
-      "../src/vote/vote.controller.ts": {
-        "version": "21bba638b32de03d6ecfa7624df10e2d04d3516cb7284689479fe7f6e2aff0d5",
-        "signature": "0a5ccb533fb579399d1b5cc4f926560436217be5e029fe8b67df1f2d86779e59",
-        "affectsGlobalScope": false
-      },
-      "../src/vote/vote.module.ts": {
-        "version": "eefd848bee8a4105faf4a5cac6caef74de7888b8ea9b929760bcbea14df2c09f",
-        "signature": "66504525abc7827b63fe93fd065045b5d91571db98ac94924556e36f522d754d",
-        "affectsGlobalScope": false
-      },
       "../src/voteur/schemas/voteur.schema.ts": {
         "version": "a7aa811d88168cc6bacb7de4dbe4ae67accaf7d39ba7d43947c6b9f103632076",
         "signature": "9bc1cda015f496928fb66fe6bc10118a782cde43951757bc31d6a58eb2ee5cbb",
@@ -2496,14 +2466,9 @@
         "signature": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
         "affectsGlobalScope": false
       },
-      "../src/voteur/interface/jwt-payload.interface.ts": {
-        "version": "af2885e50e095228f6f237cd3754f9643bdd1846773422b3eb597e50747d49dd",
-        "signature": "3ef0fe15a22ad1d0c49437561ca1b022d7a9442c72e815118505eb0e07a16a50",
-        "affectsGlobalScope": false
-      },
       "../src/voteur/voteur.service.ts": {
-        "version": "4dc5ba9042dd496756f6ff423f190ee0dfe8a276195997bcff712191a2c2c359",
-        "signature": "cdd1a812054fe1386a87cb72bc53e8272c0b0ee20a0c01becf35eca81168a0a4",
+        "version": "17772384a7eee1256be9994721c798c796b1ddd1c2de8269107bfbc6bf1f55b3",
+        "signature": "cdf3c0f41826beb7be4186155be9e4b7baae601df967c2b6dbb44822f3c7e7d9",
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.controller.ts": {
@@ -2512,12 +2477,12 @@
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.module.ts": {
-        "version": "3a0987643676ce4956d22043d876a930114fe5b21fd1d350302cc4607e12c14b",
+        "version": "8da85509a7239e400d24b9028aec4cc60782c988dc953afc004100af17207024",
         "signature": "03a6ecedabc48b038e95a6696eff6314504971365a17292d40164cad6441f8a0",
         "affectsGlobalScope": false
       },
       "../src/app.module.ts": {
-        "version": "49e370ab2c67af9b15c2d8b748441c2121f6f946633c266b82860653ba3cfd5d",
+        "version": "9f9b84721fdbcbe3e377b40827e222b5ea71e51680f9de5e024d46492b7e4a10",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
@@ -2741,9 +2706,9 @@
         "signature": "5bba317a7dedddf75b8dc6dbb11e47d066120995b65a75fa2b27854ce102047f",
         "affectsGlobalScope": false
       },
-      "../src/vote/interface/vote.interface.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "../src/voteur/interface/jwt-payload.interface.ts": {
+        "version": "af2885e50e095228f6f237cd3754f9643bdd1846773422b3eb597e50747d49dd",
+        "signature": "3ef0fe15a22ad1d0c49437561ca1b022d7a9442c72e815118505eb0e07a16a50",
         "affectsGlobalScope": false
       },
       "../src/voteur/interface/voteur.interface.ts": {
@@ -4931,7 +4896,6 @@
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../node_modules/@nestjs/platform-express/index.d.ts",
         "../src/app.controller.ts",
         "../src/app.service.ts",
         "../src/auth/auth.module.ts",
@@ -4942,7 +4906,6 @@
         "../src/replycomment/replycomment.module.ts",
         "../src/training/training.module.ts",
         "../src/user/user.module.ts",
-        "../src/vote/vote.module.ts",
         "../src/voteur/voteur.module.ts"
       ],
       "../src/app.service.ts": [
@@ -5148,30 +5111,6 @@
         "../src/user/dto/user.dto.ts",
         "../src/user/user.model.ts"
       ],
-      "../src/vote/dto/vote.dto.ts": [
-        "../node_modules/class-validator/types/index.d.ts"
-      ],
-      "../src/vote/vote.controller.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/vote/dto/vote.dto.ts",
-        "../src/vote/vote.service.ts"
-      ],
-      "../src/vote/vote.module.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../src/training/schemas/training.schema.ts",
-        "../src/vote/schema/vote.schema.ts",
-        "../src/vote/vote.controller.ts",
-        "../src/vote/vote.service.ts"
-      ],
-      "../src/vote/vote.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/mongoose/index.d.ts",
-        "../src/training/training.model.ts",
-        "../src/vote/dto/vote.dto.ts",
-        "../src/vote/schema/vote.schema.ts",
-        "../src/vote/vote.model.ts"
-      ],
       "../src/voteur/dto/token.dto.ts": [
         "../node_modules/class-validator/types/index.d.ts"
       ],
@@ -5188,7 +5127,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../src/training/schemas/training.schema.ts",
-        "../src/vote/schema/vote.schema.ts",
         "../src/voteur/schemas/voteur.schema.ts",
         "../src/voteur/voteur.controller.ts",
         "../src/voteur/voteur.service.ts"
@@ -5197,13 +5135,9 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/jsonwebtoken/index.d.ts",
-        "../node_modules/@types/node/console.d.ts",
-        "../src/training/training.controller.ts",
         "../src/training/training.model.ts",
-        "../src/vote/vote.model.ts",
         "../src/voteur/dto/token.dto.ts",
         "../src/voteur/dto/voteur.dto.ts",
-        "../src/voteur/interface/jwt-payload.interface.ts",
         "../src/voteur/voteur.model.ts"
       ]
     },
@@ -7138,13 +7072,6 @@
         "../src/user/dto/user.dto.ts",
         "../src/user/user.model.ts"
       ],
-      "../src/vote/vote.controller.ts": [
-        "../src/vote/vote.service.ts"
-      ],
-      "../src/vote/vote.service.ts": [
-        "../src/training/training.model.ts",
-        "../src/vote/vote.model.ts"
-      ],
       "../src/voteur/voteur.controller.ts": [
         "../src/voteur/dto/token.dto.ts",
         "../src/voteur/dto/voteur.dto.ts",
@@ -7153,7 +7080,6 @@
       ],
       "../src/voteur/voteur.service.ts": [
         "../src/training/training.model.ts",
-        "../src/vote/vote.model.ts",
         "../src/voteur/dto/token.dto.ts",
         "../src/voteur/dto/voteur.dto.ts",
         "../src/voteur/voteur.model.ts"
@@ -7755,13 +7681,6 @@
       "../src/user/user.model.ts",
       "../src/user/user.module.ts",
       "../src/user/user.service.ts",
-      "../src/vote/dto/vote.dto.ts",
-      "../src/vote/interface/vote.interface.ts",
-      "../src/vote/schema/vote.schema.ts",
-      "../src/vote/vote.controller.ts",
-      "../src/vote/vote.model.ts",
-      "../src/vote/vote.module.ts",
-      "../src/vote/vote.service.ts",
       "../src/voteur/dto/token.dto.ts",
       "../src/voteur/dto/voteur.dto.ts",
       "../src/voteur/interface/jwt-payload.interface.ts",
