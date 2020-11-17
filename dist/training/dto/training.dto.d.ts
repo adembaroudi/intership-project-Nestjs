@@ -7,9 +7,6 @@ export declare class TrainingDto {
     nbParticipants: String;
     nbHeuresD: String;
     nbHeuresND: String;
-    choice: String;
-    like: Number;
-    dislike: Number;
     nblike: String;
     level: String;
     TrainingCategory: String;

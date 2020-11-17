@@ -38,6 +38,10 @@ let trainingController = class trainingController {
         const getId = await this.trainService.getTrainingById(id);
         return getId;
     }
+    async introDesc(id) {
+        const intro = await this.trainService.getIntroDesc(id);
+        return intro;
+    }
     async updateTraining(id, res, trainDto) {
         const uptrain = await this.trainService.updateTraining(id, trainDto);
         return res.status(common_1.HttpStatus.OK).json({
@@ -92,6 +96,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], trainingController.prototype, "getbyId", null);
+__decorate([
+    common_1.Get("/intro/:id"),
+    __param(0, common_1.Param("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], trainingController.prototype, "introDesc", null);
 __decorate([
     common_1.Put("/Trainings/:id"),
     __param(0, common_1.Param("id")),

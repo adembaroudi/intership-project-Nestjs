@@ -42,6 +42,11 @@ export class trainingController {
     const getId = await this.trainService.getTrainingById(id);
     return getId;
   }
+  @Get("/intro/:id")
+  async introDesc(@Param("id") id: String) {
+    const intro = await this.trainService.getIntroDesc(id);
+    return intro;
+  }
   @Put("/Trainings/:id")
   async updateTraining(
     @Param("id") id: String,

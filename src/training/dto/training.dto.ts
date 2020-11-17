@@ -17,12 +17,6 @@ export class TrainingDto {
     @IsNotEmpty()
     nbHeuresND: String
     @IsNotEmpty()
-    choice: String
-    @IsNotEmpty()
-    like: Number
-    @IsNotEmpty()
-    dislike: Number
-    @IsNotEmpty()
     nblike: String
     @IsNotEmpty()
     level:  String

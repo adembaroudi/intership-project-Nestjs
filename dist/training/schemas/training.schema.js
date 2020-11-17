@@ -11,7 +11,6 @@ exports.trainingsSchema = new mongoose_1.Schema({
     nbParticipants: String,
     nbHeuresD: String,
     nbHeuresND: String,
-    choice: { type: String, default: "" },
     nblike: { type: Number, default: 0 },
     level: { type: String, enum: ["Begginer", "Intermediate", "Advanced"] },
     TrainingCategory: {
@@ -22,5 +21,6 @@ exports.trainingsSchema = new mongoose_1.Schema({
         { type: mongoose_1.Types.ObjectId, ref: "trainingRegistrations" },
     ],
     user: { type: mongoose_1.Types.ObjectId, ref: "user" },
+    voteur: [{ type: mongoose_1.Types.ObjectId, ref: "voteur" }]
 });
 //# sourceMappingURL=training.schema.js.map

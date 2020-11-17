@@ -11,6 +11,8 @@ import { contactModule } from "./contact/contact.module";
 import { partenairesModule } from "./partenaires/partenaires.module";
 import { trainingModule } from "./training/training.module";
 import { MulterModule } from "@nestjs/platform-express";
+import { voteModule } from "./vote/vote.module";
+import { voteurModule } from "./voteur/voteur.module";
 @Module({
   imports: [
     MongooseModule.forRoot("mongodb://localhost/fivepoints"),
@@ -22,7 +24,9 @@ import { MulterModule } from "@nestjs/platform-express";
     replyCommentModule,
     contactModule,
     partenairesModule,
-    trainingModule
+    trainingModule,
+    voteModule,
+    voteurModule
   ],
   controllers: [AppController],
   providers: [AppService],

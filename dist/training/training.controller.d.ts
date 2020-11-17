@@ -6,6 +6,7 @@ export declare class trainingController {
     addtraining(id: String, res: any, trainDto: TrainingDto): Promise<any>;
     getAlltrainings(): Promise<import("./training.model").Training>;
     getbyId(id: String): Promise<import("./training.model").Training>;
+    introDesc(id: String): Promise<any>;
     updateTraining(id: String, res: any, trainDto: TrainingDto): Promise<any>;
     deletetraining(id: String, res: any): Promise<any>;
     vote(id: String, object: any): Promise<import("./training.model").Training>;

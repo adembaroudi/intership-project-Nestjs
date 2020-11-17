@@ -34,6 +34,11 @@ export class trainingService {
     const getById = await this.trainModel.findById(id).populate("user").exec();
     return getById;
   }
+  async getIntroDesc(id : String):Promise<any>{
+    const training = await this.trainModel.findById(id)
+    const intro = training.Description.slice(0,30)+"...";
+    return intro
+  }
 
   async updateTraining(
     id: String,

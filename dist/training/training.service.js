@@ -42,6 +42,11 @@ let trainingService = class trainingService {
         const getById = await this.trainModel.findById(id).populate("user").exec();
         return getById;
     }
+    async getIntroDesc(id) {
+        const training = await this.trainModel.findById(id);
+        const intro = training.Description.slice(0, 30) + "...";
+        return intro;
+    }
     async updateTraining(id, trainingDto) {
         const upTrain = await this.trainModel.findByIdAndUpdate(id, trainingDto, {
             new: true,

@@ -10,6 +10,7 @@ export declare class trainingService {
     addTraining(id: String, trainingDto: TrainingDto): Promise<Training>;
     getAllTraining(): Promise<Training>;
     getTrainingById(id: String): Promise<Training>;
+    getIntroDesc(id: String): Promise<any>;
     updateTraining(id: String, trainingDto: TrainingDto): Promise<Training>;
     deleteTraining(id: String): Promise<{
         message: string;

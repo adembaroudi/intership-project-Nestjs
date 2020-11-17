@@ -8,8 +8,6 @@ export const trainingsSchema = new Schema({
   nbParticipants: String,
   nbHeuresD: String,
   nbHeuresND: String,
-  choice: {type : String , default : ""},
- 
   nblike: {type : Number , default : 0}, 
   level: { type: String, enum: ["Begginer", "Intermediate", "Advanced"] },
   TrainingCategory: {
@@ -20,4 +18,5 @@ export const trainingsSchema = new Schema({
     { type: Types.ObjectId, ref: "trainingRegistrations" },
   ],
   user: { type: Types.ObjectId, ref: "user" },
+  voteur : [{type  : Types.ObjectId , ref : "voteur"}]
 });
