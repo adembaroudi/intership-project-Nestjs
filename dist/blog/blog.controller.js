@@ -34,8 +34,8 @@ let blogController = class blogController {
         const blogs = await this.blogService.getAllBlogs();
         return res.send(blogs);
     }
-    async getBlogById(id, res) {
-        const blogId = await this.blogService.getBlogById(id);
+    async getBlogById(idblog, res) {
+        const blogId = await this.blogService.getBlogById(idblog);
         return res.send(blogId);
     }
     async getTheLatest() {
@@ -46,14 +46,14 @@ let blogController = class blogController {
         const blogs = await this.blogService.getLatestArticles();
         return blogs;
     }
-    async introBlogs(id, res) {
-        const intro = await this.blogService.introBlog(id);
+    async introBlogs(idblog, res) {
+        const intro = await this.blogService.introBlog(idblog);
         return res.status(common_1.HttpStatus.OK).json({
             intro: intro,
         });
     }
-    async updateBlog(id, res, blogDto) {
-        const updateblog = await this.blogService.updateBlog(id, blogDto);
+    async updateBlog(idblog, res, blogDto) {
+        const updateblog = await this.blogService.updateBlog(idblog, blogDto);
         return res.send(updateblog);
     }
     async deleteBlog(id, res) {
@@ -63,18 +63,18 @@ let blogController = class blogController {
             blog: blogToDelete,
         });
     }
-    async uploadLogoCompany(res, file, id) {
+    async uploadLogoCompany(res, file, idblog) {
         if (path.extname(`${file.filename}`) === ".png" ||
             path.extname(`${file.filename}`) === ".jpg" ||
             path.extname(`${file.filename}`) === ".JPG" ||
             path.extname(`${file.filename}`) === ".jpeg") {
-            this.blogService.logoCompanyPic(`${file.filename}`, id);
+            this.blogService.logoCompanyPic(`${file.filename}`, idblog);
             await res.json(file.path);
         }
         return { message: "not an Image" };
     }
-    async getFiles(id, res) {
-        const getlogo = await this.blogService.getLogo(id);
+    async getFiles(idblog, res) {
+        const getlogo = await this.blogService.getLogo(idblog);
         return res.sendFile(getlogo, { root: "upload" });
     }
 };
@@ -93,8 +93,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "getAllBlogs", null);
 __decorate([
-    common_1.Get("/Blogs/:id"),
-    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
+    common_1.Get("/Blogs/:idblog"),
+    __param(0, common_1.Param("idblog")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
@@ -112,15 +112,15 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "latestArticle", null);
 __decorate([
-    common_1.Get("Blogs/intro/:id"),
-    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
+    common_1.Get("Blogs/intro/:idblog"),
+    __param(0, common_1.Param("idblog")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "introBlogs", null);
 __decorate([
-    common_1.Put("/Blogs/:id"),
-    __param(0, common_1.Param("id")),
+    common_1.Put("/Blogs/:idblog"),
+    __param(0, common_1.Param("idblog")),
     __param(1, common_1.Res()),
     __param(2, common_1.Body()),
     __metadata("design:type", Function),
@@ -146,17 +146,17 @@ __decorate([
             },
         }),
     })),
-    common_1.Put("/Blogs/file/:id"),
+    common_1.Put("/Blogs/file/:idblog"),
     __param(0, common_1.Res()),
     __param(1, common_1.UploadedFile()),
-    __param(2, common_1.Param("id")),
+    __param(2, common_1.Param("idblog")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object]),
     __metadata("design:returntype", Promise)
 ], blogController.prototype, "uploadLogoCompany", null);
 __decorate([
-    common_1.Get("getBlogsLogo/:id"),
-    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
+    common_1.Get("getBlogsLogo/:idblog"),
+    __param(0, common_1.Param("idblog")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)

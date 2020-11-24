@@ -9,7 +9,7 @@ export declare class voteurService {
     private voteur;
     private Training;
     constructor(voteurModel: Model<Voteur>, trainModel: Model<Training>);
-    registerForVote(voteurDto: VoteurDto): Promise<Voteur>;
+    registerForVote(voteurDto: VoteurDto): Promise<any>;
     loginForVote(tokenDto: TokenDto): Promise<string>;
     vote(id: String, idvot: String): Promise<any>;
     getAllvoteurs(): Promise<Voteur>;

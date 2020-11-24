@@ -55,3 +55,4 @@ const getLogo = Blog.image
 return getLogo;
 }
 }
+  

@@ -18,13 +18,13 @@ import { CommentDto } from "./dto/comment.dto";
 export class CommentController {
   constructor(private commentService: CommentService) {}
 
-  @Put("/Comments/:id")
+  @Put("/Comments/:idblog")
   async NewComment(
-    @Param("id") id: string,
+    @Param("idblog") idblog: string,
     @Res() res,
     @Body() CommentDto: CommentDto
   ) {
-    const addcomment = await this.commentService.newComment(id, CommentDto);
+    const addcomment = await this.commentService.newComment(idblog, CommentDto);
     return res.send(addcomment);
   }
   @Get("/Comments")
@@ -32,32 +32,38 @@ export class CommentController {
     const comments = await this.commentService.getAllComments();
     return res.send(comments);
   }
-  @Get("/Comments/:id")
+  @Get("/Comments/:idblog")
   async getCommentsByBlog(
-    @Param("id") id: String ) {
-    const CommentsByBlog = await this.commentService.getCommentByBlog(id);
+    @Param("idblog") idblog: String ) {
+    const CommentsByBlog = await this.commentService.getCommentByBlog(idblog);
     return CommentsByBlog
   }
-  @Get("/nbrComments/:id")
-  async nbrComments(@Param("id") id: String)  {
-    const nbrComments = await this.commentService.nbrComments(id);
+  @Get("/commentsbyid/:idcomment")
+  async getCommentsById(
+    @Param("idcomment") idcomment: String ) {
+    const commentsbyid = await this.commentService.getCommentById(idcomment);
+    return commentsbyid
+  }
+  @Get("/nbrComments/:idblog")
+  async nbrComments(@Param("idblog") idblog: String)  {
+    const nbrComments = await this.commentService.nbrComments(idblog);
     return nbrComments
   }
-  @Put("/putComments/:id")
+  @Put("/putComments/:idcomment")
   async updateComment(
-    @Param("id") id: String,
+    @Param("idcomment") idcomment: String,
     @Res() res,
     @Body() CommentDto: CommentDto
   ) {
     const updateComment = await this.commentService.updateComment(
-      id,
-      CommentDto
+      idcomment,
+      CommentDto 
     );
     return res.send(updateComment);
   }
-  @Delete("/Comments/:id")
-  async deleteComment(@Param("id") id: String, @Res() res) {
-   await this.commentService.deleteComment(id);
+  @Delete("/Comments/:idcomment")
+  async deleteComment(@Param("idcomment") idcomment: String, @Res() res) {
+   await this.commentService.deleteComment(idcomment);
     return res.status(HttpStatus.OK).json({
       message: "comment deleted successuly",
     });

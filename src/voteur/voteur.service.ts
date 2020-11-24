@@ -16,13 +16,17 @@ export class voteurService {
     @InjectModel("voteur") private readonly voteurModel: Model<Voteur>,
     @InjectModel("trainings") private readonly trainModel: Model<Training>
   ) {}
-  async registerForVote(voteurDto: VoteurDto): Promise<Voteur> {
+  async registerForVote(voteurDto: VoteurDto): Promise<any> {
     const vote = await this.voteurModel.findOne({ email: voteurDto.email });
     if (vote) {
-      return null;
+      const token = jwt.sign({ data: vote }, "secret");
+      console.log(token);
+      return ["logged" , token ];
     } else {
       const voteur = await this.voteurModel.create(voteurDto);
-      return voteur;
+      const token = jwt.sign({ data: voteur }, "secret");
+      console.log(token);
+      return [token , voteur];
     }
   }
   async loginForVote(tokenDto: TokenDto) {
@@ -34,7 +38,7 @@ export class voteurService {
       if (voteur) {
         const token = jwt.sign({ data: voteur }, "secret");
         console.log(token);
-        return token;
+        return token; 
       } else {
       }
       return null;
@@ -58,7 +62,13 @@ export class voteurService {
           new: true,
         }
       );
-      return train;
+      const voteur = await this.voteurModel.findByIdAndUpdate(
+        idvot,{
+        $push:{trainings : id}
+        },
+        {new  : true}
+      )
+      return [train , voteur];
     }
   }
 

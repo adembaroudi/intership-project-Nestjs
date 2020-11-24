@@ -43,6 +43,10 @@ let CommentService = class CommentService {
         const commentsByBlog = await this.blogModel.findById(id).populate("comment").exec();
         return commentsByBlog;
     }
+    async getCommentById(id) {
+        const commentsById = await this.commentModel.findById(id).populate("replies").exec();
+        return commentsById;
+    }
     async nbrComments(id) {
         const nbrComments = await this.commentModel.countDocuments({ blog: id });
         return nbrComments;

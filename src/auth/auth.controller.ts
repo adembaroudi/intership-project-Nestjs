@@ -5,13 +5,13 @@ import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 @Controller("auth")
 export class AuthController {
     constructor(private authService: AuthService) {}
-    @Post("/trainingregister/:id")
+    @Post("/trainingregister/:idtraining")
     async trainingReg(
-      @Param('id')id : String,
+      @Param('idtraining')idtraining : String,
       @Res() res,
       @Body() trainingReg: trainingRegistrationDto
     ) {
-      const training = await this.authService.trainingReg(id,trainingReg);
+      const training = await this.authService.trainingReg(idtraining,trainingReg);
       if (training === null) {
         return res.status(HttpStatus.NOT_FOUND).json({
           message: "email in use",

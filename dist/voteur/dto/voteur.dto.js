@@ -19,14 +19,6 @@ __decorate([
 ], VoteurDto.prototype, "id", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], VoteurDto.prototype, "firstname", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], VoteurDto.prototype, "lastname", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
     class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], VoteurDto.prototype, "email", void 0);

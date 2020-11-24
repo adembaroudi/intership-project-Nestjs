@@ -36,6 +36,10 @@ export class CommentService {
     const commentsByBlog = await this.blogModel.findById(id).populate("comment").exec() 
     return commentsByBlog;
   }
+  async getCommentById(id : String ): Promise <any>{
+    const commentsById = await this.commentModel.findById(id).populate("replies").exec() 
+    return commentsById;
+  }
   async nbrComments(id :String) : Promise <Comment>{
        const nbrComments = await this.commentModel.countDocuments({blog : id })
        return nbrComments

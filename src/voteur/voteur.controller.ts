@@ -17,15 +17,12 @@ import { voteurService } from "./voteur.service";
 export class voteurController {
   constructor(private voteurService: voteurService) {}
   @Post("/registerforvote")
-  async vote(
- 
-    @Body() voteurDto: VoteurDto,
-    @Res() res
-  ) {
+  async vote(@Body() voteurDto: VoteurDto, @Res() res) {
     const registerForVote = await this.voteurService.registerForVote(voteurDto);
-    if (registerForVote === null) {
+    if (registerForVote.find((e) => e == "logged")) {
       return res.status(HttpStatus.NOT_FOUND).json({
-        message: " you are already registred",
+        message: " you are logged",
+        data: registerForVote,
       });
     } else {
       return res.status(HttpStatus.OK).json({
@@ -53,22 +50,17 @@ export class voteurController {
     @Param("idvot") idvot: String,
     @Res() res
   ) {
-    const vote = await this.voteurService.vote(id , idvot );
+    const vote = await this.voteurService.vote(id, idvot);
     if (vote === null) {
       return res.status(HttpStatus.NOT_FOUND).json({
         message: "you have already voted",
-        vote: vote
+        vote: vote,
       });
-    }else if( vote !== null){
+    } else {
       return res.status(HttpStatus.OK).json({
         message: "voted successfully",
         vote: vote,
       });
-    }
-    else{
-      return res.status(HttpStatus.OK).json({
-        message :"something went wrong"
-      })
     }
   }
   @Get("/Voteurs")
@@ -82,4 +74,3 @@ export class voteurController {
     return getId;
   }
 }
-

@@ -39,6 +39,6 @@ export class replyCommentService {
   async nbrReplies(id : String):Promise<replyComment>{
     const nbrReplies = await this.replyModel.countDocuments({comment : id})
     return nbrReplies
-    }
+    } 
 }
-  
+   

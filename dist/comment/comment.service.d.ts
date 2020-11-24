@@ -10,6 +10,7 @@ export declare class CommentService {
     newComment(id: String, CommentDto: CommentDto): Promise<Comment>;
     getAllComments(): Promise<Comment>;
     getCommentByBlog(id: String): Promise<any>;
+    getCommentById(id: String): Promise<any>;
     nbrComments(id: String): Promise<Comment>;
     updateComment(idcomment: String, CommentDto: CommentDto): Promise<Comment>;
     deleteComment(id: String): Promise<{

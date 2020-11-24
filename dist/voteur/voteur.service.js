@@ -29,11 +29,15 @@ let voteurService = class voteurService {
     async registerForVote(voteurDto) {
         const vote = await this.voteurModel.findOne({ email: voteurDto.email });
         if (vote) {
-            return null;
+            const token = jwt.sign({ data: vote }, "secret");
+            console.log(token);
+            return ["logged", token];
         }
         else {
             const voteur = await this.voteurModel.create(voteurDto);
-            return voteur;
+            const token = jwt.sign({ data: voteur }, "secret");
+            console.log(token);
+            return [token, voteur];
         }
     }
     async loginForVote(tokenDto) {
@@ -66,7 +70,10 @@ let voteurService = class voteurService {
             }, {
                 new: true,
             });
-            return train;
+            const voteur = await this.voteurModel.findByIdAndUpdate(idvot, {
+                $push: { trainings: id }
+            }, { new: true });
+            return [train, voteur];
         }
     }
     async getAllvoteurs() {

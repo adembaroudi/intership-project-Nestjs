@@ -23,9 +23,10 @@ let voteurController = class voteurController {
     }
     async vote(voteurDto, res) {
         const registerForVote = await this.voteurService.registerForVote(voteurDto);
-        if (registerForVote === null) {
+        if (registerForVote.find((e) => e == "logged")) {
             return res.status(common_1.HttpStatus.NOT_FOUND).json({
-                message: " you are already registred",
+                message: " you are logged",
+                data: registerForVote,
             });
         }
         else {
@@ -52,18 +53,13 @@ let voteurController = class voteurController {
         if (vote === null) {
             return res.status(common_1.HttpStatus.NOT_FOUND).json({
                 message: "you have already voted",
-                vote: vote
-            });
-        }
-        else if (vote !== null) {
-            return res.status(common_1.HttpStatus.OK).json({
-                message: "voted successfully",
                 vote: vote,
             });
         }
         else {
             return res.status(common_1.HttpStatus.OK).json({
-                message: "something went wrong"
+                message: "voted successfully",
+                vote: vote,
             });
         }
     }
@@ -78,8 +74,7 @@ let voteurController = class voteurController {
 };
 __decorate([
     common_1.Post("/registerforvote"),
-    __param(0, common_1.Body()),
-    __param(1, common_1.Res()),
+    __param(0, common_1.Body()), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [voteur_dto_1.VoteurDto, Object]),
     __metadata("design:returntype", Promise)

@@ -21,8 +21,8 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async trainingReg(id, res, trainingReg) {
-        const training = await this.authService.trainingReg(id, trainingReg);
+    async trainingReg(idtraining, res, trainingReg) {
+        const training = await this.authService.trainingReg(idtraining, trainingReg);
         if (training === null) {
             return res.status(common_1.HttpStatus.NOT_FOUND).json({
                 message: "email in use",
@@ -51,8 +51,8 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
-    common_1.Post("/trainingregister/:id"),
-    __param(0, common_1.Param('id')),
+    common_1.Post("/trainingregister/:idtraining"),
+    __param(0, common_1.Param('idtraining')),
     __param(1, common_1.Res()),
     __param(2, common_1.Body()),
     __metadata("design:type", Function),

@@ -2222,8 +2222,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "8f1ff9a9efbbdb2dc85f66878dc0e7824d481a5435e7f65cdb382c94155b607a",
-        "signature": "824c666ff5bc7888990d0bdf46399c341f3c7a8ce03831a9b3fe325702e048ec",
+        "version": "513d32a9280e610d3ad5219afec4297639bc638196ea9a909e18c51284b7e1ac",
+        "signature": "19286aa868b44c449fe632e8e8d689dad3454a8ebab444a4607c528831c02fe5",
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/serviceregistration.schema.ts": {
@@ -2282,13 +2282,13 @@
         "affectsGlobalScope": false
       },
       "../src/blog/blog.service.ts": {
-        "version": "c198299f6c989996d4e1f66f7eb9b577da7bb57b78d4850d620647481221d5f4",
+        "version": "28afa7d74ffb171705abe9e918ef4890217fe220848adf886e3f3f3485afa6da",
         "signature": "d1d2b46bd60a08164bad8239ee8d214364f646f91e197670300756a88c7d53f6",
         "affectsGlobalScope": false
       },
       "../src/blog/blog.controller.ts": {
-        "version": "2f19bc076ecaf50274b58268b2835abcdc05c3e2656c034d2a91a4fc2ba1e702",
-        "signature": "d21dc80d988e1749567c2219afe0e9e1bfc3a4f0df56f7fa7fac49d606ea9c68",
+        "version": "06169dd3788ed701c15a093d37f1fb03c853880d6ea49e5d656cedecd92f096e",
+        "signature": "d41ee197694b42eaaff88846630b13f03d18fd24118730ef3de0bde217d1931d",
         "affectsGlobalScope": false
       },
       "../src/blog/schemas/blog.schema.ts": {
@@ -2312,13 +2312,13 @@
         "affectsGlobalScope": false
       },
       "../src/comment/comment.service.ts": {
-        "version": "1046a231827af20e7c5ec3be5f9953bf9f9d3b4abc6daf4afa27a9b9af781ae7",
-        "signature": "4c31c78ece64d2ad4f867899c7d33973cccc8e7f56fdfc9a7359b3ae0fa918db",
+        "version": "60cfca41a996f105fe5270a5a583d77bd74ebefbd7e0514702739ecb0639f5d5",
+        "signature": "19f25a6bdbc2c5cc1ca94a1dc092bed2a8bb556e6c3914d65468ed1b0fdf421f",
         "affectsGlobalScope": false
       },
       "../src/comment/comment.controller.ts": {
-        "version": "3bf5e01aeb0fdfdc37c798bc25e45d32d95c66e26f485e0362e2018a8294c2ec",
-        "signature": "956cb3884d8ceb9e3cc86a8d49b06ecac60465124494d82c6bd8f47514c6499b",
+        "version": "a38acaec8fc60229c883b1f5236e46ee198385311d34cddbb88e996bd5c92435",
+        "signature": "4d0af5b9f100805991b8d0811b62ddac8fdb4d5378577ca4c21a20a8b4404243",
         "affectsGlobalScope": false
       },
       "../src/comment/schemas/comment.schema.ts": {
@@ -2342,7 +2342,7 @@
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.service.ts": {
-        "version": "9a347ac15b73088bcb836ff5e266f1aed1e2c617f534bbac01a47dc5ef9aa2b4",
+        "version": "bec6329dd3a8dd5f24b672c87ae6ce4d77a24158525d4596ee740c42de19804a",
         "signature": "761f7a644ea706d16421c63d810639477728de027bc0c44c730eb0f84c376e4f",
         "affectsGlobalScope": false
       },
@@ -2442,18 +2442,18 @@
         "affectsGlobalScope": false
       },
       "../src/voteur/schemas/voteur.schema.ts": {
-        "version": "a7aa811d88168cc6bacb7de4dbe4ae67accaf7d39ba7d43947c6b9f103632076",
+        "version": "87b0a17ff73dce7998aa7f959a18964fce044e37ff310704519439030e67a80d",
         "signature": "9bc1cda015f496928fb66fe6bc10118a782cde43951757bc31d6a58eb2ee5cbb",
         "affectsGlobalScope": false
       },
       "../src/voteur/dto/token.dto.ts": {
-        "version": "811328c01328804ab50d6562098e9d0ef36ee12017c507c8926eb37401691251",
+        "version": "b1288c8e61e57280cfeb65c5ef47d2f98ed9fd9834125ea7777fc4e812e5178d",
         "signature": "3094c943c186a890c4fa126a45c50479c8c12cc12bf30d74d9d04297f22f77c2",
         "affectsGlobalScope": false
       },
       "../src/voteur/dto/voteur.dto.ts": {
-        "version": "0106d6ad3aa8a9a8a6436b7ea29a73c1fb9c096b14d1f3125834b3c306036ffb",
-        "signature": "1c74dfce007cbe5635937e994ee325591c341e1a8da406f0133de1a8e7fc249a",
+        "version": "cd772f14fcb54ee8b7dc4b4e61eabf818dd2c526798994dd56b16cb96bdfc055",
+        "signature": "c1a0bf5931b375f1bc4ae6527ce91636daa8c7e93185191012d8468213cdbf04",
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.model.ts": {
@@ -2467,12 +2467,12 @@
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.service.ts": {
-        "version": "17772384a7eee1256be9994721c798c796b1ddd1c2de8269107bfbc6bf1f55b3",
-        "signature": "cdf3c0f41826beb7be4186155be9e4b7baae601df967c2b6dbb44822f3c7e7d9",
+        "version": "c7dfb86bdf005227738796f7526e031c1b3759b4f48836480d78e7ea7eac8d08",
+        "signature": "0f9e67cd0ad5d3cb97aa46f6d7e09c850de21365046b8792d079b39f161523f8",
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.controller.ts": {
-        "version": "cb8e7abe02d800d3517b5bf357473de930f0988b2788840af210f23f4577c60c",
+        "version": "10828561c56880a1de14d94fceeef5e73335af7fc70f09f58c267059c67011a9",
         "signature": "222ea9ebd3256c70eb63e92f5fa5440ccea77b150d283655b50e78243a4d59b9",
         "affectsGlobalScope": false
       },
