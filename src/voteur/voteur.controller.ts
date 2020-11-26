@@ -20,7 +20,7 @@ export class voteurController {
   async vote(@Body() voteurDto: VoteurDto, @Res() res) {
     const registerForVote = await this.voteurService.registerForVote(voteurDto);
     if (registerForVote.find((e) => e == "logged")) {
-      return res.status(HttpStatus.NOT_FOUND).json({
+      return res.status(HttpStatus.OK).json({
         message: " you are logged",
         data: registerForVote,
       });
@@ -43,7 +43,7 @@ export class voteurController {
       message: "patient logged in successfully",
       voteur: voteur,
     });
-  }
+  } 
   @Put("/vote/:id/:idvot")
   async voteTrain(
     @Param("id") id: String,

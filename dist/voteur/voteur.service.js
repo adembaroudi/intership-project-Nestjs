@@ -19,15 +19,18 @@ const mongoose_1 = require("@nestjs/mongoose");
 const training_model_1 = require("../training/training.model");
 const mongoose_2 = require("mongoose");
 const jwt = require("jsonwebtoken");
+const jwt_1 = require("@nestjs/jwt");
 let voteurService = class voteurService {
-    constructor(voteurModel, trainModel) {
+    constructor(voteurModel, trainModel, jwtService) {
         this.voteurModel = voteurModel;
         this.trainModel = trainModel;
+        this.jwtService = jwtService;
         this.voteur = [];
         this.Training = [];
     }
     async registerForVote(voteurDto) {
         const vote = await this.voteurModel.findOne({ email: voteurDto.email });
+        console.log(vote);
         if (vote) {
             const token = jwt.sign({ data: vote }, "secret");
             console.log(token);
@@ -84,12 +87,29 @@ let voteurService = class voteurService {
         const votById = await this.voteurModel.findById(id);
         return votById;
     }
+    createJwtPayload(voteur) {
+        let data = {
+            email: voteur.email,
+            _id: voteur._id,
+        };
+        let jwt = this.jwtService.sign(data);
+        return jwt;
+    }
+    async validateUserByJwt(payload) {
+        let voteur = await this.voteurModel.findOne({ email: payload.email });
+        if (voteur) {
+            return this.createJwtPayload(voteur);
+        }
+        else {
+            throw new common_1.UnauthorizedException();
+        }
+    }
 };
 voteurService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel("voteur")),
     __param(1, mongoose_1.InjectModel("trainings")),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object, jwt_1.JwtService])
 ], voteurService);
 exports.voteurService = voteurService;
 //# sourceMappingURL=voteur.service.js.map

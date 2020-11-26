@@ -24,7 +24,7 @@ let voteurController = class voteurController {
     async vote(voteurDto, res) {
         const registerForVote = await this.voteurService.registerForVote(voteurDto);
         if (registerForVote.find((e) => e == "logged")) {
-            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+            return res.status(common_1.HttpStatus.OK).json({
                 message: " you are logged",
                 data: registerForVote,
             });
