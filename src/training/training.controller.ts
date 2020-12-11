@@ -20,13 +20,13 @@ import { FileInterceptor } from "@nestjs/platform-express";
 @Controller("training")
 export class trainingController {
   constructor(private trainService: trainingService) {}
-  @Post("Trainings/:id")
+  @Post("Trainings/:iduser")
   async addtraining(
-    @Param("id") id: String,
+    @Param("iduser") iduser: String,
     @Res() res,
     @Body() trainDto: TrainingDto
   ) {
-    const training = await this.trainService.addTraining(id, trainDto);
+    const training = await this.trainService.addTraining(iduser, trainDto);
     return res.status(HttpStatus.OK).json({
       message: "training added successuly",
       training: training,
@@ -37,43 +37,40 @@ export class trainingController {
     const getAll = await this.trainService.getAllTraining();
     return getAll;
   }
-  @Get("/Trainings/:id")
-  async getbyId(@Param("id") id: String) {
-    const getId = await this.trainService.getTrainingById(id);
+  @Get("/Trainings/:idtraining")
+  async getbyId(@Param("idtraining") idtraining: String) {
+    const getId = await this.trainService.getTrainingById(idtraining);
     return getId;
   }
-  @Get("/intro/:id")
-  async introDesc(@Param("id") id: String) {
-    const intro = await this.trainService.getIntroDesc(id);
+  @Get("/intro/:idtraining")
+  async introDesc(@Param("idtraining") idtraining: String) {
+    const intro = await this.trainService.getIntroDesc(idtraining);
     return intro;
   }
-  @Put("/Trainings/:id")
+  @Put("/Trainings/:idtraining")
   async updateTraining(
-    @Param("id") id: String,
+    @Param("idtraining") idtraining: String,
     @Res() res,
     @Body() trainDto: TrainingDto
   ) {
-    const uptrain = await this.trainService.updateTraining(id, trainDto);
+    const uptrain = await this.trainService.updateTraining(idtraining, trainDto);
     return res.status(HttpStatus.OK).json({
       message: "training updated successuly",
       training: uptrain,
     });
   }
-  @Delete("/Trainings/:id")
-  async deletetraining(@Param("id") id: String, @Res() res) {
-    await this.trainService.deleteTraining(id);
+  @Delete("/Trainings/:idtraining")
+  async deletetraining(@Param("idtraining") idtraining: String, @Res() res) {
+    await this.trainService.deleteTraining(idtraining);
     return res.status(HttpStatus.OK).json({
       message: "training deletetd successuly",
     });
   }
-  @Put("/voteTrainings/:id")
-  async vote(@Param('id')id : String , @Body()object ){
-    const train = await this.trainService.vote(id , object) 
-    return train
-  }
+
   @UseInterceptors(
     FileInterceptor("image", {
       storage: multer.diskStorage({
+        limits: { fileSize: 1*2000*2000 },
         destination: (req, file, cb) => {
           cb(null, "upload/");
         },
@@ -84,6 +81,7 @@ export class trainingController {
               file.originalname.slice(file.originalname.lastIndexOf("."))
           );
         },
+        size : 10690 
       }),
     }) 
   )

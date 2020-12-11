@@ -11,7 +11,7 @@ export declare class AuthService {
     private training;
     private serviceRegistration;
     constructor(trainingModel: Model<trainingReg>, serviceRegmodel: Model<service>, trainModel: Model<Training>);
-    trainingReg(id: String, trainingRegDto: trainingRegistrationDto): Promise<trainingReg>;
+    trainingReg(id: String, trainingRegDto: trainingRegistrationDto): Promise<any>;
     serviceReg(serviceRegDto: serviceRegistrationDto): Promise<service>;
     getAllRgistrations(): Promise<service>;
 }

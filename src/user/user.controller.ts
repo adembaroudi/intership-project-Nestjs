@@ -64,6 +64,7 @@ export class UserController {
             file.originalname.slice(file.originalname.lastIndexOf("."))
             );
           },
+          size : 10690 
         }),
       })
       )

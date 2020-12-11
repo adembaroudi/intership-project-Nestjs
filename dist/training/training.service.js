@@ -62,14 +62,6 @@ let trainingService = class trainingService {
         });
         return { message: "training deleted" };
     }
-    async vote(id, objet) {
-        const train = await this.trainModel.findById(id);
-        if (objet.choice === "like") {
-            train.nblike += 1;
-        }
-        const trainVoted = await this.trainModel.findByIdAndUpdate(train._id, train, { new: true });
-        return trainVoted;
-    }
     async logoTrainingPic(file, id) {
         return await this.trainModel
             .findByIdAndUpdate({ _id: id }, { $set: { picture: file } })

@@ -16,11 +16,11 @@ class trainingRegistrationDto {
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], trainingRegistrationDto.prototype, "Lastname", void 0);
+], trainingRegistrationDto.prototype, "lastname", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], trainingRegistrationDto.prototype, "Firstname", void 0);
+], trainingRegistrationDto.prototype, "firstname", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)

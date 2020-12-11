@@ -1,6 +1,6 @@
 export declare class trainingRegistrationDto {
-    Lastname: string;
-    Firstname: string;
+    lastname: string;
+    firstname: string;
     Datedenaissance: string;
     numTel: string;
     email: string;

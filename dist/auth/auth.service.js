@@ -18,6 +18,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const training_model_1 = require("../training/training.model");
+const nodemailer = require("nodemailer");
 let AuthService = class AuthService {
     constructor(trainingModel, serviceRegmodel, trainModel) {
         this.trainingModel = trainingModel;
@@ -38,7 +39,35 @@ let AuthService = class AuthService {
             new: true,
         });
         await this.trainingModel.findByIdAndUpdate(trainingreg._id, { training: train._id });
-        return train;
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            tls: {
+                rejectUnauthorized: false,
+            },
+            port: 465,
+            secure: false,
+            auth: {
+                user: "crmproject.2020@gmail.com",
+                pass: "123456789crm",
+            },
+        });
+        const mailOptions = {
+            to: "adembaroudi3177@gmail.com",
+            from: "crmproject.2020@gmail.com",
+            subject: "new registration for session",
+            html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li></ul>`
+        };
+        const sended = await new Promise(async function (resolve, reject) {
+            return await transporter.sendMail(mailOptions, async (error, info) => {
+                if (error) {
+                    console.log("Message sent: %s", error);
+                    return reject(false);
+                }
+                console.log("Message sent 1 : %s", info);
+                resolve(true);
+            });
+        });
+        return [sended, train];
     }
     async serviceReg(serviceRegDto) {
         const service = await this.serviceRegmodel.findOne({ email: serviceRegDto.email });

@@ -5,12 +5,9 @@ import {
   Get,
   HttpStatus,
   Param,
-  Patch,
-  Post,
   Put,
   Res,
 } from "@nestjs/common";
-import { BlogDto } from "src/blog/dto/blog.dto";
 import { CommentService } from "./comment.service";
 import { CommentDto } from "./dto/comment.dto";
 

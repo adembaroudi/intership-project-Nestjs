@@ -29,16 +29,16 @@ let contactController = class contactController {
         const getAll = await this.contactService.getAllMsgs();
         return getAll;
     }
-    async getMsgById(id) {
-        const msgId = await this.contactService.getMsgsById(id);
+    async getMsgById(idmsg) {
+        const msgId = await this.contactService.getMsgsById(idmsg);
         return msgId;
     }
-    async updateMsg(id, contactDto) {
-        const upmsg = await this.contactService.updateMsg(id, contactDto);
+    async updateMsg(idmsg, contactDto) {
+        const upmsg = await this.contactService.updateMsg(idmsg, contactDto);
         return upmsg;
     }
-    async deleteMsg(id, res) {
-        const deletemsg = await this.contactService.deleteMsg(id);
+    async deleteMsg(idmsg, res) {
+        const deletemsg = await this.contactService.deleteMsg(idmsg);
         return res.status(common_1.HttpStatus.OK).json({
             message: "user deleted successuly",
         });
@@ -58,22 +58,22 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], contactController.prototype, "getAllmsgs", null);
 __decorate([
-    common_1.Get("/Contact/:id"),
-    __param(0, common_1.Param("id")),
+    common_1.Get("/Contact/:idmsg"),
+    __param(0, common_1.Param("idmsg")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], contactController.prototype, "getMsgById", null);
 __decorate([
-    common_1.Put("/Contact/:id"),
-    __param(0, common_1.Param("id")), __param(1, common_1.Body()),
+    common_1.Put("/Contact/:idmsg"),
+    __param(0, common_1.Param("idmsg")), __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, contact_dto_1.ContactDto]),
     __metadata("design:returntype", Promise)
 ], contactController.prototype, "updateMsg", null);
 __decorate([
-    common_1.Delete("/Contact/:id"),
-    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
+    common_1.Delete("/Contact/:idmsg"),
+    __param(0, common_1.Param("idmsg")), __param(1, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)

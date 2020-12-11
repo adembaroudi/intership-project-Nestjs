@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentController = void 0;
 const common_1 = require("@nestjs/common");
-const blog_dto_1 = require("../blog/dto/blog.dto");
 const comment_service_1 = require("./comment.service");
 const comment_dto_1 = require("./dto/comment.dto");
 let CommentController = class CommentController {

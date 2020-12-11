@@ -26,19 +26,19 @@ export class contactController {
     const getAll = await this.contactService.getAllMsgs();
     return getAll;
   }
-  @Get("/Contact/:id")
-  async getMsgById(@Param("id") id: String) {
-    const msgId = await this.contactService.getMsgsById(id);
+  @Get("/Contact/:idmsg")
+  async getMsgById(@Param("idmsg") idmsg: String) {
+    const msgId = await this.contactService.getMsgsById(idmsg);
     return msgId;
   }
-  @Put("/Contact/:id")
-  async updateMsg(@Param("id") id: String, @Body() contactDto: ContactDto) {
-    const upmsg = await this.contactService.updateMsg(id, contactDto);
+  @Put("/Contact/:idmsg")
+  async updateMsg(@Param("idmsg") idmsg: String, @Body() contactDto: ContactDto) {
+    const upmsg = await this.contactService.updateMsg(idmsg, contactDto);
     return upmsg;
   }
-  @Delete("/Contact/:id")
-  async deleteMsg(@Param("id") id: String, @Res() res) {
-    const deletemsg = await this.contactService.deleteMsg(id);
+  @Delete("/Contact/:idmsg")
+  async deleteMsg(@Param("idmsg") idmsg: String, @Res() res) {
+    const deletemsg = await this.contactService.deleteMsg(idmsg);
     return res.status(HttpStatus.OK).json({
       message: "user deleted successuly",
     });

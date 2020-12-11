@@ -2202,8 +2202,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/trainingregistration.dto.ts": {
-        "version": "2ee669ca6b4952c3752afa1b5b1a0744ef07ae9ce506fb51dc38a5faaecd5e9a",
-        "signature": "8b0a99106fd1cb2694ac6e53a51e9f33fc673375223e1af9f2f74f0a5a07387d",
+        "version": "6de4a3daf1f3234e9642cd0a8dce7f2ad599d311bb39bf8863b998cf8b0de1d4",
+        "signature": "6dcbd4c063258681d3aecaa1a035d239cf6f65e36d3f53b8fe0626abf23042ef",
         "affectsGlobalScope": false
       },
       "../src/auth/dto/serviceregistration.dto.ts": {
@@ -2217,8 +2217,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "ecf44587f56a3257e8fcbf694378bfff1f666acace2e0a6e3cfe7f68521339fc",
-        "signature": "5b23405f4de3b2b6cbcc50e68b93875df4abe9f2581bd13f16b0d5b24d36e858",
+        "version": "14c7e6576dfef7be36ed51bf2836e4999b25a400721994361a7ef1fb1302d53e",
+        "signature": "1ff3be35dfa6dafd466c2860723ec77248e718f1074ab36d534c91a8c9fd876a",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
@@ -2262,7 +2262,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
-        "version": "f123f2ea2c1f418be75d0d35997d0afca9d5c118496aac47bb78d3f56f1b73b5",
+        "version": "6011854ec1236ebdecf5bda2f3f9a54cf3ca097fbff1518f9522012645c67789",
         "signature": "e2db2fc879ecc87aff56ab58ed02632cd6957472f4187f89417ec24d1096e32f",
         "affectsGlobalScope": false
       },
@@ -2317,7 +2317,7 @@
         "affectsGlobalScope": false
       },
       "../src/comment/comment.controller.ts": {
-        "version": "a38acaec8fc60229c883b1f5236e46ee198385311d34cddbb88e996bd5c92435",
+        "version": "ee04717720b7a8b0fa197e5e357d2ad62ee6a2462cd402c1d7198e18106aa851",
         "signature": "4d0af5b9f100805991b8d0811b62ddac8fdb4d5378577ca4c21a20a8b4404243",
         "affectsGlobalScope": false
       },
@@ -2347,8 +2347,8 @@
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.controller.ts": {
-        "version": "d9a441d458a32c905b5da846f0f925eca8bd186888735303668bcdf1685f59a9",
-        "signature": "2793c99f454434e03eaabfb79c786ac5ec3c8f09a0e3029e819ce5ab91a40721",
+        "version": "1a257b24a54dd06d241e3a27798461f5f1137b360172c3828286ea0657a0ddd5",
+        "signature": "0eb2e6a78279519958622932275403a31f1b1135653b3b478bf9ff42183a7626",
         "affectsGlobalScope": false
       },
       "../src/replycomment/schemas/replycomment.schema.ts": {
@@ -2377,8 +2377,8 @@
         "affectsGlobalScope": false
       },
       "../src/contact/contact.controller.ts": {
-        "version": "ba09d2550050679214f355be03d5ff64272dc12cfe2f9592301f8c89b032714a",
-        "signature": "18c79baa3a4c24096b65e13ec4445c967d6b8e0a7f155bacca001453fbbd603c",
+        "version": "22d0acdde7d15a3f4b146b736a757411a98e026a34d4e833cb92203865cf23b4",
+        "signature": "0bd06b110e840152452560d9dbbc8fb6fc50d1f473ccc55b7419d980025513e2",
         "affectsGlobalScope": false
       },
       "../src/contact/schemas/contact.schema.ts": {
@@ -2427,13 +2427,13 @@
         "affectsGlobalScope": false
       },
       "../src/training/training.service.ts": {
-        "version": "cce7e9e1c0c01ff8b1213f1a9f0af528f6c199ae5d142be823ffba1afb48aa2b",
-        "signature": "4c43acdb00779ac0a19620a006c0bb6827c55e1931ec9c512566674c0470423c",
+        "version": "275838eaccbacbd0ec69bea7378df52556a8b1385ba9171f13302981bb9027c2",
+        "signature": "4d07413785f73cb78c1690e4ca9e8cd0708f5df5eb9951161dc7b0c30958b872",
         "affectsGlobalScope": false
       },
       "../src/training/training.controller.ts": {
-        "version": "0c6c37f5481405746c4cd6ab74bd5b1ed11b7b24cfab73f0572f47c4d286aba3",
-        "signature": "c943b2f0c6d7576e49a2a32e50bfa8909b716d04581a42549f3cccd89479c59d",
+        "version": "921549a9ea03e289cacdb264061b11d9b04344601b35643ff246e1c83e763683",
+        "signature": "f6f23ab7ec35b8260a348a58ecfe03e5c7e18526a9e51fc72dd96708c5bd9145",
         "affectsGlobalScope": false
       },
       "../src/training/training.module.ts": {
@@ -5122,7 +5122,6 @@
       ],
       "../src/comment/comment.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/blog/dto/blog.dto.ts",
         "../src/comment/comment.service.ts",
         "../src/comment/dto/comment.dto.ts"
       ],

@@ -20,12 +20,12 @@ let replyCommentController = class replyCommentController {
     constructor(replyService) {
         this.replyService = replyService;
     }
-    async NewComment(id, replyDto) {
-        const addcomment = await this.replyService.repComment(id, replyDto);
+    async NewComment(idcomment, replyDto) {
+        const addcomment = await this.replyService.repComment(idcomment, replyDto);
         return addcomment;
     }
-    async getReplyByComment(id) {
-        const replies = await this.replyService.getReplyByComment(id);
+    async getReplyByComment(idcomment) {
+        const replies = await this.replyService.getReplyByComment(idcomment);
         return replies;
     }
     async nbrComments(id) {
@@ -34,22 +34,22 @@ let replyCommentController = class replyCommentController {
     }
 };
 __decorate([
-    common_1.Put("/repcomment/:id"),
-    __param(0, common_1.Param("id")),
+    common_1.Put("/repcomment/:idcomment"),
+    __param(0, common_1.Param("idcomment")),
     __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, replyComment_dto_1.replyCommentDto]),
     __metadata("design:returntype", Promise)
 ], replyCommentController.prototype, "NewComment", null);
 __decorate([
-    common_1.Get("/getrepliesByComment/:id"),
-    __param(0, common_1.Param("id")),
+    common_1.Get("/getrepliesByComment/:idcomment"),
+    __param(0, common_1.Param("idcomment")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], replyCommentController.prototype, "getReplyByComment", null);
 __decorate([
-    common_1.Get("/nbrReplies/:id"),
+    common_1.Get("/nbrReplies/:idcomment"),
     __param(0, common_1.Param("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

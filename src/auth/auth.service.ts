@@ -6,6 +6,8 @@ import { trainingReg } from "./interfaces/trainingreg.interace";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { Training } from "src/training/training.model";
+import * as nodemailer from "nodemailer";
+
 
 @Injectable()
 export class AuthService {
@@ -18,7 +20,7 @@ export class AuthService {
     @InjectModel('training') private readonly trainModel : Model<Training>
     ){}
 
-    async trainingReg(id: String , trainingRegDto: trainingRegistrationDto): Promise<trainingReg>{
+    async trainingReg(id: String , trainingRegDto: trainingRegistrationDto): Promise<any>{
         const training = await this.trainingModel.findOne({email:trainingRegDto.email});
         if (training) {
             return null
@@ -35,8 +37,38 @@ export class AuthService {
             }
           );
           await this.trainingModel.findByIdAndUpdate(trainingreg._id,{training:train._id})
-          return train;
+          const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            tls: {
+              rejectUnauthorized: false,
+            },
+            port: 465,
+            secure: false,
+            auth: {
+              user: "crmproject.2020@gmail.com",
+              pass: "123456789crm",
+            },
+          });
+          const mailOptions = {
+            to: "adembaroudi3177@gmail.com",
+            from: "crmproject.2020@gmail.com",
+            subject: "new registration for session",
+             html:`<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li></ul>` 
+          
+          };
+          const sended = await new Promise<boolean>(async function (resolve, reject) {
+            return await transporter.sendMail(mailOptions, async (error, info) => {
+              if (error) {
+                console.log("Message sent: %s", error);
+                return reject(false);
+              }          
+              console.log("Message sent 1 : %s", info);
+              resolve(true);
+            });
+          });
+          return [sended,train];
     }
+
     async serviceReg(serviceRegDto: serviceRegistrationDto ): Promise<service>{
         const service = await this.serviceRegmodel.findOne({email:serviceRegDto.email});
         if (service) {

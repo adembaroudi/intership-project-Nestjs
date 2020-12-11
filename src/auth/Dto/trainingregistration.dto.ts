@@ -1,9 +1,9 @@
 import { IsNotEmpty, IsEmail } from 'class-validator'
 export class trainingRegistrationDto {
     @IsNotEmpty()
-    Lastname: string;
+    lastname: string;
     @IsNotEmpty()
-    Firstname: string;
+    firstname: string;
     @IsNotEmpty()
     Datedenaissance: string;
      @IsNotEmpty()

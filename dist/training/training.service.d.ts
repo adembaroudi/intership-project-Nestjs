@@ -15,7 +15,6 @@ export declare class trainingService {
     deleteTraining(id: String): Promise<{
         message: string;
     }>;
-    vote(id: String, objet: any): Promise<Training>;
     logoTrainingPic(file: any, id: any): Promise<Training>;
     getLogo(id: any): Promise<Training>;
 }

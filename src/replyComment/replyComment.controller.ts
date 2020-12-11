@@ -18,26 +18,21 @@ import { replyCommentService } from "./replyComment.service";
   export class replyCommentController {
     constructor( private replyService : replyCommentService) {}
     
-  @Put("/repcomment/:id")
+  @Put("/repcomment/:idcomment")
   async NewComment(
-    @Param("id") id: string,
+    @Param("idcomment") idcomment: string,
     @Body() replyDto: replyCommentDto
   ) {
-    const addcomment = await this.replyService.repComment(id, replyDto);
+    const addcomment = await this.replyService.repComment(idcomment, replyDto);
     return addcomment;
   }
-  @Get("/getrepliesByComment/:id")
+  @Get("/getrepliesByComment/:idcomment")
   async getReplyByComment(
-    @Param("id") id: String,
-  
-  ) {
-    const replies = await this.replyService.getReplyByComment(
-      id,
-  
-    );
+    @Param("idcomment") idcomment: String) {
+    const replies = await this.replyService.getReplyByComment(idcomment);
     return replies
   }
-  @Get("/nbrReplies/:id")
+  @Get("/nbrReplies/:idcomment")
   async nbrComments(@Param("id") id: String)  {
     const nbrReplies = await this.replyService.nbrReplies(id);
     return nbrReplies;

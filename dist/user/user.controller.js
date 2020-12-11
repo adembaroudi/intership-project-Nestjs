@@ -102,6 +102,7 @@ __decorate([
                 cb(null, Date.now() +
                     file.originalname.slice(file.originalname.lastIndexOf(".")));
             },
+            size: 10690
         }),
     })),
     common_1.Put("/Users/file/:id"),
