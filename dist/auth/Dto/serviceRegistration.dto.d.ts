@@ -1,6 +1,6 @@
 export declare class serviceRegistrationDto {
-    Firstname: string;
-    Lastname: string;
+    firstname: string;
+    lastname: string;
     email: string;
     numTel: string;
     cv: string;

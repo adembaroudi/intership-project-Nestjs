@@ -16,11 +16,11 @@ class serviceRegistrationDto {
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], serviceRegistrationDto.prototype, "Firstname", void 0);
+], serviceRegistrationDto.prototype, "firstname", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], serviceRegistrationDto.prototype, "Lastname", void 0);
+], serviceRegistrationDto.prototype, "lastname", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     class_validator_1.IsEmail(),

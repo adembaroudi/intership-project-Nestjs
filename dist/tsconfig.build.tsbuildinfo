@@ -2207,8 +2207,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/serviceregistration.dto.ts": {
-        "version": "d9734b7dbaa75783e5597289c8815e1bd1517813d6382252227889ef48a1ec2a",
-        "signature": "b38821df71ef6fa56a99e7eb257ebc2b339d9eaaa3ddb25d8ba850afc7946cd5",
+        "version": "cd463b15908be2c05bc5d3594b7dac2989ed3603f1ecc87fb95c81bbeba6f444",
+        "signature": "340d102525d0f61cfc0cab62c91c9cb053af6073c8e5e9b3796b3ca47af1bfd0",
         "affectsGlobalScope": false
       },
       "../src/training/training.model.ts": {
@@ -2217,8 +2217,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "14c7e6576dfef7be36ed51bf2836e4999b25a400721994361a7ef1fb1302d53e",
-        "signature": "1ff3be35dfa6dafd466c2860723ec77248e718f1074ab36d534c91a8c9fd876a",
+        "version": "85f8e464569cfd97078e82c3530dddcfecd3d53efc97f768397c7a38e8038981",
+        "signature": "e5958f31963ef64ea459ceea5fd2b7677e909ef9e6eca5fcee11c5a323eb3444",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
@@ -2372,7 +2372,7 @@
         "affectsGlobalScope": false
       },
       "../src/contact/contact.service.ts": {
-        "version": "1cd65b8398189ec66a24adbebbc8a3f9f8e02aaf5c22b4d89486f8f5f34d0ee9",
+        "version": "535ef681af7ba6a9074121d52549fcef463b9aed58c303d2079eecfe899302d2",
         "signature": "59c2a867f19a77bb775d17f8d25a953bf12dacf7b4aace80859e8a54a0880110",
         "affectsGlobalScope": false
       },

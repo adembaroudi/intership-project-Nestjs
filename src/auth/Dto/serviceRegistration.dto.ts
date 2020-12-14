@@ -1,9 +1,9 @@
 import { IsNotEmpty, IsEmail } from 'class-validator'
 export class serviceRegistrationDto {
     @IsNotEmpty()
-    Firstname: string;
+    firstname: string;
     @IsNotEmpty()
-    Lastname: string;
+    lastname: string;
     @IsNotEmpty()
     @IsEmail()
     email: string;

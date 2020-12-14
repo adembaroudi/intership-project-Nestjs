@@ -75,7 +75,35 @@ let AuthService = class AuthService {
             return null;
         }
         const serviceReg = await new this.serviceRegmodel(serviceRegDto);
-        return serviceReg.save();
+        const transporter = nodemailer.createTransport({
+            service: "Gmail",
+            tls: {
+                rejectUnauthorized: false,
+            },
+            port: 465,
+            secure: false,
+            auth: {
+                user: "crmproject.2020@gmail.com",
+                pass: "123456789crm",
+            },
+        });
+        const mailOptions = {
+            to: "adembaroudi3177@gmail.com",
+            from: "crmproject.2020@gmail.com",
+            subject: serviceRegDto.sujet,
+            html: `<ul><h5>this email is from : <p>${serviceRegDto.firstname} ${serviceRegDto.lastname}</p></h5> <li>telephone: ${serviceRegDto.numTel}</li><li>email: ${serviceRegDto.email}</li></ul>`
+        };
+        const sended = await new Promise(async function (resolve, reject) {
+            return await transporter.sendMail(mailOptions, async (error, info) => {
+                if (error) {
+                    console.log("Message sent: %s", error);
+                    return reject(false);
+                }
+                console.log("Message sent 1 : %s", info);
+                resolve(true);
+            });
+        });
+        return [sended, serviceReg];
     }
     async getAllRgistrations() {
         const allreg = await this.serviceRegmodel.find();

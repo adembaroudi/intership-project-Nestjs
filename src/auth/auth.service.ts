@@ -69,13 +69,43 @@ export class AuthService {
           return [sended,train];
     }
 
-    async serviceReg(serviceRegDto: serviceRegistrationDto ): Promise<service>{
+    async serviceReg(serviceRegDto: serviceRegistrationDto ): Promise<any>{
         const service = await this.serviceRegmodel.findOne({email:serviceRegDto.email});
         if (service) {
             return null
         }
         const serviceReg = await new this.serviceRegmodel(serviceRegDto)
-        return serviceReg.save()
+        const transporter = nodemailer.createTransport({
+          service: "Gmail",
+          tls: {
+            rejectUnauthorized: false,
+          },
+          port: 465,
+          secure: false,
+          auth: {
+            user: "crmproject.2020@gmail.com",
+            pass: "123456789crm",
+          },
+        });
+        const mailOptions = {
+          to: "adembaroudi3177@gmail.com",
+          from: "crmproject.2020@gmail.com",
+          subject: serviceRegDto.sujet,
+          html:`<ul><h5>this email is from : <p>${serviceRegDto.firstname} ${serviceRegDto.lastname}</p></h5> <li>telephone: ${serviceRegDto.numTel}</li><li>email: ${serviceRegDto.email}</li></ul>` 
+
+        };
+        const sended = await new Promise<boolean>(async function (resolve, reject) {
+          return await transporter.sendMail(mailOptions, async (error, info) => {
+            if (error) {
+              console.log("Message sent: %s", error);
+              return reject(false);
+            }
+            console.log("Message sent 1 : %s", info);
+            resolve(true);
+          });
+        });
+        return [sended ,serviceReg];
+      
     }
     async getAllRgistrations():Promise<service>{
       const allreg = await this.serviceRegmodel.find()
