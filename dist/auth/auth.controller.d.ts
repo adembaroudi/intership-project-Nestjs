@@ -7,4 +7,7 @@ export declare class AuthController {
     trainingReg(idtraining: String, res: any, trainingReg: trainingRegistrationDto): Promise<any>;
     serviceRegistration(res: any, serviceReg: serviceRegistrationDto): Promise<any>;
     showAllRegistrations(): Promise<import("./auth.model").service>;
+    uploadLogoCompany(res: any, file: any, idservicereg: any): Promise<any>;
+    downloadPdf(res: any): Promise<void>;
+    getFiles(idservicereg: String, res: any): Promise<any>;
 }

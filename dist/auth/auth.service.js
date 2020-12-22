@@ -28,17 +28,21 @@ let AuthService = class AuthService {
         this.serviceRegistration = [];
     }
     async trainingReg(id, trainingRegDto) {
-        const training = await this.trainingModel.findOne({ email: trainingRegDto.email });
+        const training = await this.trainingModel.findOne({
+            email: trainingRegDto.email,
+        });
         if (training) {
             return null;
         }
-        const trainingreg = await new this.trainingModel(trainingRegDto);
+        const trainingreg = await this.trainingModel.create(trainingRegDto);
         const train = await this.trainModel.findByIdAndUpdate(id, {
             $push: { trainingRegistrations: trainingreg._id },
         }, {
             new: true,
         });
-        await this.trainingModel.findByIdAndUpdate(trainingreg._id, { training: train._id });
+        await this.trainingModel.findByIdAndUpdate(trainingreg._id, {
+            training: train._id,
+        });
         const transporter = nodemailer.createTransport({
             service: "Gmail",
             tls: {
@@ -55,7 +59,7 @@ let AuthService = class AuthService {
             to: "adembaroudi3177@gmail.com",
             from: "crmproject.2020@gmail.com",
             subject: "new registration for session",
-            html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li></ul>`
+            html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li></ul>`,
         };
         const sended = await new Promise(async function (resolve, reject) {
             return await transporter.sendMail(mailOptions, async (error, info) => {
@@ -70,11 +74,13 @@ let AuthService = class AuthService {
         return [sended, train];
     }
     async serviceReg(serviceRegDto) {
-        const service = await this.serviceRegmodel.findOne({ email: serviceRegDto.email });
+        const service = await this.serviceRegmodel.findOne({
+            email: serviceRegDto.email,
+        });
         if (service) {
             return null;
         }
-        const serviceReg = await new this.serviceRegmodel(serviceRegDto);
+        const serviceReg = await this.serviceRegmodel.create(serviceRegDto);
         const transporter = nodemailer.createTransport({
             service: "Gmail",
             tls: {
@@ -91,7 +97,13 @@ let AuthService = class AuthService {
             to: "adembaroudi3177@gmail.com",
             from: "crmproject.2020@gmail.com",
             subject: serviceRegDto.sujet,
-            html: `<ul><h5>this email is from : <p>${serviceRegDto.firstname} ${serviceRegDto.lastname}</p></h5> <li>telephone: ${serviceRegDto.numTel}</li><li>email: ${serviceRegDto.email}</li></ul>`
+            html: `<ul><h5>this email is from : <p>${serviceRegDto.firstname} ${serviceRegDto.lastname}</p></h5> <li>telephone: ${serviceRegDto.numTel}</li><li>curriculumn vitae: ${serviceRegDto.cv}</li><li>email: ${serviceRegDto.email}</li><li>service: ${serviceRegDto.service}</li><li>sujet: ${serviceRegDto.sujet}</li></ul>`,
+            attachements: [
+                {
+                    filename: "2020-12-21T15-39-58.254ZAdem.pdf",
+                    path: "/upload/2020-12-21T15-39-58.254ZAdem.pdf",
+                },
+            ],
         };
         const sended = await new Promise(async function (resolve, reject) {
             return await transporter.sendMail(mailOptions, async (error, info) => {
@@ -100,21 +112,32 @@ let AuthService = class AuthService {
                     return reject(false);
                 }
                 console.log("Message sent 1 : %s", info);
+                console.log(mailOptions);
                 resolve(true);
             });
         });
-        return [sended, serviceReg];
+        return serviceReg;
     }
     async getAllRgistrations() {
         const allreg = await this.serviceRegmodel.find();
         return allreg;
     }
+    async pdfFile(file, id) {
+        return await this.serviceRegmodel
+            .findByIdAndUpdate({ _id: id }, { $set: { cv: file } })
+            .exec();
+    }
+    async getpdf(id) {
+        const pdf = await this.serviceRegmodel.findById(id);
+        const getLogo = pdf.cv;
+        return getLogo;
+    }
 };
 AuthService = __decorate([
     common_1.Injectable(),
-    __param(0, mongoose_1.InjectModel('trainingreg')),
-    __param(1, mongoose_1.InjectModel('servicereg')),
-    __param(2, mongoose_1.InjectModel('training')),
+    __param(0, mongoose_1.InjectModel("trainingreg")),
+    __param(1, mongoose_1.InjectModel("servicereg")),
+    __param(2, mongoose_1.InjectModel("training")),
     __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object, typeof (_c = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _c : Object])
 ], AuthService);
 exports.AuthService = AuthService;

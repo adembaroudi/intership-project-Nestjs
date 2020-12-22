@@ -11,7 +11,7 @@ exports.usersSchema = new mongoose_1.Schema({
     email: String,
     password: String,
     img: String,
-    role: { type: String, enum: ["Fondateur", "Ceo"] },
+    role: { type: String, enum: ["Coach", "Developpeur"] },
     trainings: [{ type: mongoose_1.Types.ObjectId, ref: 'trainings' }]
 });
 //# sourceMappingURL=user.schema.js.map

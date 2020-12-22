@@ -14,4 +14,6 @@ export declare class AuthService {
     trainingReg(id: String, trainingRegDto: trainingRegistrationDto): Promise<any>;
     serviceReg(serviceRegDto: serviceRegistrationDto): Promise<any>;
     getAllRgistrations(): Promise<service>;
+    pdfFile(file: any, id: any): Promise<service>;
+    getpdf(id: any): Promise<service>;
 }

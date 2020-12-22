@@ -33,10 +33,6 @@ __decorate([
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], serviceRegistrationDto.prototype, "cv", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
 ], serviceRegistrationDto.prototype, "sujet", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),

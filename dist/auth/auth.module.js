@@ -14,6 +14,8 @@ const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
 const serviceRegistration_schema_1 = require("./schemas/serviceRegistration.schema");
 const trainingregistration_schema_1 = require("./schemas/trainingregistration.schema");
+const path_1 = require("path");
+const serve_static_1 = require("@nestjs/serve-static");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -22,6 +24,9 @@ AuthModule = __decorate([
             mongoose_1.MongooseModule.forFeature([{ name: 'trainingreg', schema: trainingregistration_schema_1.trainingRegSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "servicereg", schema: serviceRegistration_schema_1.serviceRegistrationSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "training", schema: training_schema_1.trainingsSchema }]),
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: path_1.join(__dirname, '..', 'upload'),
+            }),
         ],
         controllers: [auth_controller_1.AuthController],
         providers: [auth_service_1.AuthService],

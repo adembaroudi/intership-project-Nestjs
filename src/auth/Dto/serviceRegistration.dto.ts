@@ -9,7 +9,6 @@ export class serviceRegistrationDto {
     email: string;
      @IsNotEmpty()
      numTel: string;
-     @IsNotEmpty()
      cv: string;
      @IsNotEmpty()
       sujet: string;

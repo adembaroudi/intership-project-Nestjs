@@ -14,6 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer = require("multer");
+const path = require("path");
 const auth_service_1 = require("./auth.service");
 const serviceRegistration_dto_1 = require("./Dto/serviceRegistration.dto");
 const trainingregistration_dto_1 = require("./Dto/trainingregistration.dto");
@@ -49,10 +52,29 @@ let AuthController = class AuthController {
         const all = await this.authService.getAllRgistrations();
         return all;
     }
+    async uploadLogoCompany(res, file, idservicereg) {
+        if (path.extname(`${file.filename}`) === ".pdf") {
+            this.authService.pdfFile(`${file.filename}`, idservicereg);
+            await res.json(file.path);
+        }
+        else {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "not an PDF",
+            });
+        }
+    }
+    async downloadPdf(res) {
+        const Name = 'Adem.pdf';
+        res.download("c:\\upload\\" + Name);
+    }
+    async getFiles(idservicereg, res) {
+        const getpdf = await this.authService.getpdf(idservicereg);
+        return res.sendFile(getpdf, { root: "upload" });
+    }
 };
 __decorate([
     common_1.Post("/trainingregister/:idtraining"),
-    __param(0, common_1.Param('idtraining')),
+    __param(0, common_1.Param("idtraining")),
     __param(1, common_1.Res()),
     __param(2, common_1.Body()),
     __metadata("design:type", Function),
@@ -68,11 +90,45 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "serviceRegistration", null);
 __decorate([
-    common_1.Get('/ServiceRegistration'),
+    common_1.Get("/ServiceRegistration"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "showAllRegistrations", null);
+__decorate([
+    common_1.UseInterceptors(platform_express_1.FileInterceptor("pdf", {
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, "upload/");
+            },
+            filename: (req, file, cb) => {
+                cb(null, Date.now() +
+                    file.originalname.slice(file.originalname.lastIndexOf(".")));
+            },
+        }),
+    })),
+    common_1.Put("/file/:idservicereg"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.UploadedFile()),
+    __param(2, common_1.Param("idservicereg")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "uploadLogoCompany", null);
+__decorate([
+    common_1.Get("download"),
+    __param(0, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "downloadPdf", null);
+__decorate([
+    common_1.Get("getpdf/:idservicereg"),
+    __param(0, common_1.Param("idservicereg")), __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getFiles", null);
 AuthController = __decorate([
     common_1.Controller("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
