@@ -42,6 +42,14 @@ let partenairesServices = class partenairesServices {
         const partToDelete = await this.partenairesModel.findByIdAndDelete(id);
         return partToDelete;
     }
+    async logoPartenaire(file, id) {
+        return await this.partenairesModel.findOneAndUpdate({ _id: id }, { $set: { Logo: file } }).exec();
+    }
+    async getLogo(id) {
+        const Partenaire = await this.partenairesModel.findById(id);
+        const getLogo = Partenaire.Logo;
+        return getLogo;
+    }
 };
 partenairesServices = __decorate([
     common_1.Injectable(),

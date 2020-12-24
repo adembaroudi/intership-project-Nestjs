@@ -24,20 +24,12 @@ __decorate([
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], trainingRegistrationDto.prototype, "Datedenaissance", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
 ], trainingRegistrationDto.prototype, "numTel", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], trainingRegistrationDto.prototype, "email", void 0);
-__decorate([
-    class_validator_1.IsNotEmpty(),
-    __metadata("design:type", String)
-], trainingRegistrationDto.prototype, "password", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", Boolean)

@@ -2202,8 +2202,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/trainingregistration.dto.ts": {
-        "version": "6de4a3daf1f3234e9642cd0a8dce7f2ad599d311bb39bf8863b998cf8b0de1d4",
-        "signature": "6dcbd4c063258681d3aecaa1a035d239cf6f65e36d3f53b8fe0626abf23042ef",
+        "version": "5e40855d3fb2ace7e24128ac40414e87d2ce03867ac2fd6f97adbdd368b914fe",
+        "signature": "60380a7dd78267f6bc022cf302d8d03a268f7f52b56f2729587dab510e7a9ec0",
         "affectsGlobalScope": false
       },
       "../src/auth/dto/serviceregistration.dto.ts": {
@@ -2222,7 +2222,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "95c15884d829a60e04fb853047e8cbf4926c74fca69801e5a7f8ff0d7613e4e5",
+        "version": "946c6c04e9feef9aa8aca587c61cae0e5a4bcd110a8a5ac954f63c9183c37ce4",
         "signature": "cca487149ef3e91073d072b07694f90ecf38883442a1ae9bc34538a6df9483aa",
         "affectsGlobalScope": false
       },
@@ -2637,13 +2637,13 @@
         "affectsGlobalScope": false
       },
       "../src/partenaires/partenaires.service.ts": {
-        "version": "e3b35a13feb60f2451e25de069d9a991e0572ffe08ff94500a955affd4dda148",
-        "signature": "0f1171e84b0b8f1b108e484b48ac703fe3be891d93a459d62e09fda5a564f9bd",
+        "version": "010db484a993f32e2601c47d6dc0a83594a38d84007919caba4bc07f30545650",
+        "signature": "54b49c4d0b2aa408b55c1e74a624a991acb4b34365fd1125165f8decd9e0d612",
         "affectsGlobalScope": false
       },
       "../src/partenaires/partenaires.controller.ts": {
-        "version": "3fdeffa2219d808198bfc2177fef12e206b11c4e1cbec96ffc916536ed545b15",
-        "signature": "8ee3334b61f59b4f7cb23994682fa1a371647e2a4ac2259d08cc93a9c2edfdfa",
+        "version": "6d2a163c957bd12ddc45acde07100d6861e5194c0e7e76b9684cb8f8b445daa8",
+        "signature": "51a5dd092e616ec0d8c815ad57499f7b3bede329db1841a1b57436733239fad5",
         "affectsGlobalScope": false
       },
       "../src/partenaires/schemas/partenaires.schema.ts": {
@@ -5298,6 +5298,8 @@
       ],
       "../src/partenaires/partenaires.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/platform-express/index.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../src/partenaires/dto/partenaires.dto.ts",
         "../src/partenaires/partenaires.service.ts"
       ],

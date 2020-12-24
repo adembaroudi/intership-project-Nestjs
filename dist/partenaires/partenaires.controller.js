@@ -14,6 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.partenairesController = void 0;
 const common_1 = require("@nestjs/common");
+const platform_express_1 = require("@nestjs/platform-express");
+const multer = require("multer");
+const path = require("path");
 const partenaires_dto_1 = require("./dto/partenaires.dto");
 const partenaires_service_1 = require("./partenaires.service");
 let partenairesController = class partenairesController {
@@ -47,6 +50,20 @@ let partenairesController = class partenairesController {
         return res.status(common_1.HttpStatus.OK).json({
             message: "partenaire deleted successfully",
         });
+    }
+    async uploadLogoPartenaire(res, file, id) {
+        if (path.extname(`${file.filename}`) === ".png" ||
+            path.extname(`${file.filename}`) === ".jpg" ||
+            path.extname(`${file.filename}`) === ".JPG" ||
+            path.extname(`${file.filename}`) === ".jpeg") {
+            this.partService.logoPartenaire(`${file.filename}`, id);
+            await res.json(file);
+        }
+        return { message: "not an Image" };
+    }
+    async getFiles(id, res) {
+        const getLogo = await this.partService.getLogo(id);
+        return res.sendFile(getLogo, { root: "upload" });
     }
 };
 __decorate([
@@ -85,6 +102,33 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], partenairesController.prototype, "deletePartenaire", null);
+__decorate([
+    common_1.UseInterceptors(platform_express_1.FileInterceptor("file", {
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, "upload/");
+            },
+            filename: (req, file, cb) => {
+                cb(null, Date.now() +
+                    file.originalname.slice(file.originalname.lastIndexOf(".")));
+            },
+        }),
+    })),
+    common_1.Put("file/:id"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.UploadedFile()),
+    __param(2, common_1.Param("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, Object]),
+    __metadata("design:returntype", Promise)
+], partenairesController.prototype, "uploadLogoPartenaire", null);
+__decorate([
+    common_1.Get("getPartenaireLogo/:id"),
+    __param(0, common_1.Param("id")), __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], partenairesController.prototype, "getFiles", null);
 partenairesController = __decorate([
     common_1.Controller("partenaires"),
     __metadata("design:paramtypes", [partenaires_service_1.partenairesServices])

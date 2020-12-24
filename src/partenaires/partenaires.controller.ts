@@ -8,7 +8,12 @@ import {
   Post,
   Put,
   Res,
+  UploadedFile,
+  UseInterceptors,
 } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
+import * as multer from "multer";
+import * as path from "path";
 import { PartenairesDto } from "./dto/partenaires.dto";
 import { partenairesServices } from "./partenaires.service";
 
@@ -51,5 +56,44 @@ export class partenairesController {
     return res.status(HttpStatus.OK).json({
       message: "partenaire deleted successfully",
     });
+  }
+  @UseInterceptors(
+    FileInterceptor("file", {
+      storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+          cb(null, "upload/");
+        },
+        filename: (req, file, cb) => {
+          cb(
+            null,
+            Date.now() +
+            file.originalname.slice(file.originalname.lastIndexOf("."))
+            );
+          },
+        }),
+      })
+      )
+      @Put("file/:id")
+      async uploadLogoPartenaire(
+    @Res() res,
+    @UploadedFile() file,
+    @Param("id") id
+  ): Promise<any> {
+    if (
+      path.extname(`${file.filename}`) === ".png" ||
+      path.extname(`${file.filename}`) === ".jpg" ||
+      path.extname(`${file.filename}`) === ".JPG" ||
+      path.extname(`${file.filename}`) === ".jpeg"
+    ) {
+      this.partService.logoPartenaire(`${file.filename}`, id);
+      await res.json(file);
+    }
+    return { message: "not an Image" };
+  }
+
+  @Get("getPartenaireLogo/:id")
+  async getFiles(@Param("id") id: String, @Res() res) {
+   const getLogo= await this.partService.getLogo(id);
+    return res.sendFile(getLogo, { root: "upload" });
   }
 }

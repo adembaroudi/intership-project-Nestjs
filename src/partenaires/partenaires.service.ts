@@ -29,4 +29,12 @@ async deletePartenaire (id : String):Promise<Partenaires>{
     const partToDelete = await this.partenairesModel.findByIdAndDelete(id);
     return partToDelete;
 }
+async logoPartenaire(file, id) {
+    return await this.partenairesModel.findOneAndUpdate({ _id: id }, { $set: { Logo: file } }).exec();
+}
+async getLogo(id):Promise<Partenaires>{
+  const Partenaire = await this.partenairesModel.findById(id)
+  const getLogo = Partenaire.Logo 
+  return getLogo;
+}
 }

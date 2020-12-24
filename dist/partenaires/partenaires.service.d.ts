@@ -10,4 +10,6 @@ export declare class partenairesServices {
     getPartenaireById(id: String): Promise<Partenaires>;
     updatePartenaire(id: String, partenairesDto: PartenairesDto): Promise<Partenaires>;
     deletePartenaire(id: String): Promise<Partenaires>;
+    logoPartenaire(file: any, id: any): Promise<any>;
+    getLogo(id: any): Promise<Partenaires>;
 }

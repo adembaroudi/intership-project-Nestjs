@@ -8,4 +8,6 @@ export declare class partenairesController {
     getPartenaire(id: String): Promise<import("./partenaires.model").Partenaires>;
     updatepartenaire(id: String, res: any, partDto: PartenairesDto): Promise<any>;
     deletePartenaire(id: String, res: any): Promise<any>;
+    uploadLogoPartenaire(res: any, file: any, id: any): Promise<any>;
+    getFiles(id: String, res: any): Promise<any>;
 }
