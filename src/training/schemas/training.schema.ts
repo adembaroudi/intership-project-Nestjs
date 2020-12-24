@@ -20,3 +20,4 @@ export const trainingsSchema = new Schema({
   user: { type: Types.ObjectId, ref: "user" },
   voteur : [{type  : Types.ObjectId , ref : "voteur"}]
 });
+ 

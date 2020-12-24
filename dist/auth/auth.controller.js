@@ -18,14 +18,27 @@ const platform_express_1 = require("@nestjs/platform-express");
 const multer = require("multer");
 const path = require("path");
 const auth_service_1 = require("./auth.service");
+const companyRegDto_dto_1 = require("./Dto/companyRegDto.dto");
 const serviceRegistration_dto_1 = require("./Dto/serviceRegistration.dto");
 const trainingregistration_dto_1 = require("./Dto/trainingregistration.dto");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    async trainingReg(idtraining, res, trainingReg) {
-        const training = await this.authService.trainingReg(idtraining, trainingReg);
+    async trainingReg(res, trainingReg, idtraining) {
+        const training = await this.authService.trainingReg(trainingReg, idtraining);
+        if (training === null) {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "email in use",
+            });
+        }
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "Register succes",
+            training: training,
+        });
+    }
+    async trainingRegwithoutAffectation(res, trainingReg) {
+        const training = await this.authService.trainingRegWithoutAffectation(trainingReg);
         if (training === null) {
             return res.status(common_1.HttpStatus.NOT_FOUND).json({
                 message: "email in use",
@@ -46,6 +59,18 @@ let AuthController = class AuthController {
         return res.status(common_1.HttpStatus.OK).json({
             message: "Register succes",
             service: service,
+        });
+    }
+    async companyRegistration(res, companyReg) {
+        const company = await this.authService.companyReg(companyReg);
+        if (company === null) {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "email in use",
+            });
+        }
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "Register succes",
+            company: company,
         });
     }
     async showAllRegistrations() {
@@ -74,21 +99,38 @@ let AuthController = class AuthController {
 };
 __decorate([
     common_1.Post("/trainingregister/:idtraining"),
-    __param(0, common_1.Param("idtraining")),
-    __param(1, common_1.Res()),
-    __param(2, common_1.Body()),
+    __param(0, common_1.Res()),
+    __param(1, common_1.Body()),
+    __param(2, common_1.Param("idtraining")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object, trainingregistration_dto_1.trainingRegistrationDto]),
+    __metadata("design:paramtypes", [Object, trainingregistration_dto_1.trainingRegistrationDto,
+        String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "trainingReg", null);
 __decorate([
-    common_1.Post("/ServiceRegistration"),
+    common_1.Post("/trainingregister"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trainingregistration_dto_1.trainingRegistrationDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "trainingRegwithoutAffectation", null);
+__decorate([
+    common_1.Post("/serviceRegistration"),
     __param(0, common_1.Res()),
     __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, serviceRegistration_dto_1.serviceRegistrationDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "serviceRegistration", null);
+__decorate([
+    common_1.Post("/companyRegistration"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, companyRegDto_dto_1.companyRegDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "companyRegistration", null);
 __decorate([
     common_1.Get("/ServiceRegistration"),
     __metadata("design:type", Function),

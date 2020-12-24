@@ -17,3 +17,10 @@ export interface service{
     sujet:String,
     service:String
 }
+export interface company{
+    companyName:String,
+    email:String,
+    numTel:String,
+    sujet:String,
+    service:String
+}

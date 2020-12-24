@@ -17,6 +17,7 @@ import { createReadStream } from "fs";
 import * as multer from "multer";
 import * as path from "path";
 import { AuthService } from "./auth.service";
+import { companyRegDto } from "./Dto/companyRegDto.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 @Controller("auth")
@@ -24,12 +25,31 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   @Post("/trainingregister/:idtraining")
   async trainingReg(
-    @Param("idtraining") idtraining: String,
+    @Res() res,
+    @Body() trainingReg: trainingRegistrationDto,
+    @Param("idtraining") idtraining?:String,
+  ) {
+    const training = await this.authService.trainingReg(
+      trainingReg,
+      idtraining,
+    );
+    if (training === null) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        message: "email in use",
+      });
+    }
+    return res.status(HttpStatus.OK).json({  
+      message: "Register succes",  
+      training: training,
+    });
+  }
+  @Post("/trainingregister")
+  async trainingRegwithoutAffectation(
+  
     @Res() res,
     @Body() trainingReg: trainingRegistrationDto
   ) {
-    const training = await this.authService.trainingReg(
-      idtraining,
+    const training = await this.authService.trainingRegWithoutAffectation(
       trainingReg
     );
     if (training === null) {
@@ -42,7 +62,7 @@ export class AuthController {
       training: training,
     });
   }
-  @Post("/ServiceRegistration")
+  @Post("/serviceRegistration")
   async serviceRegistration(
     @Res() res,
     @Body() serviceReg: serviceRegistrationDto
@@ -56,6 +76,22 @@ export class AuthController {
     return res.status(HttpStatus.OK).json({
       message: "Register succes",
       service: service,
+    });
+  }
+  @Post("/companyRegistration")
+  async companyRegistration(
+    @Res() res,
+    @Body() companyReg: companyRegDto
+  ) {
+    const company = await this.authService.companyReg(companyReg);
+    if (company === null) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        message: "email in use",
+      });
+    }
+    return res.status(HttpStatus.OK).json({
+      message: "Register succes",
+      company: company,
     });
   }
   @Get("/ServiceRegistration")

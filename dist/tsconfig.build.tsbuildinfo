@@ -1572,13 +1572,13 @@
         "affectsGlobalScope": false
       },
       "../src/training/schemas/training.schema.ts": {
-        "version": "e78d46602a2518d9dbf62bd7304b25aec9e4cff6baf6762d1b782108801ed551",
+        "version": "a74fdaedde61459184753b131988a906287171014f6645cd914cf0e33b833471",
         "signature": "2058afb225ef0ee8053520d0d464b738aa9e4788bff4104839a26264f725d764",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.model.ts": {
-        "version": "80288a8173eb0b991009e4bfaf983a34047c987bbad24b05158451b27d0ce77c",
-        "signature": "319763a7f302862284f03a15690c563d841c7167da53bb6318e5424e8ed4c020",
+        "version": "dee2514f625411b61dfa6fb7e86535a3b4477394240dffedf49652f997d02d8a",
+        "signature": "9689ccde99fe31dc805c79ddfccc471914442fa2c87139c5aeb3c18b89614b3a",
         "affectsGlobalScope": false
       },
       "../src/auth/interfaces/trainingreg.interace.ts": {
@@ -2216,14 +2216,19 @@
         "signature": "de80a0b5a295625d3571344e1ad170e8d02e1bd8051d299dbea188634e1dfc14",
         "affectsGlobalScope": false
       },
+      "../src/auth/dto/companyregdto.dto.ts": {
+        "version": "ffa823aa89dfa1a6226927935f85a6a6fed651f9342e5198b76597c1408d1692",
+        "signature": "72f0fb700bc5fcc7e7fdc5845747a2708841a07c6920effc4566fccfaef1f30b",
+        "affectsGlobalScope": false
+      },
       "../src/auth/auth.service.ts": {
-        "version": "c25d87bd5bba2107bfd42794617313cccc6659034323b31d30ddbc945a92f58f",
-        "signature": "aeca1435fc765793d2611e0e9379c00255f75923b2e4c3493dae897d1c896897",
+        "version": "95c15884d829a60e04fb853047e8cbf4926c74fca69801e5a7f8ff0d7613e4e5",
+        "signature": "cca487149ef3e91073d072b07694f90ecf38883442a1ae9bc34538a6df9483aa",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "420223ff4c24505d3ebb6acffb1558621f3c9fedd3b8dc5448d9f923a0c3df20",
-        "signature": "8f94f95342a95ae078147dbf954d6918a87a8079d5dfc5433327317c1e08488e",
+        "version": "fac4738f403f9a7d5bdcc6ad47474d33c44b32d2ff8d51042e02edd41271a4ad",
+        "signature": "61f088603108dc2f4e1c47e45684781a01e661534fec45370681a53cc62c6b4d",
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/serviceregistration.schema.ts": {
@@ -2461,8 +2466,13 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
+      "../src/auth/schemas/companyregistrationschema.ts": {
+        "version": "ddbc1ba58cc2dd00157c8a15ee737f0a93e6f0117a7a5efbb70d3718c924fadf",
+        "signature": "3a2efdb1f925fa17fff1607c7ea25f87ea15c63907c70fa9eb9292451126b891",
+        "affectsGlobalScope": false
+      },
       "../src/auth/auth.module.ts": {
-        "version": "91672ca9b471a792118ab723ab33f382350ff8a5168b0c8bce15b1ef4d0c8b45",
+        "version": "84ede347e0461ca4cd9d7d13a91fd06da070c362ec253a8b1db25562cfe82fdf",
         "signature": "2e5d258cf85349b02b015c3f1b8873c152d182c3819a7ccc3aff16fc3037a5fc",
         "affectsGlobalScope": false
       },
@@ -2849,6 +2859,11 @@
       "../src/main.ts": {
         "version": "f643acfadcaf46ea53b468386882fb52800dd8e5b928e70d28c1f44b3ee0cf05",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/interfaces/companyreg.interface.ts": {
+        "version": "1602fd9251a80d7e0500984e92e4429c1460b524a04213d5e448f33b12aab26a",
+        "signature": "2188f30053843e3d9ad23481c18662ade1362847336db682f64c0cc218189431",
         "affectsGlobalScope": false
       },
       "../src/auth/interfaces/serviceregistration.interface.ts": {
@@ -5164,6 +5179,7 @@
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/path.d.ts",
         "../src/auth/auth.service.ts",
+        "../src/auth/dto/companyregdto.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts"
       ],
@@ -5174,6 +5190,7 @@
         "../node_modules/@types/node/path.d.ts",
         "../src/auth/auth.controller.ts",
         "../src/auth/auth.service.ts",
+        "../src/auth/schemas/companyregistrationschema.ts",
         "../src/auth/schemas/serviceregistration.schema.ts",
         "../src/auth/schemas/trainingregistration.schema.ts",
         "../src/training/schemas/training.schema.ts"
@@ -5182,11 +5199,16 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/node/console.d.ts",
+        "../node_modules/@types/node/path.d.ts",
         "../src/auth/auth.model.ts",
+        "../src/auth/dto/companyregdto.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts",
         "../src/auth/interfaces/trainingreg.interace.ts",
         "../src/training/training.model.ts"
+      ],
+      "../src/auth/dto/companyregdto.dto.ts": [
+        "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/auth/dto/serviceregistration.dto.ts": [
         "../node_modules/class-validator/types/index.d.ts"
@@ -7367,13 +7389,14 @@
         "../src/app.service.ts"
       ],
       "../src/auth/auth.controller.ts": [
-        "../src/auth/auth.model.ts",
         "../src/auth/auth.service.ts",
+        "../src/auth/dto/companyregdto.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts"
       ],
       "../src/auth/auth.service.ts": [
         "../src/auth/auth.model.ts",
+        "../src/auth/dto/companyregdto.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts",
         "../src/auth/interfaces/trainingreg.interace.ts",
@@ -8028,10 +8051,13 @@
       "../src/auth/auth.model.ts",
       "../src/auth/auth.module.ts",
       "../src/auth/auth.service.ts",
+      "../src/auth/dto/companyregdto.dto.ts",
       "../src/auth/dto/serviceregistration.dto.ts",
       "../src/auth/dto/trainingregistration.dto.ts",
+      "../src/auth/interfaces/companyreg.interface.ts",
       "../src/auth/interfaces/serviceregistration.interface.ts",
       "../src/auth/interfaces/trainingreg.interace.ts",
+      "../src/auth/schemas/companyregistrationschema.ts",
       "../src/auth/schemas/serviceregistration.schema.ts",
       "../src/auth/schemas/trainingregistration.schema.ts",
       "../src/blog/blog.controller.ts",
