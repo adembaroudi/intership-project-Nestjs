@@ -10,9 +10,11 @@ export class trainingRegistrationDto {
      @IsEmail()
      email: string;
      @IsNotEmpty()
-      diplome: Boolean;
+      diplome: string;
      @IsNotEmpty()
-     online : Boolean;
+     online : string;
      @IsNotEmpty()
-     resterInforme: Boolean;
+     typePresence: string;
+     @IsNotEmpty()
+     programme : string;
 }

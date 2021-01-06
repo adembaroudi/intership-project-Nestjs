@@ -21,9 +21,7 @@ export class voteurService {
     private jwtService: JwtService
   ) {}
   async registerForVote(voteurDto: VoteurDto): Promise<any> {
-    const vote = await this.voteurModel.findOne({ email: voteurDto.email });
-    console.log(vote);
-    
+    const vote = await this.voteurModel.findOne({ email: voteurDto.email }); 
     if (vote) {
       const token = jwt.sign({ data: vote }, "secret");
       console.log(token);

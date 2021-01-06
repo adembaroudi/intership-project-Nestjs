@@ -9,6 +9,6 @@ exports.serviceRegistrationSchema = new mongoose.Schema({
     numTel: String,
     cv: String,
     sujet: String,
-    service: { type: String, enum: ["Consulting", "Coach", "Developpeur"] },
+    service: { type: String, enum: ["Consulting", "Coaching", " Web_Developpement"] },
 });
 //# sourceMappingURL=serviceRegistration.schema.js.map

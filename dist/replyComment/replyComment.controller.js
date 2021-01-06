@@ -28,8 +28,8 @@ let replyCommentController = class replyCommentController {
         const replies = await this.replyService.getReplyByComment(idcomment);
         return replies;
     }
-    async nbrComments(id) {
-        const nbrReplies = await this.replyService.nbrReplies(id);
+    async nbrComments(idcomment) {
+        const nbrReplies = await this.replyService.nbrReplies(idcomment);
         return nbrReplies;
     }
 };
@@ -50,7 +50,7 @@ __decorate([
 ], replyCommentController.prototype, "getReplyByComment", null);
 __decorate([
     common_1.Get("/nbrReplies/:idcomment"),
-    __param(0, common_1.Param("id")),
+    __param(0, common_1.Param("idcomment")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)

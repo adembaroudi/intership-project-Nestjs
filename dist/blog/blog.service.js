@@ -31,7 +31,7 @@ let blogService = class blogService {
         return allBlogs;
     }
     async getLatestBlog() {
-        const latest = await this.blogModel.find().sort({ _id: -1 }).limit(4);
+        const latest = await this.blogModel.find().sort({ _id: -1 }).limit(3);
         return latest;
     }
     async getBlogById(id) {

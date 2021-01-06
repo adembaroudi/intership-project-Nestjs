@@ -1577,13 +1577,13 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.model.ts": {
-        "version": "dee2514f625411b61dfa6fb7e86535a3b4477394240dffedf49652f997d02d8a",
-        "signature": "9689ccde99fe31dc805c79ddfccc471914442fa2c87139c5aeb3c18b89614b3a",
+        "version": "9b110722dc9efb8c2af15931f566c1d6bb15387c7d5c682ca17dffd2dd643f76",
+        "signature": "92901e0964d75cde77a1af13273d4322b362c6ff863ff33f1d25ab2dda543dc4",
         "affectsGlobalScope": false
       },
       "../src/auth/interfaces/trainingreg.interace.ts": {
-        "version": "7290893d8ef695ee1baa8f7a415e0d095cd835afd8b8111283543db5329d4c60",
-        "signature": "ed5787258a37183ca846af565a5fae2b2f728caf3f5464a9e62be1d7a0b5876d",
+        "version": "7b579ae3948f03d4bc6db699b7ac04a1927b79c42aaa2422c72dbe8832422ba1",
+        "signature": "488373483840a7f3f5d24f6243b1e004b091f5f0cd9c29cf3437a4c7befb4cd2",
         "affectsGlobalScope": false
       },
       "../node_modules/class-validator/types/validation/validationerror.d.ts": {
@@ -2202,8 +2202,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/dto/trainingregistration.dto.ts": {
-        "version": "5e40855d3fb2ace7e24128ac40414e87d2ce03867ac2fd6f97adbdd368b914fe",
-        "signature": "60380a7dd78267f6bc022cf302d8d03a268f7f52b56f2729587dab510e7a9ec0",
+        "version": "abe6b042a436f83b7cf1f85cf6cccb5002adf3d598027d458a109e7e713906bd",
+        "signature": "9cf441ca546896b08c111adbcb506d782595e9797043fff7af52f172632364ac",
         "affectsGlobalScope": false
       },
       "../src/auth/dto/serviceregistration.dto.ts": {
@@ -2222,7 +2222,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "946c6c04e9feef9aa8aca587c61cae0e5a4bcd110a8a5ac954f63c9183c37ce4",
+        "version": "f1b00e6ff6a2a8e70160dd0e0faa399859854319a11f78dd4ce9c7036617634a",
         "signature": "cca487149ef3e91073d072b07694f90ecf38883442a1ae9bc34538a6df9483aa",
         "affectsGlobalScope": false
       },
@@ -2232,12 +2232,12 @@
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/serviceregistration.schema.ts": {
-        "version": "7dabd66da47302b92d3d105a8ce64d1d64acc58ea6d05ff204354e5c68127887",
+        "version": "8712b0fa8857b2795bb71fce8101acba80e0c1665f17ae8ece944c831646047e",
         "signature": "5eed82ec6c4ff73b97dc8622199aa13578abdf4143681af3c6162b01324db797",
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/trainingregistration.schema.ts": {
-        "version": "5e59e60854dd820aa2243d001993a068d5d896816b8fb0c84a219acc654213b2",
+        "version": "3c061b344452d9848e35531c9373ec37b19cd2b6504ad6738e00fb54aad572c9",
         "signature": "d6ee36eb0ede5a6721130d14aff51363632e37683461ec8a50750b4087d66145",
         "affectsGlobalScope": false
       },
@@ -2517,7 +2517,7 @@
         "affectsGlobalScope": false
       },
       "../src/blog/blog.service.ts": {
-        "version": "28afa7d74ffb171705abe9e918ef4890217fe220848adf886e3f3f3485afa6da",
+        "version": "6e3c66b2843b65dc869eec8f5c39ec1b4e27f5fc1091c04cb6b4520e663c1bf3",
         "signature": "d1d2b46bd60a08164bad8239ee8d214364f646f91e197670300756a88c7d53f6",
         "affectsGlobalScope": false
       },
@@ -2582,8 +2582,8 @@
         "affectsGlobalScope": false
       },
       "../src/replycomment/replycomment.controller.ts": {
-        "version": "1a257b24a54dd06d241e3a27798461f5f1137b360172c3828286ea0657a0ddd5",
-        "signature": "0eb2e6a78279519958622932275403a31f1b1135653b3b478bf9ff42183a7626",
+        "version": "c064f208e987782077695ad67d0520354846957fb1f26cc84545340f379af8d7",
+        "signature": "04b8c79c411b59848cce8af244ada540be24b935cf817368743fa826e953a8da",
         "affectsGlobalScope": false
       },
       "../src/replycomment/schemas/replycomment.schema.ts": {
@@ -2832,7 +2832,7 @@
         "affectsGlobalScope": false
       },
       "../src/voteur/voteur.service.ts": {
-        "version": "73161b31bd2d75b3d63b81aca4c390d56d15aaf9d33423451818c75e0a19e247",
+        "version": "ab1e504daa97b130505acd470caba089607da01f61695c4231b889704c7bd6fa",
         "signature": "0311f25745e45547588e74113961bdeeefeb9b215b14aea927737d578d2f7fea",
         "affectsGlobalScope": false
       },

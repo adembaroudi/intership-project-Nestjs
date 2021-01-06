@@ -7,5 +7,6 @@ export interface trainingReg extends Document {
     readonly email: String;
     readonly diplome: Boolean;
     readonly online: Boolean;
-    readonly resterInforme: Boolean;
+    readonly typePresence: Boolean;
+    readonly programme: string;
 }

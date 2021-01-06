@@ -6,6 +6,7 @@ export interface training {
     diplome: Boolean;
     online: Boolean;
     resterInforme: Boolean;
+    programme: String;
 }
 export interface service {
     firstname: String;

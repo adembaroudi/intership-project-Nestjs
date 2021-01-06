@@ -64,7 +64,7 @@ export class AuthService {
         to: "adembaroudi3177@gmail.com",
         from: "crmproject.2020@gmail.com",
         subject: "nouvelle inscription pour session",
-        html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li><li>Diplome: ${trainingRegDto.diplome}</li><li>online: ${trainingRegDto.online}</li><li>Rester à jour: ${trainingRegDto.resterInforme}</li></ul>`,
+        html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li><li>Diplome: ${trainingRegDto.diplome}</li><li>online: ${trainingRegDto.online}</li><li>Présence: ${trainingRegDto.typePresence}</li></ul>`,
       };
       const sended = await new Promise<boolean>(async function (resolve, reject) {
         return await transporter.sendMail(mailOptions, async (error, info) => {
@@ -106,7 +106,7 @@ export class AuthService {
       to: "adembaroudi3177@gmail.com",
       from: "crmproject.2020@gmail.com",
       subject: "new registration sans choisir la session ",
-      html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li><li>Diplome: ${trainingRegDto.diplome}</li><li>online: ${trainingRegDto.online}</li><li>Rester à jour: ${trainingRegDto.resterInforme}</li></ul>`,
+      html: `<ul><h5>this email is from : <p>${trainingRegDto.firstname} ${trainingRegDto.lastname}</p></h5> <li>telephone: ${trainingRegDto.numTel}</li><li>email: ${trainingRegDto.email}</li><li>Diplome: ${trainingRegDto.diplome}</li><li>online: ${trainingRegDto.online}</li><li>Présence: ${trainingRegDto.typePresence}</li></ul>`,
     };
     const sended = await new Promise<boolean>(async function (resolve, reject) {
       return await transporter.sendMail(mailOptions, async (error, info) => {

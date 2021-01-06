@@ -30,7 +30,6 @@ let voteurService = class voteurService {
     }
     async registerForVote(voteurDto) {
         const vote = await this.voteurModel.findOne({ email: voteurDto.email });
-        console.log(vote);
         if (vote) {
             const token = jwt.sign({ data: vote }, "secret");
             console.log(token);

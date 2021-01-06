@@ -3,7 +3,8 @@ export declare class trainingRegistrationDto {
     firstname: string;
     numTel: string;
     email: string;
-    diplome: Boolean;
-    online: Boolean;
-    resterInforme: Boolean;
+    diplome: string;
+    online: string;
+    typePresence: string;
+    programme: string;
 }

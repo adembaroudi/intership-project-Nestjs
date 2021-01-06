@@ -33,8 +33,8 @@ import { replyCommentService } from "./replyComment.service";
     return replies
   }
   @Get("/nbrReplies/:idcomment")
-  async nbrComments(@Param("id") id: String)  {
-    const nbrReplies = await this.replyService.nbrReplies(id);
+  async nbrComments(@Param("idcomment") idcomment: String)  {
+    const nbrReplies = await this.replyService.nbrReplies(idcomment);
     return nbrReplies;
   }
   

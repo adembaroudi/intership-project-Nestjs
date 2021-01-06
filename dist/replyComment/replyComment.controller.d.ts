@@ -5,5 +5,5 @@ export declare class replyCommentController {
     constructor(replyService: replyCommentService);
     NewComment(idcomment: string, replyDto: replyCommentDto): Promise<import("./replyComment.model").replyComment>;
     getReplyByComment(idcomment: String): Promise<any>;
-    nbrComments(id: String): Promise<import("./replyComment.model").replyComment>;
+    nbrComments(idcomment: String): Promise<import("./replyComment.model").replyComment>;
 }

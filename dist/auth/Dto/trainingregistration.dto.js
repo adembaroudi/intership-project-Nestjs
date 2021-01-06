@@ -32,15 +32,19 @@ __decorate([
 ], trainingRegistrationDto.prototype, "email", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", String)
 ], trainingRegistrationDto.prototype, "diplome", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
-    __metadata("design:type", Boolean)
+    __metadata("design:type", String)
 ], trainingRegistrationDto.prototype, "online", void 0);
 __decorate([
     class_validator_1.IsNotEmpty(),
-    __metadata("design:type", Boolean)
-], trainingRegistrationDto.prototype, "resterInforme", void 0);
+    __metadata("design:type", String)
+], trainingRegistrationDto.prototype, "typePresence", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], trainingRegistrationDto.prototype, "programme", void 0);
 exports.trainingRegistrationDto = trainingRegistrationDto;
 //# sourceMappingURL=trainingregistration.dto.js.map
