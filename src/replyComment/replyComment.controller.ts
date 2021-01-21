@@ -37,6 +37,13 @@ import { replyCommentService } from "./replyComment.service";
     const nbrReplies = await this.replyService.nbrReplies(idcomment);
     return nbrReplies;
   }
-  
+  @Delete("/Replies/:idreply")
+  async deleteReplies(@Param("idreply") idreply: String, @Res() res) {
+   await this.replyService.deleteReplies(idreply);
+    return res.status(HttpStatus.OK).json({
+      message: "reply deleted successuly",
+    });
   }
   
+  } 
+     

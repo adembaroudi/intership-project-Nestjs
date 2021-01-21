@@ -10,20 +10,33 @@ import * as nodemailer from "nodemailer";
 import { log } from "console";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
 import path from "path";
+import { registerAdminDto } from "./Dto/admin.dto";
+import { Admin } from "./interfaces/admin.interface";
+import * as bcrypt from 'bcryptjs';
+import { LogintDto } from "./Dto/loginAdmin.dto";
+import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { JwtService } from "@nestjs/jwt";
+
 
 @Injectable()
 export class AuthService {
   private training: training[] = [];
   private serviceRegistration: service[] = [];
   private companyRegistration: company[] = [];
+  private adminRegistration: Admin[] = [];
+
   constructor(
     @InjectModel("trainingreg")
     private readonly trainingModel: Model<trainingReg>,
     @InjectModel("servicereg") private readonly serviceRegmodel: Model<service>,
     @InjectModel("companyreg") private readonly companyRegmodel: Model<company>,
-    @InjectModel("training") private readonly trainModel: Model<Training>
-  ) {}
+    @InjectModel("training") private readonly trainModel: Model<Training>,
+    @InjectModel("admin") private readonly adminModel: Model<Admin>,
+    private jwtService: JwtService
 
+
+  ) {}
+// pour l'inscription dans une session//
   async trainingReg(
     trainingRegDto: trainingRegistrationDto,
     id:String,
@@ -80,6 +93,9 @@ export class AuthService {
     // }
    
   }
+// pour l'inscription dans une session//
+
+// pour l'inscription sans choisir la session//
   async trainingRegWithoutAffectation(
     trainingRegDto: trainingRegistrationDto
   ): Promise<any> {
@@ -120,7 +136,9 @@ export class AuthService {
     });
     return [sended, trainingreg];
   }
+// pour l'inscription sans choisir la session//
 
+// l'inscription dans un service five points (coaching/consulting/developpement)//
   async serviceReg(serviceRegDto: serviceRegistrationDto): Promise<any> {
     const service = await this.serviceRegmodel.findOne({
       email: serviceRegDto.email,
@@ -150,7 +168,7 @@ export class AuthService {
       // attachements: [
       //   {
       //     filename: "Adem.pdf",
-      //     path:  path.join(__dirname, '../../upload/Adem.pdf'),
+      //     path:  path.join(__dirname, '../../upload/Adem.pdf'),       
       //     contentType: 'application/pdf'
       //   },
       // ],
@@ -168,6 +186,10 @@ export class AuthService {
     });
     return serviceReg;
   }
+// l'inscription dans un service five points (coaching/consulting/developpement)//
+
+// l'inscription dans un service five points pour les sociétes(coaching/consulting/developpement)//
+
   async companyReg(companyRegDto: companyRegDto): Promise<any> {
     const company = await this.companyRegmodel.findOne({
       email: companyRegDto.email,
@@ -207,20 +229,72 @@ export class AuthService {
     });
     return companyReg;
   }
+// l'inscription dans un service five points (coaching/consulting/developpement)//
+
+//get all service five poiçnts registrations// 
   async getAllRgistrations(): Promise<any> {
     const allreg = await this.serviceRegmodel.find();
     const allCompanyReg = await this.companyRegmodel.find()
     return [allreg , allCompanyReg];
   }
+//get all service five poiçnts registrations// 
+
+//upload pdf //
   async pdfFile(file, id): Promise<service> {
     return await this.serviceRegmodel
       .findByIdAndUpdate({ _id: id }, { $set: { cv: file } })
       .exec();
   }
+//upload pdf //
 
+//get pdf file//
   async getpdf(id): Promise<service> {
     const pdf = await this.serviceRegmodel.findById(id);
     const getLogo = pdf.cv;
     return getLogo;
   }
+//get pdf file//
+async registerAdmin(adminDto: registerAdminDto): Promise<Admin>{
+  const admin = await this.adminModel.findOne({email:adminDto.email});
+  if (admin) {
+      return null
+  } else {
+      const salt = 10;
+      adminDto.password = await bcrypt.hash(adminDto.password, salt);
+      const admin = await this.adminModel.create(adminDto);
+      return admin
+  }
+}
+async loginAdmin(logindto : LogintDto){
+
+  const admin = await this.adminModel.findOne({email:logindto.email})
+
+  if(!admin){
+    return null 
+  } else {
+      const isvalidpass = await bcrypt.compare(logindto.password, admin.password);
+      if(isvalidpass){
+        return this.createJwtPayload(admin);
+        }else {
+            return null
+        }
+    
+  } 
+
+
+}
+createJwtPayload(user){
+
+  let data: JwtPayload = {
+      email: user.email,
+      _id: user._id,
+      role: user.role
+  };
+
+  let jwt = this.jwtService.sign(data);
+
+  return jwt
+
+}
+
 }

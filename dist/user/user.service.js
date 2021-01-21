@@ -30,8 +30,8 @@ let userService = class userService {
         }
         const salt = 10;
         userDto.password = await bcrypt.hash(userDto.password, salt);
-        const newUser = await new this.userModel(userDto);
-        return newUser.save();
+        const newUser = await this.userModel.create(userDto);
+        return newUser;
     }
     async getAllUsers() {
         const allUsers = await this.userModel.find();

@@ -6,6 +6,6 @@ export const commentsSchema = new Schema({
   date:String,
   contenue:String,
   email:String,
-  blog : { type: Types.ObjectId, ref: 'Blog'},
+  blog : { type: Types.ObjectId, ref: 'blog'},
   replies: [{type: Types.ObjectId, ref: 'replies'}]
-});
+});      

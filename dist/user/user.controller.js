@@ -41,7 +41,7 @@ let UserController = class UserController {
     }
     async getUserById(id, res) {
         const userId = await this.userService.getUserById(id);
-        return res.send(userId);
+        return userId;
     }
     async deleteUser(id, res) {
         const userToDelete = await this.userService.deleteUser(id);

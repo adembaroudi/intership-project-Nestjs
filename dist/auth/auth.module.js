@@ -17,6 +17,8 @@ const trainingregistration_schema_1 = require("./schemas/trainingregistration.sc
 const path_1 = require("path");
 const serve_static_1 = require("@nestjs/serve-static");
 const companyRegistrationSchema_1 = require("./schemas/companyRegistrationSchema");
+const admin_schema_1 = require("./schemas/admin.schema");
+const jwt_1 = require("@nestjs/jwt");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -26,6 +28,13 @@ AuthModule = __decorate([
             mongoose_1.MongooseModule.forFeature([{ name: "servicereg", schema: serviceRegistration_schema_1.serviceRegistrationSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "companyreg", schema: companyRegistrationSchema_1.companyRegistrationSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "training", schema: training_schema_1.trainingsSchema }]),
+            mongoose_1.MongooseModule.forFeature([{ name: "admin", schema: admin_schema_1.adminSchema }]),
+            jwt_1.JwtModule.register({
+                secretOrPrivateKey: 'thisismykickasssecretthatiwilltotallychangelater',
+                signOptions: {
+                    expiresIn: 3600
+                }
+            }),
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: path_1.join(__dirname, '..', 'upload'),
             }),

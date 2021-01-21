@@ -32,7 +32,7 @@ let trainingService = class trainingService {
             new: true,
         });
         await this.trainModel.findByIdAndUpdate(training._id, { user: user._id });
-        return user;
+        return training;
     }
     async getAllTraining() {
         const getAll = await this.trainModel.find().populate("user").exec();

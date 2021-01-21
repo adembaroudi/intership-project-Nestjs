@@ -24,7 +24,7 @@ export class trainingService {
       }
     );
     await this.trainModel.findByIdAndUpdate(training._id, { user: user._id });
-    return user;
+    return training;
   }
   async getAllTraining(): Promise<Training> {
     const getAll = await this.trainModel.find().populate("user").exec();

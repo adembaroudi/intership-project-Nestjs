@@ -16,8 +16,8 @@ export const trainingsSchema = new Schema({
   },
   trainingRegistrations: [
     { type: Types.ObjectId, ref: "trainingRegistrations" },
-  ],
-  user: { type: Types.ObjectId, ref: "user" },
+  ],   
+  user: { type: Types.ObjectId, ref: "user" },   
   voteur : [{type  : Types.ObjectId , ref : "voteur"}]
 });
  

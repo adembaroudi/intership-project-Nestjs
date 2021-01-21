@@ -12,21 +12,21 @@ export class userService {
   private user: User[] = [];
   constructor(@InjectModel("user") private readonly userModel: Model<User>) {}
 
-  async addUser(userDto: UserDto): Promise<User> {
+  async addUser(userDto: UserDto): Promise<any> {
     const user = await this.userModel.findOne({ email: userDto.email });
     if (user) {
       return null;
     }
     const salt = 10;
     userDto.password = await bcrypt.hash(userDto.password, salt);
-    const newUser = await new this.userModel(userDto);
-    return newUser.save();
+    const newUser = await  this.userModel.create(userDto);
+    return newUser;
   }
   async getAllUsers(): Promise<User> {
     const allUsers = await this.userModel.find();
     return allUsers;
   }
-  async getUserById(id: String): Promise<User> {
+  async getUserById(id: String): Promise<any> {
     const userId = await this.userModel.findById(id);
     return userId;
   }

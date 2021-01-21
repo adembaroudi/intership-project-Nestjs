@@ -5,15 +5,22 @@ import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { Training } from "src/training/training.model";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
+import { registerAdminDto } from "./Dto/admin.dto";
+import { Admin } from "./interfaces/admin.interface";
+import { LogintDto } from "./Dto/loginAdmin.dto";
+import { JwtService } from "@nestjs/jwt";
 export declare class AuthService {
     private readonly trainingModel;
     private readonly serviceRegmodel;
     private readonly companyRegmodel;
     private readonly trainModel;
+    private readonly adminModel;
+    private jwtService;
     private training;
     private serviceRegistration;
     private companyRegistration;
-    constructor(trainingModel: Model<trainingReg>, serviceRegmodel: Model<service>, companyRegmodel: Model<company>, trainModel: Model<Training>);
+    private adminRegistration;
+    constructor(trainingModel: Model<trainingReg>, serviceRegmodel: Model<service>, companyRegmodel: Model<company>, trainModel: Model<Training>, adminModel: Model<Admin>, jwtService: JwtService);
     trainingReg(trainingRegDto: trainingRegistrationDto, id: String): Promise<any>;
     trainingRegWithoutAffectation(trainingRegDto: trainingRegistrationDto): Promise<any>;
     serviceReg(serviceRegDto: serviceRegistrationDto): Promise<any>;
@@ -21,4 +28,7 @@ export declare class AuthService {
     getAllRgistrations(): Promise<any>;
     pdfFile(file: any, id: any): Promise<service>;
     getpdf(id: any): Promise<service>;
+    registerAdmin(adminDto: registerAdminDto): Promise<Admin>;
+    loginAdmin(logindto: LogintDto): Promise<string>;
+    createJwtPayload(user: any): string;
 }

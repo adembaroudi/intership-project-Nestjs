@@ -41,8 +41,8 @@ export class UserController {
   @Get("/Users/:id")
   async getUserById(@Param("id") id: string, @Res() res) {
     const userId = await this.userService.getUserById(id);
-    return res.send(userId);
-  }
+    return userId;
+  }   
   @Delete("/Users/:id")
   async deleteUser(@Param("id") id: String, @Res() res) {
     const userToDelete = await this.userService.deleteUser(id);
@@ -74,7 +74,7 @@ export class UserController {
     @UploadedFile() file,
     @Param("id") id
   ): Promise<any> {
-    if (
+    if ( 
       path.extname(`${file.filename}`) === ".png" ||
       path.extname(`${file.filename}`) === ".jpg" ||
       path.extname(`${file.filename}`) === ".JPG" ||

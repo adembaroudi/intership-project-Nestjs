@@ -17,7 +17,9 @@ import { createReadStream } from "fs";
 import * as multer from "multer";
 import * as path from "path";
 import { AuthService } from "./auth.service";
+import { registerAdminDto } from "./Dto/admin.dto";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
+import { LogintDto } from "./Dto/loginAdmin.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 @Controller("auth")
@@ -141,5 +143,34 @@ export class AuthController {
   async getFiles(@Param("idservicereg") idservicereg: String, @Res() res) {
     const getpdf = await this.authService.getpdf(idservicereg);
     return res.sendFile(getpdf, { root: "upload" });
+  }
+  @Post("/admin")
+  async registerAdmin(
+    @Res() res,
+    @Body() adminDto: registerAdminDto
+  ) {
+    const admin = await this.authService.registerAdmin(adminDto);
+    if (admin === null) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        message: "email in use",
+      });
+    }
+    return res.status(HttpStatus.OK).json({
+      message: "Register succes",
+      admin: admin,
+    });
+  }
+  @Post("/login")
+  async loginAdmin(@Res() res, @Body() logindto: LogintDto) {
+    const admin = await this.authService.loginAdmin(logindto);
+    if (admin === null) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        message: "email or password incorrecte",
+      });
+    }
+    return res.status(HttpStatus.OK).json({
+      message: "admin logged in successfully",
+      admin: admin,
+    });
   }
 }

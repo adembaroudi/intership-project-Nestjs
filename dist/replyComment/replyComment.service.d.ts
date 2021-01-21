@@ -10,4 +10,7 @@ export declare class replyCommentService {
     repComment(id: String, replyDto: replyCommentDto): Promise<replyComment>;
     getReplyByComment(id: String): Promise<any>;
     nbrReplies(id: String): Promise<replyComment>;
+    deleteReplies(id: String): Promise<{
+        message: string;
+    }>;
 }

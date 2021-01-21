@@ -36,7 +36,7 @@ let CommentService = class CommentService {
         return blog;
     }
     async getAllComments() {
-        const allComments = await this.commentModel.find();
+        const allComments = await this.commentModel.find().populate("blog").populate("replies").exec();
         return allComments;
     }
     async getCommentByBlog(id) {

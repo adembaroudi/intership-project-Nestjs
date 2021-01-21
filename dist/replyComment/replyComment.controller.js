@@ -32,6 +32,12 @@ let replyCommentController = class replyCommentController {
         const nbrReplies = await this.replyService.nbrReplies(idcomment);
         return nbrReplies;
     }
+    async deleteReplies(idreply, res) {
+        await this.replyService.deleteReplies(idreply);
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "reply deleted successuly",
+        });
+    }
 };
 __decorate([
     common_1.Put("/repcomment/:idcomment"),
@@ -55,6 +61,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], replyCommentController.prototype, "nbrComments", null);
+__decorate([
+    common_1.Delete("/Replies/:idreply"),
+    __param(0, common_1.Param("idreply")), __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], replyCommentController.prototype, "deleteReplies", null);
 replyCommentController = __decorate([
     common_1.Controller("replycomment"),
     __metadata("design:paramtypes", [replyComment_service_1.replyCommentService])

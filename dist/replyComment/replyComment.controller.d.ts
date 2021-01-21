@@ -6,4 +6,5 @@ export declare class replyCommentController {
     NewComment(idcomment: string, replyDto: replyCommentDto): Promise<import("./replyComment.model").replyComment>;
     getReplyByComment(idcomment: String): Promise<any>;
     nbrComments(idcomment: String): Promise<import("./replyComment.model").replyComment>;
+    deleteReplies(idreply: String, res: any): Promise<any>;
 }

@@ -40,5 +40,12 @@ export class replyCommentService {
     const nbrReplies = await this.replyModel.countDocuments({comment : id})
     return nbrReplies
     } 
+    async deleteReplies(id : String){
+      const repliqueToDelete = await this.replyModel.findByIdAndDelete(id)
+      await this.commentModel.findByIdAndUpdate(repliqueToDelete.comment,{$pull:{
+        replies : repliqueToDelete._id}
+      })  
+      return {message : "reply deleted"}
+    }
 }
    

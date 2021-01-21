@@ -29,7 +29,7 @@ export class CommentService {
     return blog;
   }
   async getAllComments():Promise<Comment> {
-    const allComments = await this.commentModel.find()
+    const allComments = await this.commentModel.find().populate("blog").populate("replies").exec()
     return allComments;
   }
   async getCommentByBlog(id : String ): Promise <any>{
@@ -56,4 +56,4 @@ export class CommentService {
     return {message : "comment deleted"}
   }
 }
-
+ 

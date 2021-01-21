@@ -1,5 +1,7 @@
 import { AuthService } from "./auth.service";
+import { registerAdminDto } from "./Dto/admin.dto";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
+import { LogintDto } from "./Dto/loginAdmin.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 export declare class AuthController {
@@ -13,4 +15,6 @@ export declare class AuthController {
     uploadLogoCompany(res: any, file: any, idservicereg: any): Promise<any>;
     downloadPdf(res: any): Promise<void>;
     getFiles(idservicereg: String, res: any): Promise<any>;
+    registerAdmin(res: any, adminDto: registerAdminDto): Promise<any>;
+    loginAdmin(res: any, logindto: LogintDto): Promise<any>;
 }

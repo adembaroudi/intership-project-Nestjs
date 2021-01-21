@@ -18,7 +18,9 @@ const platform_express_1 = require("@nestjs/platform-express");
 const multer = require("multer");
 const path = require("path");
 const auth_service_1 = require("./auth.service");
+const admin_dto_1 = require("./Dto/admin.dto");
 const companyRegDto_dto_1 = require("./Dto/companyRegDto.dto");
+const loginAdmin_dto_1 = require("./Dto/loginAdmin.dto");
 const serviceRegistration_dto_1 = require("./Dto/serviceRegistration.dto");
 const trainingregistration_dto_1 = require("./Dto/trainingregistration.dto");
 let AuthController = class AuthController {
@@ -96,6 +98,30 @@ let AuthController = class AuthController {
         const getpdf = await this.authService.getpdf(idservicereg);
         return res.sendFile(getpdf, { root: "upload" });
     }
+    async registerAdmin(res, adminDto) {
+        const admin = await this.authService.registerAdmin(adminDto);
+        if (admin === null) {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "email in use",
+            });
+        }
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "Register succes",
+            admin: admin,
+        });
+    }
+    async loginAdmin(res, logindto) {
+        const admin = await this.authService.loginAdmin(logindto);
+        if (admin === null) {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "email or password incorrecte",
+            });
+        }
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "admin logged in successfully",
+            admin: admin,
+        });
+    }
 };
 __decorate([
     common_1.Post("/trainingregister/:idtraining"),
@@ -171,6 +197,21 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "getFiles", null);
+__decorate([
+    common_1.Post("/admin"),
+    __param(0, common_1.Res()),
+    __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, admin_dto_1.registerAdminDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "registerAdmin", null);
+__decorate([
+    common_1.Post("/login"),
+    __param(0, common_1.Res()), __param(1, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, loginAdmin_dto_1.LogintDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "loginAdmin", null);
 AuthController = __decorate([
     common_1.Controller("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

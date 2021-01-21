@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
@@ -19,15 +19,20 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const training_model_1 = require("../training/training.model");
 const nodemailer = require("nodemailer");
+const bcrypt = require("bcryptjs");
+const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor(trainingModel, serviceRegmodel, companyRegmodel, trainModel) {
+    constructor(trainingModel, serviceRegmodel, companyRegmodel, trainModel, adminModel, jwtService) {
         this.trainingModel = trainingModel;
         this.serviceRegmodel = serviceRegmodel;
         this.companyRegmodel = companyRegmodel;
         this.trainModel = trainModel;
+        this.adminModel = adminModel;
+        this.jwtService = jwtService;
         this.training = [];
         this.serviceRegistration = [];
         this.companyRegistration = [];
+        this.adminRegistration = [];
     }
     async trainingReg(trainingRegDto, id) {
         const training = await this.trainingModel.findOne({
@@ -206,6 +211,42 @@ let AuthService = class AuthService {
         const getLogo = pdf.cv;
         return getLogo;
     }
+    async registerAdmin(adminDto) {
+        const admin = await this.adminModel.findOne({ email: adminDto.email });
+        if (admin) {
+            return null;
+        }
+        else {
+            const salt = 10;
+            adminDto.password = await bcrypt.hash(adminDto.password, salt);
+            const admin = await this.adminModel.create(adminDto);
+            return admin;
+        }
+    }
+    async loginAdmin(logindto) {
+        const admin = await this.adminModel.findOne({ email: logindto.email });
+        if (!admin) {
+            return null;
+        }
+        else {
+            const isvalidpass = await bcrypt.compare(logindto.password, admin.password);
+            if (isvalidpass) {
+                return this.createJwtPayload(admin);
+            }
+            else {
+                return null;
+            }
+        }
+    }
+    createJwtPayload(user) {
+        let data = {
+            email: user.email,
+            _id: user._id,
+            role: user.role
+        };
+        let jwt = this.jwtService.sign(data);
+        return jwt;
+    }
 };
 AuthService = __decorate([
     common_1.Injectable(),
@@ -213,7 +254,8 @@ AuthService = __decorate([
     __param(1, mongoose_1.InjectModel("servicereg")),
     __param(2, mongoose_1.InjectModel("companyreg")),
     __param(3, mongoose_1.InjectModel("training")),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object, typeof (_c = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _c : Object, typeof (_d = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _d : Object])
+    __param(4, mongoose_1.InjectModel("admin")),
+    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object, typeof (_c = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _c : Object, typeof (_d = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _d : Object, typeof (_e = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _e : Object, jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map

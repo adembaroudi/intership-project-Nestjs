@@ -21,7 +21,7 @@ import { FileInterceptor } from "@nestjs/platform-express";
 export class trainingController {
   constructor(private trainService: trainingService) {}
   @Post("Trainings/:iduser")
-  async addtraining(
+  async addtraining( 
     @Param("iduser") iduser: String,
     @Res() res,
     @Body() trainDto: TrainingDto
@@ -87,7 +87,7 @@ export class trainingController {
   )
   @Put("/Trainings/file/:id")
   async uploadLogoCompany(
-    @Res() res,
+    @Res() res, 
     @UploadedFile() file,
     @Param("id") id
   ): Promise<any> {
