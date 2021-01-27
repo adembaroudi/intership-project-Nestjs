@@ -2537,7 +2537,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/schemas/user.schema.ts": {
-        "version": "740299a2bdfbe56d88e2bb0603587d7dcf5b6350805a285fd8f7da902b254977",
+        "version": "62409ee0d713fd27550a7e26a0f2fc66c456cf726bb03dbd84d2a9ffd7fedcad",
         "signature": "80a51f78b112ab4e82f9551f2cf15f10c6a2c2f2c7f806a2a122b7ee62cd3c9e",
         "affectsGlobalScope": false
       },
@@ -2557,7 +2557,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
-        "version": "c75287f37e414a7b57ef54e76d44ca690e32153fdd1fec005a22b65ac160349d",
+        "version": "35c264e1cb5fc31f0a5a621fb68200699f272470037371447551ce56870071a8",
         "signature": "e2db2fc879ecc87aff56ab58ed02632cd6957472f4187f89417ec24d1096e32f",
         "affectsGlobalScope": false
       },
@@ -2722,12 +2722,12 @@
         "affectsGlobalScope": false
       },
       "../src/training/training.service.ts": {
-        "version": "7003c8077a610b7c32e2c7e0e54db02c936b091a55f6ca1bc7db894a502f8096",
+        "version": "cfc49c59f10f3f5ffbed9309fd1edd6e106cec937e95a822ec5f077d8b6d8f4a",
         "signature": "4d07413785f73cb78c1690e4ca9e8cd0708f5df5eb9951161dc7b0c30958b872",
         "affectsGlobalScope": false
       },
       "../src/training/training.controller.ts": {
-        "version": "f14529652634613ae0053428693b54d83a824d82bd1351daac1f0435e1f38334",
+        "version": "41185646de06175a67c62a6adad7235f15948fd23a99d8aab576082f81f0445d",
         "signature": "f6f23ab7ec35b8260a348a58ecfe03e5c7e18526a9e51fc72dd96708c5bd9145",
         "affectsGlobalScope": false
       },

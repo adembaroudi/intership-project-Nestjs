@@ -35,10 +35,10 @@ export class UserController {
   }
   @Get("/Users")
   async getAllUsers() {
-    const Users = await this.userService.getAllUsers();
+    const Users = await this.userService.getAllUsers();    
     return Users;
   }
-  @Get("/Users/:id")
+  @Get("/Users/:id")     
   async getUserById(@Param("id") id: string, @Res() res) {
     const userId = await this.userService.getUserById(id);
     return userId;

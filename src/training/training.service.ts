@@ -17,14 +17,14 @@ export class trainingService {
     const user = await this.userModel.findByIdAndUpdate(
       id,
       {
-        $push: { trainings: training._id },
-      },
+        $push: { trainings: training._id },                               
+      },    
       {
         new: true,
       }
-    );
-    await this.trainModel.findByIdAndUpdate(training._id, { user: user._id });
-    return training;
+    );   
+    await this.trainModel.findByIdAndUpdate(training._id, { user: user._id }); 
+    return training;       
   }
   async getAllTraining(): Promise<Training> {
     const getAll = await this.trainModel.find().populate("user").exec();
@@ -40,7 +40,7 @@ export class trainingService {
     return intro
   }
 
-  async updateTraining(
+  async updateTraining(    
     id: String,
     trainingDto: TrainingDto
   ): Promise<Training> {
