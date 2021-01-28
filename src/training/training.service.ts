@@ -42,12 +42,15 @@ export class trainingService {
 
   async updateTraining(    
     id: String,
+    iduser : String,
     trainingDto: TrainingDto
   ): Promise<Training> {
-    const upTrain = await this.trainModel.findByIdAndUpdate(id, trainingDto, {
+    const training = await this.trainModel.findByIdAndUpdate(id , trainingDto)
+    const user = await this.userModel.findById(iduser)
+   const uptrain=  await this.trainModel.findByIdAndUpdate(training._id, { user: user._id }, {
       new: true,
     });
-    return upTrain;
+    return uptrain;
   }
   async deleteTraining(id: String) {
     const deleteTrain = await this.trainModel.findByIdAndDelete(id);

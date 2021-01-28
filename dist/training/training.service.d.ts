@@ -11,7 +11,7 @@ export declare class trainingService {
     getAllTraining(): Promise<Training>;
     getTrainingById(id: String): Promise<Training>;
     getIntroDesc(id: String): Promise<any>;
-    updateTraining(id: String, trainingDto: TrainingDto): Promise<Training>;
+    updateTraining(id: String, iduser: String, trainingDto: TrainingDto): Promise<Training>;
     deleteTraining(id: String): Promise<{
         message: string;
     }>;

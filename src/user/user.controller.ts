@@ -43,6 +43,18 @@ export class UserController {
     const userId = await this.userService.getUserById(id);
     return userId;
   }   
+  @Put("updateuser/:id")
+  async updatepartenaire(
+    @Param("id") id: String,
+    @Res() res,
+    @Body() userDto: UserDto
+  ) {
+    const updateUser = await this.userService.updatePartenaire(id, userDto);
+    return res.status(HttpStatus.OK).json({
+      message: "User updated successfully",
+      part: updateUser,
+    });
+  }
   @Delete("/Users/:id")
   async deleteUser(@Param("id") id: String, @Res() res) {
     const userToDelete = await this.userService.deleteUser(id);

@@ -2537,7 +2537,7 @@
         "affectsGlobalScope": false
       },
       "../src/user/schemas/user.schema.ts": {
-        "version": "62409ee0d713fd27550a7e26a0f2fc66c456cf726bb03dbd84d2a9ffd7fedcad",
+        "version": "ed0564ed3a0b322a55d921d2767204926ee5b831557ba429594cc79a9dc82a7b",
         "signature": "80a51f78b112ab4e82f9551f2cf15f10c6a2c2f2c7f806a2a122b7ee62cd3c9e",
         "affectsGlobalScope": false
       },
@@ -2552,13 +2552,13 @@
         "affectsGlobalScope": false
       },
       "../src/user/user.service.ts": {
-        "version": "9d477e452d5dd1cad94ab005e871dcd5ca59023114ac5d27a1690dd251c5c885",
-        "signature": "c7d27d1b2543a0b03715df9d1c7f6a5155d9192576f62bdbe2f4ac7026108af5",
+        "version": "95f014450a0359429ee4cbf196cc5caa659ccc8b0ca7c2e01200381c508cc407",
+        "signature": "5db79f0489b093f2c46eb3996d6a04ced7244ff597ce093465dd315eeb880af6",
         "affectsGlobalScope": false
       },
       "../src/user/user.controller.ts": {
-        "version": "35c264e1cb5fc31f0a5a621fb68200699f272470037371447551ce56870071a8",
-        "signature": "e2db2fc879ecc87aff56ab58ed02632cd6957472f4187f89417ec24d1096e32f",
+        "version": "070411479ad1fe1459f04e50cf4ea36fa5019bd422dea58d1523dee228a3877e",
+        "signature": "f3d5d193affb483d4d3fc9b99f745a2e18f4fd8fabe1ee9040af5ba4fa6dd97c",
         "affectsGlobalScope": false
       },
       "../src/user/user.module.ts": {
@@ -2722,13 +2722,13 @@
         "affectsGlobalScope": false
       },
       "../src/training/training.service.ts": {
-        "version": "cfc49c59f10f3f5ffbed9309fd1edd6e106cec937e95a822ec5f077d8b6d8f4a",
-        "signature": "4d07413785f73cb78c1690e4ca9e8cd0708f5df5eb9951161dc7b0c30958b872",
+        "version": "f6e916c960f3e5741dc6a544ded2ac1fa16c69a01c52e22af84efbc964555e8f",
+        "signature": "8315c2b7f143c6344a90b6257dcccd0823a58066fcd5ce55b1b4a69f85cc295e",
         "affectsGlobalScope": false
       },
       "../src/training/training.controller.ts": {
-        "version": "41185646de06175a67c62a6adad7235f15948fd23a99d8aab576082f81f0445d",
-        "signature": "f6f23ab7ec35b8260a348a58ecfe03e5c7e18526a9e51fc72dd96708c5bd9145",
+        "version": "c882045f416e10dbb45b416c25c4a701e6c89d842b03ff92edc08292e502fde9",
+        "signature": "93f9c2bee259f2cd16a4522b80607fdf2d6dad77134b628811de796418b516a3",
         "affectsGlobalScope": false
       },
       "../src/training/training.module.ts": {

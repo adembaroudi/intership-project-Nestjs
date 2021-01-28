@@ -8,6 +8,7 @@ export declare class userService {
     addUser(userDto: UserDto): Promise<any>;
     getAllUsers(): Promise<User>;
     getUserById(id: String): Promise<any>;
+    updatePartenaire(id: String, userDto: UserDto): Promise<User>;
     deleteUser(id: String): Promise<User>;
     logoUserPic(file: any, id: any): Promise<any>;
     getLogo(id: any): Promise<User>;

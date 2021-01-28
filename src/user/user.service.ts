@@ -30,6 +30,10 @@ export class userService {
     const userId = await this.userModel.findById(id);
     return userId;
   }
+  async updatePartenaire(id :String , userDto : UserDto):Promise<User>{
+    const updateUser = await this.userModel.findByIdAndUpdate(id , userDto);
+    return updateUser;
+}
   async deleteUser(id: String): Promise<User> {
     const userToDelete = await this.userModel.findByIdAndDelete(id);
     return userToDelete;

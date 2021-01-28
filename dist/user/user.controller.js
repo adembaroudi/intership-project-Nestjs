@@ -43,6 +43,13 @@ let UserController = class UserController {
         const userId = await this.userService.getUserById(id);
         return userId;
     }
+    async updatepartenaire(id, res, userDto) {
+        const updateUser = await this.userService.updatePartenaire(id, userDto);
+        return res.status(common_1.HttpStatus.OK).json({
+            message: "User updated successfully",
+            part: updateUser,
+        });
+    }
     async deleteUser(id, res) {
         const userToDelete = await this.userService.deleteUser(id);
         return res.status(common_1.HttpStatus.OK).json({
@@ -85,6 +92,15 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUserById", null);
+__decorate([
+    common_1.Put("updateuser/:id"),
+    __param(0, common_1.Param("id")),
+    __param(1, common_1.Res()),
+    __param(2, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, user_dto_1.UserDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "updatepartenaire", null);
 __decorate([
     common_1.Delete("/Users/:id"),
     __param(0, common_1.Param("id")), __param(1, common_1.Res()),

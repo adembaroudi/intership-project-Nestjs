@@ -11,4 +11,4 @@ export const usersSchema = new Schema({
     role: {type: String, enum: ["Coach", "Developpeur","Program manager","social relationship","CEO","co-founder","designeur" ]},
     trainings:[{type: Types.ObjectId, ref: 'trainings'}]
 })
-               
+                                                                                                            

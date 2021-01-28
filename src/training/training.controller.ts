@@ -47,13 +47,14 @@ export class trainingController {
     const intro = await this.trainService.getIntroDesc(idtraining);
     return intro;
   }                                                                                                           
-  @Put("/Trainings/:idtraining")
+  @Put("/Trainings/:idtraining/:iduser")
   async updateTraining(
     @Param("idtraining") idtraining: String,
+    @Param("iduser") iduser: String,
     @Res() res,
     @Body() trainDto: TrainingDto
   ) {
-    const uptrain = await this.trainService.updateTraining(idtraining, trainDto);
+    const uptrain = await this.trainService.updateTraining(idtraining,iduser, trainDto  );
     return res.status(HttpStatus.OK).json({
       message: "training updated successuly",
       training: uptrain,

@@ -6,6 +6,7 @@ export declare class UserController {
     addUser(res: any, userDto: UserDto): Promise<any>;
     getAllUsers(): Promise<import("./user.model").User>;
     getUserById(id: string, res: any): Promise<any>;
+    updatepartenaire(id: String, res: any, userDto: UserDto): Promise<any>;
     deleteUser(id: String, res: any): Promise<any>;
     uploadLogoCompany(res: any, file: any, id: any): Promise<any>;
     getFiles(id: String, res: any): Promise<any>;

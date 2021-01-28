@@ -41,6 +41,10 @@ let userService = class userService {
         const userId = await this.userModel.findById(id);
         return userId;
     }
+    async updatePartenaire(id, userDto) {
+        const updateUser = await this.userModel.findByIdAndUpdate(id, userDto);
+        return updateUser;
+    }
     async deleteUser(id) {
         const userToDelete = await this.userModel.findByIdAndDelete(id);
         return userToDelete;

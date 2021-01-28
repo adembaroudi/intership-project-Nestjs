@@ -7,7 +7,7 @@ export declare class trainingController {
     getAlltrainings(): Promise<import("./training.model").Training>;
     getbyId(idtraining: String): Promise<import("./training.model").Training>;
     introDesc(idtraining: String): Promise<any>;
-    updateTraining(idtraining: String, res: any, trainDto: TrainingDto): Promise<any>;
+    updateTraining(idtraining: String, iduser: String, res: any, trainDto: TrainingDto): Promise<any>;
     deletetraining(idtraining: String, res: any): Promise<any>;
     uploadLogoCompany(res: any, file: any, id: any): Promise<any>;
     getFiles(id: String, res: any): Promise<any>;

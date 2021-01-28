@@ -42,8 +42,8 @@ let trainingController = class trainingController {
         const intro = await this.trainService.getIntroDesc(idtraining);
         return intro;
     }
-    async updateTraining(idtraining, res, trainDto) {
-        const uptrain = await this.trainService.updateTraining(idtraining, trainDto);
+    async updateTraining(idtraining, iduser, res, trainDto) {
+        const uptrain = await this.trainService.updateTraining(idtraining, iduser, trainDto);
         return res.status(common_1.HttpStatus.OK).json({
             message: "training updated successuly",
             training: uptrain,
@@ -100,12 +100,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], trainingController.prototype, "introDesc", null);
 __decorate([
-    common_1.Put("/Trainings/:idtraining"),
+    common_1.Put("/Trainings/:idtraining/:iduser"),
     __param(0, common_1.Param("idtraining")),
-    __param(1, common_1.Res()),
-    __param(2, common_1.Body()),
+    __param(1, common_1.Param("iduser")),
+    __param(2, common_1.Res()),
+    __param(3, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object, training_dto_1.TrainingDto]),
+    __metadata("design:paramtypes", [String,
+        String, Object, training_dto_1.TrainingDto]),
     __metadata("design:returntype", Promise)
 ], trainingController.prototype, "updateTraining", null);
 __decorate([
