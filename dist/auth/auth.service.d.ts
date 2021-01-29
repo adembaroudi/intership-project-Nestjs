@@ -9,18 +9,23 @@ import { registerAdminDto } from "./Dto/admin.dto";
 import { Admin } from "./interfaces/admin.interface";
 import { LogintDto } from "./Dto/loginAdmin.dto";
 import { JwtService } from "@nestjs/jwt";
+import { ForgottenPassword } from "./interfaces/forgetpassword.interface";
+import { ForgetDto } from "./Dto/forget.dto";
+import { ResetpasswordDto } from "./Dto/resetpassword.dto";
 export declare class AuthService {
     private readonly trainingModel;
     private readonly serviceRegmodel;
     private readonly companyRegmodel;
     private readonly trainModel;
     private readonly adminModel;
+    private readonly forgetModel;
     private jwtService;
     private training;
     private serviceRegistration;
     private companyRegistration;
     private adminRegistration;
-    constructor(trainingModel: Model<trainingReg>, serviceRegmodel: Model<service>, companyRegmodel: Model<company>, trainModel: Model<Training>, adminModel: Model<Admin>, jwtService: JwtService);
+    private ForgottenPassword;
+    constructor(trainingModel: Model<trainingReg>, serviceRegmodel: Model<service>, companyRegmodel: Model<company>, trainModel: Model<Training>, adminModel: Model<Admin>, forgetModel: Model<ForgottenPassword>, jwtService: JwtService);
     trainingReg(trainingRegDto: trainingRegistrationDto, id: String): Promise<any>;
     trainingRegWithoutAffectation(trainingRegDto: trainingRegistrationDto): Promise<any>;
     serviceReg(serviceRegDto: serviceRegistrationDto): Promise<any>;
@@ -31,4 +36,7 @@ export declare class AuthService {
     registerAdmin(adminDto: registerAdminDto): Promise<Admin>;
     loginAdmin(logindto: LogintDto): Promise<string>;
     createJwtPayload(user: any): string;
+    forgetpassword(forgetdto: ForgetDto): Promise<boolean>;
+    createForgottenPasswordToken(forgetdto: ForgetDto): Promise<ForgottenPassword>;
+    resetpassword(id: string, resetpassworddto: ResetpasswordDto): Promise<Admin>;
 }

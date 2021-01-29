@@ -2276,14 +2276,29 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
+      "../src/auth/interfaces/forgetpassword.interface.ts": {
+        "version": "847a905ec59af2385a3610345fd1293d6a56c0244253ded49cc38e62890ed7fd",
+        "signature": "08c3a36a8d819cfb0e6281d2e4f64afd3ec78896f565a4897287349093601dda",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/dto/forget.dto.ts": {
+        "version": "676decddd200921873c61a226f7cb94364f5c2f3396a796742886d9efe3cf535",
+        "signature": "802ff991a16a0c07fbf21649133f7b6d94c8427f84c83c78ba9f87a7723d408a",
+        "affectsGlobalScope": false
+      },
+      "../src/auth/dto/resetpassword.dto.ts": {
+        "version": "c5c14906fbd56b052a2f611789cda81fc4ff83d2bdc0def76917d1c32cd3eb6f",
+        "signature": "053d9ec03e6dc97a4a8a2e63f146e6ef634f803a084ab952082eb9303dfc4fbb",
+        "affectsGlobalScope": false
+      },
       "../src/auth/auth.service.ts": {
-        "version": "ae7d0a2aa176bc068a38c785615e424f4a9e6b4eb433ea627d8263abd3d539f5",
-        "signature": "c031bf30206ec09c40501058b9d0e2c9782ee63ff6b846c0e03c441d8f027c28",
+        "version": "50d7b406137da84aa8d648e89aa0570a5a769b8257ba48d97fadc4c4ab892116",
+        "signature": "5faf4615a2ff827f92778f0a6814e625d95cba0f541a9dc34fa926f482448cab",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "55c4934c14a5761ae5afe5fa8df9f915314d48843901ba73a5337ae2fa3fecd4",
-        "signature": "eff8d6b531e8e785a196783c16bb07758138c34fa18964d85e8e55e597e61e3a",
+        "version": "4a842230c1b76a1fe1da4293616224143a9df562f2ce9558ecbdc146212f9c05",
+        "signature": "b95a59be02081a4952aa895ab4661c691fb06f5451ccc72e27e281c5477635dd",
         "affectsGlobalScope": false
       },
       "../src/auth/schemas/serviceregistration.schema.ts": {
@@ -2531,8 +2546,13 @@
         "signature": "56fc768ac03f3ecbac222e5f4cbd8ddcdf2640f38c70b9ae56663e8aed073dcf",
         "affectsGlobalScope": false
       },
+      "../src/auth/schemas/forgetpassword.schema.ts": {
+        "version": "2c34870b9b7a527b94fd4d090bae2e32a991339fe932fa5b090309f4d1099651",
+        "signature": "bc2e0cfcc8333420397b3da4e4b09d68c1a89418c0010ac9309972c8b90e862d",
+        "affectsGlobalScope": false
+      },
       "../src/auth/auth.module.ts": {
-        "version": "9fec169c108b9987e141300ec81c46e257d3c4885951b229e48e718a8faab8e9",
+        "version": "ab2b14146bcf492f57a470dcf70f9ec1a1301aebef6a5dce5b6855c4fc20a2a9",
         "signature": "2e5d258cf85349b02b015c3f1b8873c152d182c3819a7ccc3aff16fc3037a5fc",
         "affectsGlobalScope": false
       },
@@ -5206,7 +5226,9 @@
         "../src/auth/auth.service.ts",
         "../src/auth/dto/admin.dto.ts",
         "../src/auth/dto/companyregdto.dto.ts",
+        "../src/auth/dto/forget.dto.ts",
         "../src/auth/dto/loginadmin.dto.ts",
+        "../src/auth/dto/resetpassword.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts"
       ],
@@ -5220,6 +5242,7 @@
         "../src/auth/auth.service.ts",
         "../src/auth/schemas/admin.schema.ts",
         "../src/auth/schemas/companyregistrationschema.ts",
+        "../src/auth/schemas/forgetpassword.schema.ts",
         "../src/auth/schemas/serviceregistration.schema.ts",
         "../src/auth/schemas/trainingregistration.schema.ts",
         "../src/training/schemas/training.schema.ts"
@@ -5228,15 +5251,19 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/jwt/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
+        "../node_modules/@types/jsonwebtoken/index.d.ts",
         "../node_modules/@types/node/console.d.ts",
         "../node_modules/@types/node/path.d.ts",
         "../src/auth/auth.model.ts",
         "../src/auth/dto/admin.dto.ts",
         "../src/auth/dto/companyregdto.dto.ts",
+        "../src/auth/dto/forget.dto.ts",
         "../src/auth/dto/loginadmin.dto.ts",
+        "../src/auth/dto/resetpassword.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts",
         "../src/auth/interfaces/admin.interface.ts",
+        "../src/auth/interfaces/forgetpassword.interface.ts",
         "../src/auth/interfaces/jwt-payload.interface.ts",
         "../src/auth/interfaces/trainingreg.interace.ts",
         "../src/training/training.model.ts"
@@ -5247,7 +5274,13 @@
       "../src/auth/dto/companyregdto.dto.ts": [
         "../node_modules/class-validator/types/index.d.ts"
       ],
+      "../src/auth/dto/forget.dto.ts": [
+        "../node_modules/class-validator/types/index.d.ts"
+      ],
       "../src/auth/dto/loginadmin.dto.ts": [
+        "../node_modules/class-validator/types/index.d.ts"
+      ],
+      "../src/auth/dto/resetpassword.dto.ts": [
         "../node_modules/class-validator/types/index.d.ts"
       ],
       "../src/auth/dto/serviceregistration.dto.ts": [
@@ -7434,7 +7467,9 @@
         "../src/auth/auth.service.ts",
         "../src/auth/dto/admin.dto.ts",
         "../src/auth/dto/companyregdto.dto.ts",
+        "../src/auth/dto/forget.dto.ts",
         "../src/auth/dto/loginadmin.dto.ts",
+        "../src/auth/dto/resetpassword.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts"
       ],
@@ -7443,10 +7478,13 @@
         "../src/auth/auth.model.ts",
         "../src/auth/dto/admin.dto.ts",
         "../src/auth/dto/companyregdto.dto.ts",
+        "../src/auth/dto/forget.dto.ts",
         "../src/auth/dto/loginadmin.dto.ts",
+        "../src/auth/dto/resetpassword.dto.ts",
         "../src/auth/dto/serviceregistration.dto.ts",
         "../src/auth/dto/trainingregistration.dto.ts",
         "../src/auth/interfaces/admin.interface.ts",
+        "../src/auth/interfaces/forgetpassword.interface.ts",
         "../src/auth/interfaces/trainingreg.interace.ts",
         "../src/training/training.model.ts"
       ],
@@ -8101,16 +8139,20 @@
       "../src/auth/auth.service.ts",
       "../src/auth/dto/admin.dto.ts",
       "../src/auth/dto/companyregdto.dto.ts",
+      "../src/auth/dto/forget.dto.ts",
       "../src/auth/dto/loginadmin.dto.ts",
+      "../src/auth/dto/resetpassword.dto.ts",
       "../src/auth/dto/serviceregistration.dto.ts",
       "../src/auth/dto/trainingregistration.dto.ts",
       "../src/auth/interfaces/admin.interface.ts",
       "../src/auth/interfaces/companyreg.interface.ts",
+      "../src/auth/interfaces/forgetpassword.interface.ts",
       "../src/auth/interfaces/jwt-payload.interface.ts",
       "../src/auth/interfaces/serviceregistration.interface.ts",
       "../src/auth/interfaces/trainingreg.interace.ts",
       "../src/auth/schemas/admin.schema.ts",
       "../src/auth/schemas/companyregistrationschema.ts",
+      "../src/auth/schemas/forgetpassword.schema.ts",
       "../src/auth/schemas/serviceregistration.schema.ts",
       "../src/auth/schemas/trainingregistration.schema.ts",
       "../src/blog/blog.controller.ts",

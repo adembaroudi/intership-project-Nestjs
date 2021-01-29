@@ -1,7 +1,9 @@
 import { AuthService } from "./auth.service";
 import { registerAdminDto } from "./Dto/admin.dto";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
+import { ForgetDto } from "./Dto/forget.dto";
 import { LogintDto } from "./Dto/loginAdmin.dto";
+import { ResetpasswordDto } from "./Dto/resetpassword.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 export declare class AuthController {
@@ -17,4 +19,6 @@ export declare class AuthController {
     getFiles(idservicereg: String, res: any): Promise<any>;
     registerAdmin(res: any, adminDto: registerAdminDto): Promise<any>;
     loginAdmin(res: any, logindto: LogintDto): Promise<any>;
+    sendEmailForgotPassword(forgetdto: ForgetDto, res: any): Promise<any>;
+    resetpassword(id: string, resetpassworddto: ResetpasswordDto, res: any): Promise<any>;
 }

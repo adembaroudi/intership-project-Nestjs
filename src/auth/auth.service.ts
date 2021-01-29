@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { company, service, training } from "./auth.model";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
@@ -16,6 +16,11 @@ import * as bcrypt from 'bcryptjs';
 import { LogintDto } from "./Dto/loginAdmin.dto";
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { JwtService } from "@nestjs/jwt";
+import { ForgottenPassword } from "./interfaces/forgetpassword.interface";
+import { ForgetDto } from "./Dto/forget.dto";
+import { ResetpasswordDto } from "./Dto/resetpassword.dto";
+import * as jwt from 'jsonwebtoken';
+
 
 
 @Injectable()
@@ -24,6 +29,7 @@ export class AuthService {
   private serviceRegistration: service[] = [];
   private companyRegistration: company[] = [];
   private adminRegistration: Admin[] = [];
+  private ForgottenPassword : ForgottenPassword[]= [];
 
   constructor(
     @InjectModel("trainingreg")
@@ -32,6 +38,8 @@ export class AuthService {
     @InjectModel("companyreg") private readonly companyRegmodel: Model<company>,
     @InjectModel("training") private readonly trainModel: Model<Training>,
     @InjectModel("admin") private readonly adminModel: Model<Admin>,
+    @InjectModel('Forget') private readonly forgetModel: Model<ForgottenPassword>,
+
     private jwtService: JwtService
 
 
@@ -280,8 +288,6 @@ async loginAdmin(logindto : LogintDto){
         }
     
   } 
-
-
 }
 createJwtPayload(user){
 
@@ -295,6 +301,86 @@ createJwtPayload(user){
 
   return jwt
 
+}
+async forgetpassword(forgetdto: ForgetDto): Promise<boolean>{
+
+  const email = forgetdto.email
+  const admin = await this.adminModel.findOne({email: email});
+  const tokenModel = await this.createForgottenPasswordToken(forgetdto);
+
+  if (!admin) {
+      return null;
+  } else {
+      const transporter = nodemailer.createTransport({
+          service: "Gmail",
+          tls: {
+            rejectUnauthorized: false,
+          },
+          port: 465,
+          secure: false, // true for 465, false for other ports
+          auth: {
+              user: "crmproject.2020@gmail.com",
+              pass: "123456789crm"
+          }
+      });
+  
+      const mailOptions = {
+        from: "crmproject.2020@gmail.com", 
+        to: "adembaroudi3177@gmail.com", // list of receivers (separated by ,)
+        subject: 'Frogotten Password', 
+        text: 'Forgot Password',
+        //+ config.host.url + ':' + config.host.port +
+        html:` Hi! <br><br> If you requested to reset your password<br><br>
+        <a href= localhost:4200/auth/reset-password/ ${tokenModel} >Click here</a>`  // html body
+      };
+      const sended = await new Promise<boolean>(async function(resolve, reject) {
+        return await transporter.sendMail(mailOptions, async (error, info) => {
+            if (error) {      
+              console.log('Message sent: %s', error);
+              return reject(false);
+            }
+            console.log('Message sent 1 : %s', info);
+            resolve(true);
+        });      
+      })
+
+      return sended;
+  }
+}
+async createForgottenPasswordToken(forgetdto: ForgetDto): Promise<ForgottenPassword> {
+  const token = await new this.forgetModel(forgetdto);
+token.save()
+  var forgottenPassword= await this.forgetModel.findOne({email: forgetdto.email});
+  if ( !forgottenPassword){
+    throw new HttpException('RESET_PASSWORD.EMAIL_SENDED_RECENTLY', HttpStatus.INTERNAL_SERVER_ERROR);
+  } else {
+    let token_access = jwt.sign({
+      data:forgottenPassword
+  },
+  "secret");
+    var forgetModel = await this.forgetModel.findOneAndUpdate(
+      {email: forgetdto.email},
+      { 
+        email: forgetdto.email,
+        newPasswordToken: token_access,
+      },
+      {upsert: true, new: true}
+    );
+    if(forgetModel){
+      return forgetModel;
+    } else {
+      throw new HttpException('LOGIN.ERROR.GENERIC_ERROR', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+}
+async resetpassword(id: string,resetpassworddto: ResetpasswordDto): Promise<Admin>{
+  if (resetpassworddto.newpassword === resetpassworddto.confirmpassword) {
+    const salt = 10
+    resetpassworddto.confirmpassword = await bcrypt.hash(resetpassworddto.confirmpassword,salt)
+    const admin = this.adminModel.findByIdAndUpdate(id,{password: resetpassworddto.confirmpassword});
+    return admin
+  }
+  return null
 }
 
 }

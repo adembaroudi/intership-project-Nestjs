@@ -19,7 +19,9 @@ import * as path from "path";
 import { AuthService } from "./auth.service";
 import { registerAdminDto } from "./Dto/admin.dto";
 import { companyRegDto } from "./Dto/companyRegDto.dto";
+import { ForgetDto } from "./Dto/forget.dto";
 import { LogintDto } from "./Dto/loginAdmin.dto";
+import { ResetpasswordDto } from "./Dto/resetpassword.dto";
 import { serviceRegistrationDto } from "./Dto/serviceRegistration.dto";
 import { trainingRegistrationDto } from "./Dto/trainingregistration.dto";
 @Controller("auth")
@@ -172,5 +174,41 @@ export class AuthController {
       message: "admin logged in successfully",
       admin: admin,
     });
+  }
+  @Get("/forgot-password")
+  async sendEmailForgotPassword(
+    @Body() forgetdto: ForgetDto,
+    @Res() res
+  ): Promise<any> {
+    //   try {
+    var isEmailSent = await this.authService.forgetpassword(forgetdto);
+    if (isEmailSent === null) {
+      return res.status(HttpStatus.NOT_FOUND).json({
+        message: "error",
+      });
+    } else {
+      return res.status(HttpStatus.OK).json({
+        message: "succes",
+        mail: isEmailSent,
+      });
+    }
+  }
+  @Put("/reset/:id")
+  async resetpassword(
+    @Param("id") id: string,
+    @Body() resetpassworddto: ResetpasswordDto,
+    @Res() res
+  ) {
+    const admin = await this.authService.resetpassword(id, resetpassworddto);
+    if (admin === null) {
+      res.status(HttpStatus.NOT_FOUND).json({
+        message: "not found",
+      });
+    } else {
+      return res.status(HttpStatus.OK).json({
+        message: "success",
+        admin: admin,
+      });
+    }
   }
 }

@@ -19,6 +19,7 @@ const serve_static_1 = require("@nestjs/serve-static");
 const companyRegistrationSchema_1 = require("./schemas/companyRegistrationSchema");
 const admin_schema_1 = require("./schemas/admin.schema");
 const jwt_1 = require("@nestjs/jwt");
+const forgetpassword_schema_1 = require("./schemas/forgetpassword.schema");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
@@ -29,6 +30,7 @@ AuthModule = __decorate([
             mongoose_1.MongooseModule.forFeature([{ name: "companyreg", schema: companyRegistrationSchema_1.companyRegistrationSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "training", schema: training_schema_1.trainingsSchema }]),
             mongoose_1.MongooseModule.forFeature([{ name: "admin", schema: admin_schema_1.adminSchema }]),
+            mongoose_1.MongooseModule.forFeature([{ name: 'Forget', schema: forgetpassword_schema_1.ForgottenPasswordSchema }]),
             jwt_1.JwtModule.register({
                 secretOrPrivateKey: 'thisismykickasssecretthatiwilltotallychangelater',
                 signOptions: {

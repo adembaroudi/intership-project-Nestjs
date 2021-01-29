@@ -10,6 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { companyRegistrationSchema } from './schemas/companyRegistrationSchema';
 import { adminSchema } from './schemas/admin.schema';
 import { JwtModule } from '@nestjs/jwt';
+import { ForgottenPasswordSchema } from './schemas/forgetpassword.schema';
 @Module({
     imports:[
         MongooseModule.forFeature([{name: 'trainingreg', schema: trainingRegSchema}]),
@@ -17,6 +18,8 @@ import { JwtModule } from '@nestjs/jwt';
     MongooseModule.forFeature([{name:"companyreg", schema: companyRegistrationSchema}]),
     MongooseModule.forFeature([{name:"training", schema: trainingsSchema}]),
     MongooseModule.forFeature([{name:"admin", schema: adminSchema}]),
+    MongooseModule.forFeature([{name: 'Forget', schema: ForgottenPasswordSchema}]),
+
     JwtModule.register({
         secretOrPrivateKey: 'thisismykickasssecretthatiwilltotallychangelater',
         signOptions: {

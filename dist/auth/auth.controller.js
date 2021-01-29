@@ -20,7 +20,9 @@ const path = require("path");
 const auth_service_1 = require("./auth.service");
 const admin_dto_1 = require("./Dto/admin.dto");
 const companyRegDto_dto_1 = require("./Dto/companyRegDto.dto");
+const forget_dto_1 = require("./Dto/forget.dto");
 const loginAdmin_dto_1 = require("./Dto/loginAdmin.dto");
+const resetpassword_dto_1 = require("./Dto/resetpassword.dto");
 const serviceRegistration_dto_1 = require("./Dto/serviceRegistration.dto");
 const trainingregistration_dto_1 = require("./Dto/trainingregistration.dto");
 let AuthController = class AuthController {
@@ -122,6 +124,34 @@ let AuthController = class AuthController {
             admin: admin,
         });
     }
+    async sendEmailForgotPassword(forgetdto, res) {
+        var isEmailSent = await this.authService.forgetpassword(forgetdto);
+        if (isEmailSent === null) {
+            return res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "error",
+            });
+        }
+        else {
+            return res.status(common_1.HttpStatus.OK).json({
+                message: "succes",
+                mail: isEmailSent,
+            });
+        }
+    }
+    async resetpassword(id, resetpassworddto, res) {
+        const admin = await this.authService.resetpassword(id, resetpassworddto);
+        if (admin === null) {
+            res.status(common_1.HttpStatus.NOT_FOUND).json({
+                message: "not found",
+            });
+        }
+        else {
+            return res.status(common_1.HttpStatus.OK).json({
+                message: "success",
+                admin: admin,
+            });
+        }
+    }
 };
 __decorate([
     common_1.Post("/trainingregister/:idtraining"),
@@ -212,6 +242,23 @@ __decorate([
     __metadata("design:paramtypes", [Object, loginAdmin_dto_1.LogintDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "loginAdmin", null);
+__decorate([
+    common_1.Get("/forgot-password"),
+    __param(0, common_1.Body()),
+    __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [forget_dto_1.ForgetDto, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "sendEmailForgotPassword", null);
+__decorate([
+    common_1.Put("/reset/:id"),
+    __param(0, common_1.Param("id")),
+    __param(1, common_1.Body()),
+    __param(2, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, resetpassword_dto_1.ResetpasswordDto, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "resetpassword", null);
 AuthController = __decorate([
     common_1.Controller("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
